@@ -1,0 +1,100 @@
+#!/bin/bash
+
+cat > manual_temporary << EOF
+
+! Every keyword except file names should be lower cased !
+! Optional keywords are indicated by their default value between square brackets !
+
+! Post-processing of the Quantum Package are only for unrelaxed !
+! detachment/attachment (dau) calculations on closed-shell molecules !
+
+JobType: Preparation of the working folder
+
+Argument 1: prep
+Argument 2: Software (g03, g09, g16, qp)
+Argument 3: Fchk file name (if applicable)
+Argument 4: Total number of transitions computed
+
+JobType: Unrelaxed detachment/attachment density matrices for CIS, TDHF, TDA, TDDFT (XY methods)
+
+Argument 1: daxy
+Argument 2: Number of the transition of interest
+Argument 3: [50] "nopa" (no population analysis), "scanpa" or any integer between 0 and 100 
+
+JobType: Detachment/attachment density matrices
+
+Argument 1: da (dau, daz, dar)
+Argument 2: Number of the transition of interest
+Argument 3: [50] "nopa" (no population analysis), "scanpa" or any integer between 0 and 100 
+
+JobType: Adiabatic connection of the Z-vector
+
+Argument 1: adiabz
+Argument 2: Number of the transition of interest
+Argument 3: [50] "nopa" (no population analysis), or any integer between 0 and 100 
+! scanpa not authorized
+
+JobType: Transition orbitals for CIS, TDHF, TDA, TDDFT (XY methods)
+
+Argument 1: orbsxy (or pntos, ctos, antos)
+Argument 2: Number of the transition of interest
+Argument 3: [50] "nopa" (no population analysis), "scanpa" or any integer between 0 and 100
+
+JobType: Computes the descriptors from a numerical integration
+
+Argument 1: qmni (qmniu, qmnixy, qmniz, qmnir)
+Argument 2: Number of the transition of interest
+
+JobType: Computes alpha^ddag integrals
+
+Argument 1: alphaddag
+Argument 2: Number of the transition of interest
+Argument 3: [50] "scanpa", or any integer between 0 and 100
+! nopa not authorized
+
+Jobtype: Relaxing the descriptors (population analysis)
+
+Argument 1: rlxypa
+Argument 2: Number of the transition of interest
+Argument 3: [50] "scanpa", or any integer between 0 and 100
+! nopa not authorized
+
+Jobtype: Relaxing the descriptors (numerical integration)
+! Requests the log from a qmni calculation in the mesra-tx directory
+! (x being the number of the transition of interest)
+
+Argument 1: qmnidag
+Argument 2: Number of the transition of interest
+
+### Direct use of cubes in their current directory
+
+JobType: Splits the entries of a cube file according to their sign, and integrates
+
+Argument 1: split
+Argument 2: cube file name
+
+JobType: Operations on cubes : op1*cube1 + op2*cube2 = cube3
+
+Argument 1: cubeop
+Argument 2: cube1 file name
+Argument 3: cube2 file name
+Argument 4: cube3 file name
+Argument 5: op1 (p or m, standing for plus or minus)
+Argument 6: op2 (p or m, standing for plus or minus)
+
+JobType: Increase a cube size
+
+Argument 1: incrcube
+Argument 2: cube file name
+Argument 3: percentage of size increase (each dimension will be increased with the same percentage)
+
+JobType: Density overlaps, charge displacement and centroids from two cubes
+
+Argument1: qmni
+Argument2: cube1 file name
+Argument3: cube2 file name
+
+EOF
+
+cat manual_temporary
+rm manual_temporary

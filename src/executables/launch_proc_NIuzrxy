@@ -1,0 +1,232 @@
+#!/bin/bash
+
+# Directly outputs the mesra header.
+
+echo
+echo "            ********************"
+echo "            *                  *"
+echo "            *  MESRA software  *"
+echo "            *                  *"
+echo "            ********************"
+echo
+echo "Jobtype: qm_NI                 "
+echo
+
+# Checks that all the required objects are present.
+
+touch mesra.err
+
+ls mesra_general_info &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ :
+else
+ echo "Error: No general information available, start by using the prep keyword" >> mesra.err
+fi
+
+ls mesra-t$3 &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ :
+else
+ echo "Error: Start by a detachment/attachment calculation using one of the 'da' keywords" >> mesra.err
+ echo "For more information, type mesra_man" >> mesra.err
+fi
+
+grep 'Error' mesra.err &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ cat mesra.err
+ echo Exit
+ echo
+ exit
+fi
+
+ls mesra-t$3/detachment$2.cube &> /dev/null
+
+test1=`echo $?`
+
+ if [ $test1 == '0' ] ; then
+ :
+ else
+  echo "Error: There is no detachment$2.cube file in the mesra-t$3 directory" >> mesra.err
+ fi
+
+ls mesra-t$3/attachment$2.cube &> /dev/null
+
+test2=`echo $?`
+
+ if [ $test2 == '0' ] ; then
+ :
+ else
+  echo "Error: There is no attachment$2.cube file in the mesra-t$3 directory" >> mesra.err
+ fi
+
+ls mesra-t$3/detachment*$2*.cube &> /dev/null 
+
+if [ $? -eq 0 ] ; then
+ ls mesra-t$3/detachment*$2*.cube | grep -i 'alpha' > temp_grep
+ test3=`echo $?`
+ rm temp_grep &> /dev/null
+ if [ $test3 == '0' ] ; then
+  predetachmentalpha=`ls mesra-t$3/detachment*$2*.cube | grep -i 'alpha'`
+  detachmentalpha=`basename $predetachmentalpha`
+ else
+  echo "Error: There is no proper detachment cube file in the mesra-t$3 directory" >> mesra.err
+ fi
+else
+ test3=`echo 1`
+fi
+
+ls mesra-t$3/attachment*$2*.cube &> /dev/null 
+
+if [ $? -eq 0 ] ; then
+ ls mesra-t$3/attachment*$2*.cube | grep -i 'alpha' > temp_grep
+ test4=`echo $?`
+ rm temp_grep &> /dev/null
+ if [ $test4 == '0' ] ; then
+  preattachmentalpha=`ls mesra-t$3/attachment*$2*.cube | grep -i 'alpha'`
+  attachmentalpha=`basename $preattachmentalpha`
+ else
+  echo "Error: There is no proper attachment cube file in the mesra-t$3 directory" >> mesra.err
+ fi
+else
+ test4=`echo 1`
+fi
+
+ls mesra-t$3/detachment*$2*.cube &> /dev/null 
+
+if [ $? -eq 0 ] ; then
+ ls mesra-t$3/detachment*$2*.cube | grep -i 'beta' > temp_grep
+ test5=`echo $?`
+ rm temp_grep &> /dev/null
+ if [ $test5 == '0' ] ; then
+  predetachmentbeta=`ls mesra-t$3/detachment*$2*.cube | grep -i 'beta'`
+  detachmentbeta=`basename $predetachmentbeta`
+ else
+  echo "Error: There is no proper detachment cube file in the mesra-t$3 directory" >> mesra.err
+ fi
+else
+ test5=`echo 1`
+fi
+
+ls mesra-t$3/attachment*$2*.cube &> /dev/null 
+
+if [ $? -eq 0 ] ; then
+ ls mesra-t$3/attachment*$2*.cube | grep -i 'beta' > temp_grep
+ test6=`echo $?`
+ rm temp_grep &> /dev/null
+ if [ $test6 == '0' ] ; then
+  preattachmentbeta=`ls mesra-t$3/attachment*$2*.cube | grep -i 'beta'`
+  attachmentbeta=`basename $preattachmentbeta`
+ else
+  echo "Error: There is no proper attachment cube file in the mesra-t$3 directory" >> mesra.err
+ fi
+else
+ test6=`echo 1`
+fi
+
+# If the required files are present, launches mesra to compute the descriptors.
+
+if [ $test1 == '0' -a $test2 == '0' ] ; then
+
+ cd mesra-t$3
+ 
+ echo "qm_NI" > inp_mesra-$3 
+ echo "detachment$2.cube" >> inp_mesra-$3
+ echo "attachment$2.cube" >> inp_mesra-$3
+ 
+ main_mesra inp_mesra-$3 > qmNI$2.log && tail -52 qmNI$2.log
+ 
+ rm inp_mesra-$3 &> /dev/null
+ rm mesra-Job*.log &> /dev/null
+ 
+ cd ..
+ rm mesra.err &> /dev/null
+
+elif [ $test3 == '0' -a $test4 == '0' -a $test5 == '0' -a $test6 == '0' ] ; then
+
+ cd mesra-t$3
+ 
+ echo 
+ echo "# Alpha numerical analysis"
+ echo 
+ 
+ echo "qm_NI" > inp_mesra-$3 
+ echo $detachmentalpha >> inp_mesra-$3
+ echo $attachmentalpha >> inp_mesra-$3
+ 
+ main_mesra inp_mesra-$3 > qmNI$2-alpha.log && tail -52 qmNI$2-alpha.log
+ 
+ rm inp_mesra-$3 &> /dev/null
+ rm mesra-Job*.log &> /dev/null
+ 
+ echo
+ echo "# Beta numerical analysis"
+ echo
+ 
+ echo "qm_NI" > inp_mesra-$3 
+ echo $detachmentbeta >> inp_mesra-$3
+ echo $attachmentbeta >> inp_mesra-$3
+ 
+ main_mesra inp_mesra-$3 > qmNI$2-beta.log && tail -52 qmNI$2-beta.log
+ 
+ rm inp_mesra-$3 &> /dev/null
+ rm mesra-Job*.log &> /dev/null
+ 
+ cd ..
+ rm mesra.err &> /dev/null
+
+elif [ $test3 == '0' -a $test4 == '0' ] ; then
+
+ cd mesra-t$3
+ 
+ echo 
+ echo "# Alpha numerical analysis"
+ echo 
+ 
+ echo "qm_NI" > inp_mesra-$3 
+ echo $detachmentalpha >> inp_mesra-$3
+ echo $attachmentalpha >> inp_mesra-$3
+ 
+ main_mesra inp_mesra-$3 > qmNI$2-alpha.log && tail -52 qmNI$2-alpha.log
+ 
+ rm inp_mesra-$3 &> /dev/null
+ rm mesra-Job*.log &> /dev/null
+ 
+ cd ..
+ rm mesra.err &> /dev/null
+
+elif [ $test5 == '0' -a $test6 == '0' ] ; then
+
+ cd mesra-t$3
+ 
+ echo
+ echo "# Beta numerical analysis"
+ echo
+ 
+ echo "qm_NI" > inp_mesra-$3 
+ echo $detachmentbeta >> inp_mesra-$3
+ echo $attachmentbeta >> inp_mesra-$3
+ 
+ main_mesra inp_mesra-$3 > qmNI$2-beta.log && tail -52 qmNI$2-beta.log
+ 
+ rm inp_mesra-$3 &> /dev/null
+ rm mesra-Job*.log &> /dev/null
+ 
+ cd ..
+ rm mesra.err &> /dev/null
+
+else
+
+ echo "The proper cube files are absent from the directory. Type mesra_man for more info." && rm mesra.err
+ echo "Exit"
+ echo
+ exit
+
+fi
+
+
+
+
+

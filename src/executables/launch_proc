@@ -1,0 +1,234 @@
+#!/bin/bash
+
+# Checks that a prep process has been done before.
+
+ls mesra_general_info &> /dev/null
+
+if [ $? -eq 0 ] ; then
+:
+else
+ echo "Error: No general information available, start by using the prep keyword" >> mesra.err
+ echo "Exit" >> mesra.err
+ exit
+fi
+
+# Collects information from the mesra_general_info
+
+# Which software has been used?
+
+soft=`head -1 mesra_general_info`
+
+# If the Gaussian package has been used for the calculations, reads additional information.
+
+if [ $soft = 'g03' -o $soft = 'g09' -o $soft = 'g16' ] ; then
+
+# Reads the name of the fchk file.
+
+namefchk=`head -2 mesra_general_info | tail -1`
+
+# Reads the number of alpha and beta electrons in the fchk, to determine whether the
+# calculation was restricted or unrestricted.
+
+numalpha=`grep 'Number of alpha' $namefchk | awk '{print $6}'`
+numbeta=`grep 'Number of beta' $namefchk | awk '{print $6}'`
+diffnumalphabeta=`echo $numalpha - $numbeta | bc -l`
+
+# Prepares an fchk header for future mesra outputs.
+
+if [ $1 = 'orbsXY' -o $1 = 'pNTOs' -o $1 = 'CTOs' -o $1 = 'aNTOs' ] ; then
+ nline_AlphaOrb=`grep -n 'Alpha Orbital' $namefchk | awk '{print $1}' | sed "s/:/ /" | awk '{print $1}'`
+ nline_AlphaOrb_minus_one=`echo $nline_AlphaOrb -1 | bc -l`
+ head -n $nline_AlphaOrb_minus_one $namefchk > header_fchk
+fi
+
+if [ $1 = 'dau' -o $1 = 'daz' -o $1 = 'dar' -o $1 = 'daXY' -o $1 = 'rlxypa' -o $1 = 'rlxy_LA' ] ; then
+ nline_SCF=`grep -n 'Total SCF Density' $namefchk | awk '{print $1}' | sed "s/:/ /" | awk '{print $1}'`
+ nline_SCF_minus_one=`echo $nline_SCF -1 | bc -l`
+ head -n $nline_SCF_minus_one $namefchk > header_fchk
+fi
+
+name=`basename $namefchk .fchk`
+
+# Reads the total number of transitions, and the number of the transition of interest.
+
+ntr=`tail -1 mesra_general_info`
+t=`echo $2`
+
+# Calls the default_xLA routine, which returns 50 if there is nothing suitable in the arguments.
+
+default_xLA $3 > defaultxLAfile
+
+LA=`cat defaultxLAfile`
+
+# If decimal number has been provided, returns an error.
+# It also returns an error is no population analysis has been required together with an alphaddag calculation.
+
+fgrep "." defaultxLAfile &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ echo Error: PA exponent should be between 0 and 100 >> mesra.err.temp ;
+ echo Exit >> mesra.err.temp 
+else
+ if [ $LA = 'nopa' ] ; then
+  LA_status=`echo noLA` ;
+  xLA=`echo `
+  if [ $1 = 'alphaddag' ] ; then
+   echo Error: nopa not permitted with the alphaddag jobtype >> mesra.err.temp
+   echo Exit >> mesra.err.temp
+  fi
+ elif [ $LA = 'scanpa' ] ; then
+  LA_status=`echo scan` ;
+  xLA=`echo `
+ else
+  LA_status=`echo LA` ;
+  xLA=`cat defaultxLAfile | bc -l` ;
+  if [ $xLA -lt 0 -o $xLA -gt 100 ] ; then
+   echo Error: PA exponent should be between 0 and 100 >> mesra.err.temp ;
+   echo Exit >> mesra.err.temp 
+  fi
+ fi
+fi
+
+rm defaultxLAfile
+
+# Checks that the information provided by the user is compatible with the requested use of mesra.
+
+requisites $namefchk $ntr $t &> mesra.err
+
+# If an alphaddag calculation has been requested, uses specific 'requisites' routines.
+
+if [ $1 = 'alphaddag' ] ; then
+
+ ls mesra-t$t &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  :
+ else
+  mkdir mesra-t$t
+ fi
+
+ cd mesra-t$t
+
+ if [ $diffnumalphabeta -eq 0 ] ; then
+  requisites_alphaddag &> mesra.err.temp_alphaddag
+ else
+  requisites_alphaddag_unrestricted &> mesra.err.temp_alphaddag
+ fi
+
+# Manages the error files.
+
+ ls mesra.err.temp &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  cat mesra.err.temp >> ../mesra.err ;
+  rm mesra.err.temp ;
+ else
+  :
+ fi
+
+ ls ../mesra.err.temp &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  cat ../mesra.err.temp >> ../mesra.err ;
+  rm ../mesra.err.temp ;
+ else
+  :
+ fi
+
+ ls mesra.err.temp_alphaddag &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  cat mesra.err.temp_alphaddag >> ../mesra.err ;
+  rm mesra.err.temp_alphaddag ;
+ else
+  :
+ fi
+
+ grep 'Error' ../mesra.err &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  exit
+ else
+  :
+ fi
+
+else
+ :
+fi
+
+# Eventually checks errors if an error file remains.
+
+ls mesra.err.temp &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ cat mesra.err.temp >> mesra.err ;
+ rm mesra.err.temp ;
+else
+ :
+fi
+
+grep 'Exit' mesra.err &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ cat mesra.err
+ exit
+else
+ :
+fi
+
+# If the software used is the quantum package, continues.
+
+elif [ $soft = 'qp' ] ; then
+ :
+fi
+
+# Checks if the sub-working directory is present. If not, creates it.
+# If alphaddag computation has been requested, we are already in the sub-working directory.
+
+
+if [ $1 = 'alphaddag' ] ; then
+ :
+else
+ ls mesra-t$t &> /dev/null
+ 
+ if [ $? -eq 0 ] ; then
+  :
+ else
+  mkdir mesra-t$t
+ fi
+fi
+
+# Starts preparing the input for mesra.
+# Specific precautions are taken for alphaddag computations since we are 
+# already in the sub-working directory.
+
+echo "$1" > inp_mesra-$1-$name-t$t 
+
+if [ $1 = 'alphaddag' ] ; then
+ cat ../mesra_general_info >> inp_mesra-$1-$name-t$t
+else
+ cat mesra_general_info >> inp_mesra-$1-$name-t$t 
+fi
+
+echo $t >> inp_mesra-$1-$name-t$t 
+echo $LA_status >> inp_mesra-$1-$name-t$t
+echo $xLA >> inp_mesra-$1-$name-t$t
+
+if [ $1 = 'alphaddag' ] ; then
+ cat alphaddag_dat >> inp_mesra-$1-$name-t$t
+ cp ../overlap .
+fi
+
+# Launches the mesra software.
+
+main_mesra inp_mesra-$1-$name-t$t
+
+# Removes useless or doubled files.
+
+rm alphaddag_dat &> /dev/null
+rm inp_mesra-$1-$name-t$t &> /dev/null
+
+if [ $1 = 'alphaddag' ] ; then
+ rm overlap &> /dev/null
+ cd ..
+fi

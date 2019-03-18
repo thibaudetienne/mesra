@@ -1,0 +1,47 @@
+#!/bin/bash
+here=`$pwd`
+loc=`which mesra`
+dirloc=`dirname $loc`
+cd $dirloc
+cd ../test
+clean_mesra
+
+cd restricted/tddft
+mesra prep g16 pp3.fchk 6
+mesra dau 1 
+mesra daz 1 nola
+mesra dar 1 40
+mesra dau 2
+mesra orbsxy 2
+mesra daxy 2
+mesra rlxypa 1
+clean_mesra
+
+cd ../cis
+mesra prep g16 push-pull.fchk 3
+mesra dau 1
+mesra dar 1
+mesra orbsxy 2
+mesra daxy 2
+mesra alphaddag 1
+clean_mesra
+
+cd ../../cubes
+mesra qmni detachment.cube attachment.cube
+clean_mesra
+
+cd ../unrestricted/tddft/form
+mesra prep g16 form.fchk 3
+mesra dau 1
+mesra orbsxy 1
+mesra adiabz 1
+clean_mesra
+
+cd ../../cis/H2
+mesra prep g16 H2.fchk 3
+mesra dau 1
+mesra orbsxy 1
+clean_mesra
+
+
+cd $here

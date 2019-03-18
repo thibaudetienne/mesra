@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Acquires information to prepare a mesra_general_info file.
+# Also checks if the required files are present in the working directory.
+
+soft=`echo $2`
+
+if [ $soft = 'g03' -o $soft = 'g09' -o $soft = 'g16' ] ; then
+ 
+name=`basename $3 .fchk`
+ntr=`echo $4`
+
+ ls $3 &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  :
+ else
+  echo "Where is the $3 file?"
+  echo 'Exit'
+  exit
+ fi
+
+ ls overlap &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  :
+ else
+  echo 'Where is the overlap file?'
+  echo 'Exit'
+  exit
+ fi
+
+ ls density &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  :
+ else
+  echo 'Where is the density file?'
+  echo 'Exit'
+  exit
+ fi
+
+ if [ $ntr -eq 0 -o $ntr -eq 1 ] ; then
+  echo "More than one transition should be computed when using Gaussian"
+  echo 'Exit'
+  exit
+ fi
+
+elif [ $soft = 'qp' ] ; then
+
+ :
+
+else
+
+ echo 'Only g03, g09, g16 and qp softwares are supported'
+ echo 'Exit'
+ exit
+
+fi
+
+echo $soft > mesra_general_info
+echo "$name.fchk" >> mesra_general_info
+echo overlap >> mesra_general_info
+echo density >> mesra_general_info
+echo $ntr >> mesra_general_info
+
+echo 'General information collected into mesra_general_info'

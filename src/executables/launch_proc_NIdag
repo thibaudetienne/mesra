@@ -1,0 +1,124 @@
+#!/bin/bash
+
+# Checks that the required files are present. If a daz calculation has not been performed prior to the qmnidag one,
+# a daz calculation is done.
+
+ls mesra-t$2/daz.log &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ :
+else
+ 
+ launch_proc daz $2 nopa > temp_daz
+ 
+ grep 'Error' mesra.err && echo 'Exit' && exit
+ rm mesra.err
+
+ ls *tachment*.fchk &> /dev/null
+ if [ $? -eq 0 ] ; then
+  ls Delta*.fchk &> /dev/null
+  if [ $? -eq 0 ] ; then
+   for f in *tachment*.fchk Delta*.fchk
+   do
+    cat header_fchk > temp
+    cat $f >> temp
+    mv temp mesra-t$2/$f &> /dev/null
+    rm $f
+   done
+  fi
+ fi
+
+ rm header_fchk &> /dev/null
+ mv daZ*.eig mesra-t$2 &> /dev/null
+ mv mesra-Job*.log mesra-t$2/daz.log &> /dev/null
+ mv *.orth mesra-t$2 &> /dev/null
+ rm temp_daz &> /dev/null
+fi
+
+# Checks whether the number of alpha and beta electrons is equal, and extracts information
+# in the appropriate files accordingly, before launching mesra.
+
+numalpha=`grep -A1 'Number of alpha and beta' mesra-t$2/daz.log | tail -1 | awk '{print $1}'`
+numbeta=`grep -A1 'Number of alpha and beta' mesra-t$2/daz.log | tail -1 | awk '{print $2}'`
+diffnumalphabeta=`echo $numalpha - $numbeta | bc -l`
+
+if [ $diffnumalphabeta -eq 0 ] ; then
+
+ echo qmnidag > inp_mesra-$1-t$2
+
+ grep -A1 'Trace of gamma_d' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 'Integral' mesra-t$2/qmNI$3.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 'phiS integral value' mesra-t$2/qmNI$3.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 'phi ' mesra-t$2/qmNI$3.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
+ grep -A1 'zzd_zdz' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
+
+ main_mesra inp_mesra-$1-t$2 
+
+ echo
+
+else
+
+ ls mesra-t$2/qmNI$3-alpha.log &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  :
+ else
+  echo
+  echo "Where is qmNI$3-alpha.log?"
+  echo
+ fi
+
+ echo qmnidag > inp_mesra-$1-t$2
+
+ grep -A1 'Trace of gamma_d' mesra-t$2/daz.log | head -2 | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 'Integral' mesra-t$2/qmNI$3-alpha.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 'phiS integral value' mesra-t$2/qmNI$3-alpha.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 'phi ' mesra-t$2/qmNI$3-alpha.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
+ grep -A1 'zzd_zdz' mesra-t$2/daz.log | head -2 | tail -1 >> inp_mesra-$1-t$2
+
+ main_mesra inp_mesra-$1-t$2 | head -8
+
+ echo "# Part A - Alpha numerical analysis"
+
+ main_mesra inp_mesra-$1-t$2 | tail -3
+ 
+ echo
+ echo "# Part B - Beta numerical analysis"
+ 
+ ls mesra-t$2/qmNI$3-beta.log &> /dev/null
+ 
+ if [ $? -eq 0 ] ; then
+ :
+ else
+  echo "Where is qmNI$3-beta.log?"
+  echo "Exit"
+  exit
+ fi
+
+ echo qmnidag > inp_mesra-$1-t$2
+
+ grep -A1 'Trace of gamma_d' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 'Integral' mesra-t$2/qmNI$3-beta.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 'phiS integral value' mesra-t$2/qmNI$3-beta.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 'phi ' mesra-t$2/qmNI$3-beta.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
+ grep -A1 'zzd_zdz' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
+
+ main_mesra inp_mesra-$1-t$2 | tail -3
+ 
+ echo 
+
+fi
+
+# Finalizes the files handling.
+
+grep 'Error' mesra.err &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ grep 'Error' mesra.err
+ echo 'Exit' && exit
+fi
+
+rm mesra.err &> /dev/null
+rm inp_mesra-$1-t$2 &> /dev/null
+rm mesra-Job-qmnidag.log &> /dev/null
+

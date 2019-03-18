@@ -1,0 +1,98 @@
+#!/bin/bash
+
+# Performs the initial installation of the MESRA software.
+# 
+# Before installing the package, please check that the
+# correct options are selected in the src/makefile file for 
+# FC, FFLAGS, and LFLAGS.
+
+# Creates a bin directory.
+
+here=`pwd`
+
+ls bin &> /dev/null
+
+if [ $? -eq 0 ] ; then
+: 
+else
+mkdir bin
+fi
+
+# Copies the test directory from src to the home directory.
+
+ls test &> /dev/null
+
+if [ $? -eq 0 ] ; then
+: 
+else
+mkdir test
+cp -rf ./src/test/* ./test/ &> /dev/null
+ if [ $? -eq 0 ] ; then
+ :
+ else
+ echo
+ echo 'A problem occurred with the transfer of the test folder from src to this directory.'
+ echo
+ rm -rf ./src/test/ &> /dev/null
+ rm -rf test &> /dev/null
+ exit
+ fi
+fi
+
+# Sets the mesra_home path. 
+
+cd bin
+mesra_home=`pwd`
+
+cd ../src/
+
+# Copies the executables to mesra_home and installs the software
+
+cp ./executables/* $mesra_home
+
+make
+
+if [ $? -eq 0 ] ; then
+clear
+echo
+echo The MESRA software was correctly installed.
+echo
+make clean &> /dev/null
+else
+echo
+echo The software did not compile correctly. Modify the makefile in the 
+echo src directory with more appropriate compiling options.
+echo
+make clean &> /dev/null
+exit
+fi
+
+# Migrates the main_mesra program to mesra_home and sets path in the .bashrc file.
+
+mv main_mesra $mesra_home
+
+grep 'mesra' ~/.bashrc | grep 'PATH' &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ PATH2=$mesra_home
+ string=`echo \$PATH:`
+ sed -i -e 's%\(.*\)\( # mesra home directory\)%PATH=$PATH:'$PATH2'\2%' ~/.bashrc
+ rm ~/.bashrc-e &> /dev/null
+else
+ echo PATH='$PATH':$mesra_home \# mesra home directory >> ~/.bashrc
+fi 
+
+. ~/.bashrc &> /dev/null
+. ~/.profile &> /dev/null
+. ~/.bash_profile &> /dev/null
+
+cd $here
+
+cd ../
+
+# Tests the installation
+
+echo MESRA test
+echo
+
+test_mesra

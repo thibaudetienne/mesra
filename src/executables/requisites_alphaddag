@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# '0' is used to state that the computation is restricted (equal number of
+# alpha and beta electrons).
+
+# Checks that the required files are present.
+
+ echo '0' > alphaddag_dat
+
+ ls detachmentU.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo detachmentU.fchk >> alphaddag_dat
+ else
+  ls detachment_XY.fchk &> /dev/null
+  if [ $? -eq 0 ] ; then
+   echo detachment_XY.fchk >> alphaddag_dat
+  else
+   echo "Error: Where is the detachmentU.fchk or detachment_XY.fchk file?"
+   echo 'Exit'
+  fi
+ fi
+
+ ls attachmentU.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo attachmentU.fchk >> alphaddag_dat 
+ else
+  ls attachment_XY.fchk &> /dev/null
+  if [ $? -eq 0 ] ; then
+   echo attachment_XY.fchk >> alphaddag_dat
+  else
+   echo "Error: Where is the attachmentU.fchk or attachment_XY.fchk file?"
+   echo 'Exit'
+  fi
+ fi
+
+ ls detachmentR.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo detachmentR.fchk >> alphaddag_dat
+ else
+  echo "Error: Where is the detachmentR.fchk file?"
+  echo 'Exit'
+ fi
+
+ ls attachmentR.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo attachmentR.fchk >> alphaddag_dat
+ else
+  echo "Error: Where is the attachmentR.fchk file?"
+  echo 'Exit'
+ fi
+

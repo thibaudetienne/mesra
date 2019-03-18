@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Locates the mesra executable and goes to the mesra main directory.
+
+here=`$pwd`
+loc=`which mesra`
+dirloc=`dirname $loc`
+cd $dirloc
+cd ../ 
+
+# Removes test and bin directories, and reinstalls mesra.
+
+rm -rf ./test/ &> /dev/null
+rm -rf ./bin/ &> /dev/null
+
+./install_mesra
+
+cd $here

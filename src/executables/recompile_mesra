@@ -1,0 +1,53 @@
+#!/bin/bash
+
+here=`pwd`
+
+# Goes into the mesra software src directory
+
+loc=`which mesra`
+dirloc=`dirname $loc`
+cd $dirloc
+
+mesra_home=`pwd`
+
+cd ../src/
+
+make clean &> /dev/null
+
+# Copies the executable files
+
+cp ./executables/* $mesra_home &> /dev/null
+
+# Compiles
+
+make
+make clean
+
+mv main_mesra $mesra_home
+
+# Modifies the path and the bashrc file
+
+ls ~/.bashrc &> /dev/null
+
+if [ $? -eq 0 ] ; then
+
+grep 'mesra' ~/.bashrc | grep 'PATH' &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ PATH2=$mesra_home
+ string=`echo \$PATH:`
+ sed -i -e 's%\(.*\)\( # mesra home directory\)%PATH=$PATH:'$PATH2'\2%'  ~/.bashrc
+ rm ~/.bashrc-e &> /dev/null
+else
+ echo PATH='$PATH':$mesra_home \# mesra home directory >> ~/.bashrc
+fi 
+
+. ~/.bashrc &> /dev/null
+. ~/.profile &> /dev/null
+. ~/.bash_profile &> /dev/null
+
+else
+ : 
+fi
+
+cd $here

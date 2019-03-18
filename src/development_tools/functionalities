@@ -1,0 +1,66 @@
+
+prep soft fchk ntr
+
+da t
+daR t (U + Z = R) 
+
+! in the following: pp = 'post-processing' !
+
+pp t ndos {U,R} (default: U)
+
+pp t qmLA {U,R} x (default: U, x = 0.5)
+pp t qmLA {U,R} scan N (default: N = 100)
+
+pp t adiabZ N [pda x] (default: N = 100, pda = false, x = 0.5) ! pda = print da.fchk at each step !
+
+!!! (to develop) pp t Zanalysis x (default: x = 0.5)   ???????? pp t da Z x
+# pp t da Z
+# pp t qmLA Z x
+# pp t qmLA Z scan N
+
+# pp t ndos Z
+# pp t qmLA ndosZ x
+# pp t qmLA ndosZ scan N
+
+# TDHF/TDDFT only
+
+orbs t
+
+pp t T_in_fchk
+
+pp t da ndos
+pp t da ntos
+pp t da ctos
+
+pp t qmLA ndos x
+pp t qmLA ntos x 
+pp t qmLA ctos x
+
+pp t qmLA ndos scan N
+pp t qmLA ntos scan N
+pp t qmLA ctos scan N
+
+qmNI overlap cube1.cube cube2.cube
+qmNI transfer cube1.cube cube2.cube
+qmNI cube1.cube cube2.cube (= overlap + transfer)
+
+conv log type fwhm (default: type = G, fwhm = 0.25)   (NB type: G = Gaussian and L = Lorentzian, fwhm is in eV)
+
+pp hc cube_name percentage
+
+Possible shortcuts:
+
+daLA = da + qmLA x
+daR_LA = daR + qmLA x
+
+daScanLA = da + qmLA scan N
+daRscanLA = daR + qmLA scan N
+
+daR_Zanalysis = daR + qmLA x + Zanalysis
+
+***
+
+da + ntos according to Rowe and Casida
+
+da + ntos according to JCP + book chapter
+

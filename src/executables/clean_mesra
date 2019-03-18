@@ -1,0 +1,15 @@
+#!/bin/bash
+
+rm -rfv mesra*-t* &> /dev/null
+rm inp_* &> /dev/null
+rm mesra_general_info &> /dev/null
+rm -rfv mesra-* &> /dev/null
+rm detachment*.fchk &> /dev/null
+rm attachment*.fchk &> /dev/null
+rm da*.eig &> /dev/null
+rm mesra.err &> /dev/null
+rm DeltaU*.fchk DeltaZ.fchk DeltaR.fchk &> /dev/null
+rm *.orth &> /dev/null
+rm adiabZ.log &> /dev/null
+rm acVec_Z.log &> /dev/null
+rm header_fchk &> /dev/null

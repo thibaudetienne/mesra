@@ -1,0 +1,6 @@
+#!/bin/bash
+
+defaultx=`echo 50 | bc -l`
+x=${1:-$defaultx}
+
+echo $x

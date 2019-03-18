@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# '1' means that the calculation was unrestricted (non-equal number of alpha and beta electrons).
+
+# Also checks that the required files are present in the directory.
+
+ echo '1' > alphaddag_dat
+
+ ls detachmentUalpha.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo detachmentUalpha.fchk >> alphaddag_dat
+ else
+  ls detachmentAlpha_XY.fchk &> /dev/null
+  if [ $? -eq 0 ] ; then
+   echo detachmentAlpha_XY.fchk >> alphaddag_dat
+  else
+   echo "Error: Where is the detachmentUalpha.fchk or detachmentAlpha_XY.fchk file?"
+   echo 'Exit'
+  fi
+ fi
+
+ ls attachmentUalpha.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo attachmentUalpha.fchk >> alphaddag_dat 
+ else
+  ls attachmentAlpha_XY.fchk &> /dev/null
+  if [ $? -eq 0 ] ; then
+   echo attachmentAlpha_XY.fchk >> alphaddag_dat
+  else
+   echo "Error: Where is the attachmentUalpha.fchk or attachmentAlpha_XY.fchk file?"
+   echo 'Exit'
+  fi
+ fi
+
+ ls detachmentRalpha.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo detachmentRalpha.fchk >> alphaddag_dat
+ else
+  echo "Error: Where is the detachmentRalpha.fchk file?"
+  echo 'Exit'
+ fi
+
+ ls attachmentRalpha.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo attachmentRalpha.fchk >> alphaddag_dat
+ else
+  echo "Error: Where is the attachmentRalpha.fchk file?"
+  echo 'Exit'
+ fi
+
+ ls detachmentUbeta.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo detachmentUbeta.fchk >> alphaddag_dat
+ else
+  ls detachmentBeta_XY.fchk &> /dev/null
+  if [ $? -eq 0 ] ; then
+   echo detachmentBeta_XY.fchk >> alphaddag_dat
+  else
+   echo "Error: Where is the detachmentUbeta.fchk or detachmentBeta_XY.fchk file?"
+   echo 'Exit'
+  fi
+ fi
+
+ ls attachmentUbeta.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo attachmentUbeta.fchk >> alphaddag_dat 
+ else
+  ls attachmentBeta_XY.fchk &> /dev/null
+  if [ $? -eq 0 ] ; then
+   echo attachmentBeta_XY.fchk >> alphaddag_dat
+  else
+   echo "Error: Where is the attachmentUbeta.fchk or attachmentBeta_XY.fchk file?"
+   echo 'Exit'
+  fi
+ fi
+
+ ls detachmentRbeta.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo detachmentRbeta.fchk >> alphaddag_dat
+ else
+  echo "Error: Where is the detachmentRbeta.fchk file?"
+  echo 'Exit'
+ fi
+
+ ls attachmentRbeta.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo attachmentRbeta.fchk >> alphaddag_dat
+ else
+  echo "Error: Where is the attachmentRbeta.fchk file?"
+  echo 'Exit'
+ fi
+

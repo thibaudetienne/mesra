@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Checks that the keywords and required files are ok.
+
+touch mesra.err
+
+ls $1 &> /dev/null
+
+if [ $? -eq 0 ] ; then
+:
+else
+echo "Error: Where is the $1 file?" >> mesra.err
+echo "Exit" >> mesra.err
+fi
+
+
+ls $2 &> /dev/null
+
+if [ $? -eq 0 ] ; then
+:
+else
+echo "Error: Where is the $2 file?" >> mesra.err
+echo "Exit" >> mesra.err
+fi
+
+if [ $4 = 'p' ] ; then
+:
+elif [ $4 = 'm' ] ; then
+:
+else
+echo "Error: only 'p' and 'm' are permitted for argument 5" >> mesra.err
+echo "Exit" >> mesra.err
+fi
+
+if [ $5 = 'p' ] ; then
+:
+elif [ $5 = 'm' ] ; then
+:
+else
+echo "Error: only 'p' and 'm' are permitted for argument 6" >> mesra.err
+echo "Exit" >> mesra.err
+fi
+
+grep 'Exit' mesra.err &> /dev/null
+
+if [ $? -eq 0 ] ; then
+exit
+else
+:
+fi
+
+# Prepares the input.
+
+echo "cubeop" > inp_cubeop
+echo "$1" >> inp_cubeop
+echo "$2" >> inp_cubeop
+echo "$3" >> inp_cubeop
+echo "$4" >> inp_cubeop
+echo "$5" >> inp_cubeop
+
+# Launches the mesra computation.
+
+main_mesra inp_cubeop
+
+rm inp_cubeop &> /dev/null
+

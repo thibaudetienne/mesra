@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Checks that the general info, and appropriate files are available in the working directory.
+# Also checks that the number of the target transition is lower than the total number of 
+# transitions computed.
+
+ls mesra_general_info &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ :
+else
+ echo "Error: No general information available, start by using the prep keyword"
+ echo 'Exit'
+fi
+
+if [ $3 -gt $2 ] ; then
+ echo "Error: The transition number should be between 1 and $2"
+ echo 'Exit'
+fi
+
+ ls $1 &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  :
+ else
+  echo "Error: Where is the $1 file?"
+  echo 'Exit'
+ fi
+
+ ls overlap &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  :
+ else
+  echo 'Error: Where is the overlap file?'
+  echo 'Exit'
+ fi
+
+ ls density &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  :
+ else
+  echo 'Error: Where is the density file?'
+  echo 'Exit'
+ fi
+
+ if [ $2 -eq 0 -o $2 -eq 1 ] ; then
+  echo "Error: More than one transition should be computed when using Gaussian"
+  echo 'Exit'
+ fi
+

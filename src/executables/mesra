@@ -1,0 +1,560 @@
+#!/bin/bash
+
+# This central script takes the arguments given to mesra and launches the various processes required.
+
+# If there was an .err file in the working directory, it is removed, and a new one is "touched".
+
+rm mesra.err &> /dev/null
+
+touch mesra.err
+
+# If there is no argument, the software returns an error.
+
+if [ $# -lt 1 ] ; then
+ echo "The mesra software requires arguments"
+ echo 'Exit'
+ exit
+fi
+
+# If the first argument is "prep",
+# launch_prep gathers the most important information related to the calculation performed.
+# Those pieces of information will be used in the further computations.
+
+if [ $1 = 'prep'  ] ; then
+
+if [ $# -lt 4 ] ; then
+ echo "The mesra software with the prep keyword requires at least four arguments"
+ echo "Type mesra_man for more information" 
+ echo "Exit"
+ exit
+fi
+
+launch_prep prep $2 $3 $4
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+# launch_proc launches the unrelaxed detachment/attachment computation.
+
+elif [ $1 = 'dau' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the dau keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc dau $2 $3
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+# After the computation is performed, the outcoming files are gathered in 
+# the appropriate directory (subdirectory to the home directory)
+
+ls *tachment*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ ls Delta*.fchk &> /dev/null
+ if [ $? -eq 0 ] ; then
+  for f in *tachment*.fchk Delta*.fchk
+  do
+   cat header_fchk > temp
+   cat $f >> temp
+   mv temp mesra-t$2/$f &> /dev/null
+   rm $f
+  done
+ fi
+fi
+
+rm header_fchk &> /dev/null
+mv daU*.eig mesra-t$2 &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null
+mv mesra-Job*.log mesra-t$2/daU.log &> /dev/null
+
+# The procedure is similar for the daz, dar, adiabz, daxy, orbsxy, pntos, ctos, antos, rlxypa, and alphaddag computations.
+
+elif [ $1 = 'daz' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the daz keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc daz $2 $3 
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+ls *tachment*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ ls Delta*.fchk &> /dev/null
+ if [ $? -eq 0 ] ; then
+  for f in *tachment*.fchk Delta*.fchk
+  do
+   cat header_fchk > temp
+   cat $f >> temp
+   mv temp mesra-t$2/$f &> /dev/null
+   rm $f
+  done
+ fi
+fi
+
+rm header_fchk &> /dev/null
+mv daZ*.eig mesra-t$2 &> /dev/null
+mv mesra-Job*.log mesra-t$2/daz.log &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null
+
+elif [ $1 = 'dar' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the dar keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc dar $2 $3
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+ls *tachment*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ ls Delta*.fchk &> /dev/null
+ if [ $? -eq 0 ] ; then
+  for f in *tachment*.fchk Delta*.fchk
+  do
+   cat header_fchk > temp
+   cat $f >> temp
+   mv temp mesra-t$2/$f &> /dev/null
+   rm $f
+  done
+ fi
+fi
+
+rm header_fchk &> /dev/null
+mv daR.eig mesra-t$2 &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null
+mv mesra-Job*.log mesra-t$2/dar.log &> /dev/null
+mv da*.eig mesra-t$2 &> /dev/null
+
+elif [ $1 = 'adiabz' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the adiabz keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+if [ $# -gt 2 ] ; then
+ if [ $3 = 'scanpa' ] ; then
+  echo "scanpa keyword is not authorized for adiabz jobs"
+  echo "Exit"
+  exit
+ fi
+fi
+
+launch_proc adiabZ $2 $3
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+mv adiabZ*.log mesra-t$2 &> /dev/null
+mv acVec_Z*.log mesra-t$2 &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null
+mv mesra-Job*.log mesra-t$2 &> /dev/null
+
+elif [ $1 = 'orbsxy' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the orbsxy keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc orbsXY $2 $3
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+cp header_fchk header_fchk_pNTOs
+cp header_fchk header_fchk_CTOs
+mv header_fchk header_fchk_aNTOs
+
+ls pNTOs*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ cat pNTOs*.fchk >> header_fchk_pNTOs
+ mv header_fchk_pNTOs mesra-t$2/pNTOs.fchk &> /dev/null
+ rm pNTOs*.fchk &> /dev/null
+else
+ rm header_fchk_pNTOs &> /dev/null
+fi
+
+ls CTOs*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ cat CTOs*.fchk >> header_fchk_CTOs
+ mv header_fchk_CTOs mesra-t$2/CTOs.fchk &> /dev/null
+ rm CTOs*.fchk &> /dev/null
+else
+ rm header_fchk_CTOs &> /dev/null
+fi
+
+ls aNTOs*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ cat aNTOs*.fchk >> header_fchk_aNTOs
+ mv header_fchk_aNTOs mesra-t$2/aNTOs.fchk &> /dev/null
+ rm aNTOs*.fchk &> /dev/null
+else
+ rm header_fchk_aNTOs &> /dev/null
+fi
+
+mv mesra-Job*.log mesra-t$2/orbsXY.log &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null
+
+mv *pNTOs*.eig mesra-t$2 &> /dev/null
+mv *CTOs*.eig mesra-t$2 &> /dev/null
+mv *aNTOs*.eig mesra-t$2 &> /dev/null
+rm header_fchk* &> /dev/null
+
+elif [ $1 = 'pntos' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the pntos keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc pNTOs $2 $3
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+mv mesra-Job*.log mesra-t$2/pNTOs.log &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null
+ls pNTOs*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ cat pNTOs*.fchk >> header_fchk
+ mv header_fchk mesra-t$2/pNTOs.fchk &> /dev/null
+ rm pNTOs*.fchk &> /dev/null
+else
+ rm header_fchk_pNTOs &> /dev/null
+fi
+
+mv *pNTOs*.eig &> /dev/null
+
+elif [ $1 = 'ctos' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the ctos keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc CTOs $2 $3
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+mv mesra-Job*.log mesra-t$2/CTOs.log &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null
+ls CTOs*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ cat CTOs*.fchk >> header_fchk
+ mv header_fchk mesra-t$2/CTOs.fchk &> /dev/null
+else
+ rm header_fchk_CTOs &> /dev/null
+fi
+
+mv *CTOs*.eig &> /dev/null
+
+elif [ $1 = 'antos' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the antos keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc aNTOs $2 $3
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+mv mesra-Job*.log mesra-t$2/aNTOs.log &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null
+ls aNTOs*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ cat aNTOs*.fchk >> header_fchk
+ mv header_fchk mesra-t$2/aNTOs.fchk &> /dev/null
+else
+ rm header_fchk_aNTOs &> /dev/null
+fi
+
+mv *aNTOs*.eig &> /dev/null
+
+elif [ $1 = 'daxy' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the daxy keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc daXY $2 $3
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+for f in *tachment*.fchk Delta*.fchk
+do
+ cat header_fchk > temp
+ cat $f >> temp
+ mv temp mesra-t$2/$f &> /dev/null
+ rm $f
+done
+
+rm header_fchk &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null
+mv mesra-Job-daXY.log mesra-t$2/daXY.log &> /dev/null
+
+elif [ $1 = 'rlxypa' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the relaxpa keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc rlxy_LA $2 $3
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+for f in *tachment*.fchk Delta*.fchk
+do
+ cat header_fchk > temp
+ cat $f >> temp
+ mv temp mesra-t$2/$f &> /dev/null
+ rm $f
+done
+
+rm header_fchk &> /dev/null
+mv daU.eig mesra-t$2 &> /dev/null
+mv daZ.eig mesra-t$2 &> /dev/null
+mv *.orth mesra-t$2 &> /dev/null &> /dev/null
+mv mesra-Job-rlxy_LA.log mesra-t$2/rlxyPA.log &> /dev/null
+
+elif [ $1 = 'alphaddag' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the alphaddag keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc alphaddag $2 $3
+
+ls mesra-t$2/mesra.err &> /dev/null
+
+if [ $? -eq 0 ] ; then
+ cat mesra-t$2/mesra.err >> mesra.err
+ rm mesra-t$2/mesra.err &> /dev/null
+fi
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err &> /dev/null
+
+mv mesra-Job*.log mesra-t$2/alphaddag.log &> /dev/null
+
+# For the numerical integrations, mesra calls specific launch_proc routines, launch_proc_NIuzrxy,
+# launch_proc_NI or launch_proc_NIdag.
+
+elif [ $1 = 'qmniu' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software requires two arguments for the qmniu jobtype"
+ echo "For more information, type mesra_man"
+ echo 'Exit'
+ exit
+fi
+
+launch_proc_NIuzrxy qm_NI U $2 
+
+elif [ $1 = 'qmnixy' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software requires two arguments for the qmniu jobtype"
+ echo "For more information, type mesra_man"
+ echo 'Exit'
+ exit
+fi
+
+launch_proc_NIuzrxy qm_NI _XY $2
+
+elif [ $1 = 'qmniz' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software requires two arguments for the qmniu jobtype"
+ echo "For more information, type mesra_man"
+ echo 'Exit'
+ exit
+fi
+
+launch_proc_NIuzrxy qm_NI Z $2
+
+elif [ $1 = 'qmnir' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software requires two arguments for the qmniu jobtype"
+ echo "For more information, type mesra_man"
+ echo 'Exit'
+ exit
+fi
+
+launch_proc_NIuzrxy qm_NI R $2
+
+elif [ $1 = 'qmni' ] ; then
+
+if [ $# -lt 3 ] ; then
+ echo "The mesra software requires three arguments for the qmni jobtype"
+ echo "For more information, type mesra_man"
+ echo 'Exit'
+ exit
+fi
+
+name1=`basename $2 .cube`
+name2=`basename $3 .cube`
+
+launch_proc_NI qm_NI $2 $3 > qmNI.log
+cat qmNI.log && mv qmNI.log qmNI-$name1-$name2.log
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err
+
+# The split procedure is directly launched from this script by calling main_mesra.
+
+elif [ $1 = 'split' ] ; then
+
+if [ $# -lt 2 ] ; then
+ echo "The mesra software with the split keyword requires at least two arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+ls $2 &> /dev/null
+
+if [ $? -eq 0 ] ; then
+:
+else
+echo "Error: Where is the $2 file?"
+echo "Exit"
+exit
+fi
+
+echo "split" > inp_split
+echo "$2" >> inp_split
+
+main_mesra inp_split
+
+rm inp_split &> /dev/null
+
+# The cubeop keyword has its own launch_proc routine.
+
+elif [ $1 = 'cubeop' ] ; then
+
+if [ $# -lt 6 ] ; then
+ echo "The mesra software with the cubeop keyword requires at least six arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+launch_proc_cubeop $2 $3 $4 $5 $6
+
+grep 'Error' mesra.err && echo 'Exit' && exit
+rm mesra.err mesra-Job-cubeop.log &> /dev/null
+
+# The incrcube is directly launched from mesra
+
+elif [ $1 = 'incrcube' ] ; then
+
+if [ $# -lt 3 ] ; then
+ echo "The mesra software with the incrcube keyword requires at least three arguments"
+ echo "Type mesra_man for more information"
+ echo "Exit"
+ exit
+fi
+
+ls $2 &> /dev/null
+
+if [ $? -eq 0 ] ; then
+
+ echo 'incrcube' > inp_temp
+ echo $2 >> inp_temp
+ echo $3 >> inp_temp
+
+ main_mesra inp_temp
+
+else
+
+ echo 'Where is the $2 file?'
+ echo 'Exit'
+
+fi
+
+#rm inp_temp &> /dev/null
+rm mesra.err mesra-Job-cubeop.log &> /dev/null
+
+# qmnidag first checks that unrelaxed numerical integrations have been performed before.
+
+elif [ $1 = 'qmnidag' ] ; then
+
+ls mesra-t$2 &> /dev/null
+
+if [ $? -eq 0 ] ; then
+:
+else
+echo "Start by performing a detachment/attachment analysis"
+echo "Exit"
+fi
+
+ls mesra-t$2/qmNI*_XY.log &> /dev/null
+
+if [ $? -eq 0 ] ; then
+
+launch_proc_NIdag $1 $2 _XY
+
+else
+
+ls mesra-t$2/qmNIU*.log &> /dev/null
+
+if [ $? -eq 0 ] ; then
+launch_proc_NIdag $1 $2 U
+else
+echo "Error: run a qmniu or qmnixy job before qmnidag" > mesra.err
+echo "For more information, type mesra_man" >> mesra.err
+echo "Exit" >> mesra.err
+cat mesra.err
+exit
+fi
+fi
+
+else
+
+ echo "Accepted jobtype arguments are prep, dau, daz, dar, daxy, adiabz, pntos, ctos, orbsxy,rlxypa,"
+ echo "qmni, qmniu, qmnixy, qmniz, qmnir, split, cubeop, increase_cube_size, qmnidag, and alphaddag."
+ echo 'Exit'
+
+fi

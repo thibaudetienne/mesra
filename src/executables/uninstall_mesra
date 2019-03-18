@@ -1,0 +1,12 @@
+#!/bin/bash
+
+here=`$pwd`
+loc=`which mesra`
+dirloc=`dirname $loc`
+cd $dirloc
+cd ../ 
+
+rm -rf ./test/ &> /dev/null
+rm -rf ./bin/ &> /dev/null
+
+cd $here
