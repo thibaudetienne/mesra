@@ -35,6 +35,7 @@ mesra prep g16 form.fchk 3
 mesra dau 1
 mesra orbsxy 1
 mesra adiabz 1
+mesra daxy 1 scanpa
 clean_mesra
 
 cd ../../cis/H2

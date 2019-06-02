@@ -97,10 +97,10 @@ write(50,*)
 else
 
 write(6,*)
-write(6,*) '3) Relaxed descriptors'
+write(6,*) '3) Relaxed descriptors with old method'
 write(6,*)
 write(50,*)
-write(50,*) '3) Relaxed descriptors'
+write(50,*) '3) Relaxed descriptors with old method'
 write(50,*)
 
  phiSLAdag =  phiSLAU + (1-phiSLAU)*((thetaZ/(thetaU+thetaZ))**(1.0d0+thetaZ))
@@ -123,6 +123,41 @@ write(50,*)
  write(50,'(f13.4)') phiLAdag
  write(50,*) 'Generalized psi metric (from linear algebra)'
  write(50,'(f13.4)') psiLAdag
+
+
+!!!Gabriel Breuil 11-04-2019
+
+
+write(6,*)
+write(6,*) '3) Relaxed descriptors with new method'
+write(6,*)
+write(50,*)
+write(50,*) '3) Relaxed descriptors with new method'
+write(50,*)
+
+ phiSLAnewdag =  phiSLAU + (1-phiSLAU)*((zcoef/(thetaU+zcoef))**(1.0d0+zcoef))
+ phiLAnewdag = phiLAU - phiLAU*((zcoef/(thetaU+zcoef))**(1.0d0+zcoef))
+ psiLAnewdag = 2.0d0*(datan(phiSLAnewdag/phiLAnewdag))/(pi)
+ 
+ write(6,*) 'Relative amplitude of the new relaxation'
+ write(6,'(f13.4)') (zcoef/(thetaU+zcoef))**(1.0d0+zcoef)
+ write(6,*) 'Generalized hole/particle overlap (new phiS, from linear algebra)'
+ write(6,'(f13.4)') phiSLAnewdag
+ write(6,*) 'Generalized effectively displaced charge (new phi, from linear algebra)'
+ write(6,'(f13.4)') phiLAnewdag
+ write(6,*) 'Generalized new psi metric (from linear algebra)'
+ write(6,'(f13.4)') psiLAnewdag
+ write(50,*) 'Relative amplitude of the new relaxation'
+ write(50,'(f13.4)') (zcoef/(thetaU+zcoef))**(1.0d0+zcoef)
+ write(50,*) 'Generalized hole/particle overlap (new phiS, from linear algebra)'
+ write(50,'(f13.4)') phiSLAnewdag
+ write(50,*) 'Generalized effectively displaced charge (new phi, from linear algebra)'
+ write(50,'(f13.4)') phiLAnewdag
+ write(50,*) 'Generalized new psi metric (from linear algebra)'
+ write(50,'(f13.4)') psiLAnewdag
+
+!!!END Gabriel Breuil 04-11-2019
+
 endif
 
 write(6,*)

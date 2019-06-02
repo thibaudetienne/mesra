@@ -13,6 +13,7 @@ use declare
 
 relax = .true.
 
+
 if (unr) then
 
 if (jobtype == 'adiabZ') then
@@ -65,6 +66,34 @@ else
 countunr = 3
 
 call common_dar_daz
+
+
+
+
+
+!!!Gabriel Breuil 11/12-04-2019
+
+allocate(newzzd_zdz(norb,norb))
+
+newzzd_zdz=matmul(zvec,zvec)
+zcoef=0.0d0
+
+do i=1,norb
+ zcoef=zcoef+newzzd_zdz(i,i)
+enddo
+
+zcoef=0.5d0*zcoef
+
+write(6,*)
+write(50,*)
+write(6,*) 'Integral of relaxation-related to the new LA calculation method'
+write(6,'(f13.5)') zcoef
+write(50,*) 'Integral of relaxation-related to the new LA calculation method'
+write(50,'(f13.5)') zcoef
+
+deallocate(newzzd_zdz)
+
+!!! END Gabriel Breuil 11-04-2019
 
 if (jobtype == 'daz') call daz_main
 if (jobtype == 'dar') call no_adiab_z

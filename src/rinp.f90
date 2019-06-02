@@ -98,6 +98,9 @@ read(10,*) theta_unrelaxed
 read(10,*) phiS_unrelaxed
 read(10,*) phi_unrelaxed
 read(10,*) eta
+!!!Gabriel Breuil 12-04-2019
+read(10,*) zcoef
+!!!End Gabriel Breuil
 
 ! "incrcube" outputs the header to provide to the cubegen utility for getting cubes of increased size.
 

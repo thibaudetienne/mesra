@@ -43,7 +43,7 @@ do
 ! ... and convert them into zeros.
 
    do i=1,5*k
-    if (dummy_array(i) .eq. 'NaN') then
+    if (trim(adjustl(dummy_array(i))) .eq. 'NaN') then
      lvec(i) = 0.0d0
     else
      read(dummy_array(i),'(e20.8)') lvec(i)

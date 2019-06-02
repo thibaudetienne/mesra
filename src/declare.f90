@@ -63,6 +63,9 @@ real*8,allocatable :: Mmg(:,:),Mmd(:,:)
 real*8,allocatable :: SxDSy(:,:),SxASy(:,:),Uvec(:,:)
 real*8 :: trD,trA,trDZ,trAZ,phiSLA,chimLA,chipLA,phiLA,psiLA,theta,theta0,thetaZ,alter_thetaZ
 real*8 :: pi,phiSLA0,phiLA0
+!!!Gabriel Breuil 12-04-2019
+real*8 :: phiSLAnew0,phiLAnew0
+!!!End Gabriel Breuil
 real*8 :: phiSdag,phidag,psidag
 real*8,allocatable :: fd(:),fa(:),fdta(:),famd(:),famdp(:),famdm(:)
 real*8,allocatable :: gamma_d_XY_ao(:,:),gamma_a_XY_ao(:,:)
@@ -72,6 +75,10 @@ real*8,allocatable :: gamma_d_XY_ao(:,:),gamma_a_XY_ao(:,:)
 real*8,allocatable :: pxKrelaxed(:,:),pxKrelaxedS(:,:),pxrelaxed(:,:)
 real*8,allocatable :: zvec(:,:),zzd_zdz(:,:),zvecxi(:,:)
 real*8,allocatable :: U0(:,:),U0t(:,:),U0tU(:,:)
+!!!Gabriel Breuil 12-04-2019
+real*8,allocatable :: newzzd_zdz(:,:)
+!!!End Gabriel Breuil
+
 
 ! Orbitals
 
@@ -113,6 +120,11 @@ real*8 :: phiSLAdagalpha, phiSLAdagbeta
 real*8 :: phiLAdagalpha, phiLAdagbeta
 real*8 :: psiLAdagalpha, psiLAdagbeta
 
+!!!Gabriel Breuil 11-04-2019
+real*8 :: phiSLAnewdag,phiLAnewdag,psiLAnewdag,zcoef
+!!!End Gabriel Breuil 11-04-2019
+
+
 ! Numerical Integration
 
 character*128 :: file1,file2
@@ -144,4 +156,9 @@ character*128 :: detachmentUbeta,attachmentUbeta,detachmentRbeta,attachmentRbeta
 
 real*8 :: theta_unrelaxed,phiS_unrelaxed,phi_unrelaxed,lambda_dag,theta_z
 real*8 :: phiS_relaxed,phi_relaxed,psi_relaxed,eta
+!!!Gabriel Breuil 12-04-2019
+real*8 :: newphiS_relaxed,newphi_relaxed,newlambda_dag,newpsi_relaxed
+!!!End Gabriel Breuil
+
+
 end

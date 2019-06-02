@@ -314,13 +314,19 @@ launch_proc daXY $2 $3
 grep 'Error' mesra.err && echo 'Exit' && exit
 rm mesra.err
 
-for f in *tachment*.fchk Delta*.fchk
-do
- cat header_fchk > temp
- cat $f >> temp
- mv temp mesra-t$2/$f &> /dev/null
- rm $f
-done
+ls *tachment*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ ls Delta*.fchk &> /dev/null
+ if [ $? -eq 0 ] ; then
+  for f in *tachment*.fchk Delta*.fchk
+  do
+   cat header_fchk > temp
+   cat $f >> temp
+   mv temp mesra-t$2/$f &> /dev/null
+   rm $f
+  done
+ fi
+fi
 
 rm header_fchk &> /dev/null
 mv *.orth mesra-t$2 &> /dev/null
@@ -340,13 +346,19 @@ launch_proc rlxy_LA $2 $3
 grep 'Error' mesra.err && echo 'Exit' && exit
 rm mesra.err
 
-for f in *tachment*.fchk Delta*.fchk
-do
- cat header_fchk > temp
- cat $f >> temp
- mv temp mesra-t$2/$f &> /dev/null
- rm $f
-done
+ls *tachment*.fchk &> /dev/null
+if [ $? -eq 0 ] ; then
+ ls Delta*.fchk &> /dev/null
+ if [ $? -eq 0 ] ; then
+  for f in *tachment*.fchk Delta*.fchk
+  do
+   cat header_fchk > temp
+   cat $f >> temp
+   mv temp mesra-t$2/$f &> /dev/null
+   rm $f
+  done
+ fi
+fi
 
 rm header_fchk &> /dev/null
 mv daU.eig mesra-t$2 &> /dev/null

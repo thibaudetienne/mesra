@@ -9,7 +9,6 @@ write(6,*) '           *  MESRA software  *'
 write(6,*) '           *                  *' 
 write(6,*) '           ********************'
 write(6,*)
-
 ! Reads the input.
 
 call rinp

@@ -51,7 +51,9 @@ if [ $diffnumalphabeta -eq 0 ] ; then
  grep -A1 'phiS integral value' mesra-t$2/qmNI$3.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phi ' mesra-t$2/qmNI$3.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
  grep -A1 'zzd_zdz' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
-
+#Gabriel Breuil 12-04-2019
+ grep -A1 'Integral of relaxation-related to the new LA' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
+#End Gabriel Breuil  
  main_mesra inp_mesra-$1-t$2 
 
  echo

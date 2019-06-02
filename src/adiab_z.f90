@@ -22,7 +22,8 @@ endif
 
 if (countunr .eq. 3) then
 open(10,file='adiabZ.log',form='formatted')
-write(10,*) '# xi, Trace of ZZdag, ThetaZ, phiSLA(Lowdin), phiSLAdag, phiLA(Lowdin), phiLAdag, psiLA(Lowdin), psiLAdag'
+write(10,*) '# xi, Trace of ZZdag, ThetaZ, phiSLA(Lowdin), phiSLAdag, phiSLAnewdag, phiLA(Lowdin), &
+               & phiLAdag, phiLAnewdag, psiLA(Lowdin), psiLAdag, psiLAnewdag'
 write(10,*)
 open(11,file='acVec_Z.log',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
@@ -76,6 +77,12 @@ if (iteration .eq. 0) phiSLA0 = phiSLA
 if (iteration .eq. 0) phiLA0 = phiLA
 if (iteration .eq. 0) theta0 = theta
 if (iteration .eq. 0) U0 = Uvec
+!!!Gabriel Breuil 12-04-2019
+if (iteration .eq. 0) then
+phiSLAnew0=phiSLA0+(1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+phiLAnew0=phiLA0+(1-phiLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+endif
+!!!End Gabriel Breuil
 
 U0t = transpose(U0)
 U0tU = matmul(U0t,Uvec)
@@ -112,11 +119,19 @@ pi = dacos(-1.0d0)
 phiSLAdag =  phiSLA0 + (1-phiSLA0)*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
 phiLAdag =  phiLA0 - phiLA0*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
 psiLAdag = 2.0d0*datan(phiSLAdag/phiLAdag)/(pi)
+!!!Gabriel Breuil 12-04-2019
+phiSLAnewdag=phiSLAnew0+(1-phiSLAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+phiLAnewdag=phiLAnew0+(1-phiLAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+psiLAnewdag=2.0d0*datan(phiSLAnewdag/phiLAnewdag)/(pi)
+
+
 !write(6,*) 'alter_phiSdag', phiSLA0 + (1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
 !phiSdag =  phiSLA0 + (1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
 !write(6,*) 'alter_phiSdag', phiSLA0 + (1-phiSLA0)*alter_thetaZ/thetaZ
 
-write(10,'(f10.2,8f10.4)') xi, alter_thetaZ,thetaZ,phiSLA,phiSLAdag,phiLA,phiLAdag,psiLA,psiLAdag
+write(10,'(f10.2,11f10.4)') xi, alter_thetaZ,thetaZ,phiSLA,phiSLAdag,phiSLAnewdag,phiLA,&
+        & phiLAdag,phiLAnewdag,psiLA,psiLAdag,psiLAnewdag
+!!!End Gabriel Breuil
 enddo
 
 deallocate(zvecxi)

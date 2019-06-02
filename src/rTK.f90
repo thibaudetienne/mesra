@@ -34,9 +34,48 @@ do
  if (line(1:26) .eq. ' Dump of file   633 length') then
   read(line,'(31x,i9)') l
   allocate(lvec(l))
-  read(10,'(1x5e20.8)') (lvec(i), i = 1,l)
-  exit
- endif
+
+! If the number of alpha and beta electrons is different, there are nt+1 entries
+! in the density file that might be different from a number and, as such, cannot
+! be properly read by the usual routine. Instead, we count the number of lines
+! in which this might occur and we transform the potential NaN entries into
+! zeros.
+
+  if (unr) then
+
+! First, we count the number of lines in which there are NaN appearing.
+
+  k = nint((nt+1)/5.0d0)
+
+! We then allocate a dummy array to read them...
+
+  allocate(dummy_array(k*5))
+   read(10,'(1x5A20)') (dummy_array(i), i=1,5*k)
+
+! ... and convert them into zeros.
+
+   do i=1,5*k
+    if (trim(adjustl(dummy_array(i))) .eq. 'NaN') then
+     lvec(i) = 0.0d0
+    else
+     read(dummy_array(i),'(e20.8)') lvec(i)
+    endif
+   enddo
+
+! Though the first zero entry is generally not NaN, its format is not proper and
+! we should replace it simply by zero.
+
+   lvec(1) = 0.0d0
+   deallocate(dummy_array)
+
+! Finally we read the other entries normally.
+
+   read(10,'(1x5e20.8)') (lvec(i), i = 5*k+1,l-5*k)
+  else
+   read(10,'(1x5e20.8)') (lvec(i), i = 1,l)
+  endif
+   exit
+  endif
 enddo
 
 close(10)

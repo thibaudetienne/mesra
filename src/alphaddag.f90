@@ -13,7 +13,11 @@ if (shell_statement .eq. 0) then
 
 if (scanLA) then
  do iteration=0,100
-  write(6,'(i5)') iteration
+   write(6,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(6,*)
+   write(50,*)
+   write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(50,*)
   xLA = iteration*0.01d0
   call alpha_ddag(detachmentU,attachmentU,detachmentR,attachmentR,fov,xLA)
  enddo
@@ -32,7 +36,11 @@ write(50,*)
 
 if (scanLA) then
  do iteration=0,100
-  write(6,'(i5)') iteration
+   write(6,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(6,*)
+   write(50,*)
+   write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(50,*)
   xLA = iteration*0.01d0
   call alpha_ddag(detachmentUalpha,attachmentUalpha,detachmentRalpha,attachmentRalpha,fov,xLA)
  enddo
@@ -48,7 +56,11 @@ write(50,*)
 
 if (scanLA) then
  do iteration=0,100
-  write(6,'(i5)') iteration
+   write(6,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(6,*)
+   write(50,*)
+   write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(50,*)
   xLA = iteration*0.01d0
   call alpha_ddag(detachmentUbeta,attachmentUbeta,detachmentRbeta,attachmentRbeta,fov,xLA)
  enddo

@@ -16,8 +16,11 @@ do iteration=0,100
 
  LA = .true. 
  scanLA = .false.
-
- write(6,'(i5)') iteration
+   write(6,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(6,*)
+   write(50,*)
+   write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(50,*)
  xLA = iteration*0.01d0
 
  call rlxy_LAops

@@ -4,7 +4,6 @@ subroutine rP
 ! converts them from the AO space to the MO space.
 
 use declare
-
 ! Allocates and initializes the matrices.
 
 allocate(p(norb,norb))

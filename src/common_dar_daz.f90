@@ -4,7 +4,6 @@ subroutine common_dar_daz
 ! Z-vector or from the fully relaxed difference density matrices.
 
 use declare
-
 ! If the unrelaxed quantum-topological metrics were already computed (if the jobtype is rlxy_LA), 
 ! then it is not necessary to read again the ground and unrelaxed excited states density matrices.
 
