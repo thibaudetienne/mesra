@@ -9,7 +9,7 @@ clean_mesra
 cd restricted/tddft
 mesra prep g16 pp3.fchk 6
 mesra dau 1 
-mesra daz 1 nola
+mesra daz 1 nopa
 mesra dar 1 40
 mesra dau 2
 mesra orbsxy 2
