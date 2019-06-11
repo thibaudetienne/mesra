@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine deal
 
 use declare
@@ -14,9 +34,9 @@ if (allocated(trianglea)) deallocate(trianglea)
 if (allocated(c)) deallocate(c)
 if (allocated(ca)) deallocate(ca)
 if (allocated(cb)) deallocate(cb)
-if (allocated(cdag)) deallocate(cdag)
-if (allocated(cadag)) deallocate(cadag)
-if (allocated(cbdag)) deallocate(cbdag)
+if (allocated(cdagger)) deallocate(cdagger)
+if (allocated(cadagger)) deallocate(cadagger)
+if (allocated(cbdagger)) deallocate(cbdagger)
 if (allocated(p)) deallocate(p)
 if (allocated(pk)) deallocate(pk)
 if (allocated(pks)) deallocate(pks)
@@ -90,7 +110,7 @@ if (allocated(tkb)) deallocate(tkb)
 if (allocated(tb)) deallocate(tb)
 if (allocated(tsb)) deallocate(tsb)
 if (allocated(ttrsp)) deallocate(ttrsp)
-if (allocated(ttdag)) deallocate(ttdag)
+if (allocated(ttdagger)) deallocate(ttdagger)
 if (allocated(xy_X)) deallocate(xy_X)
 if (allocated(xy_Y)) deallocate(xy_Y)
 if (allocated(xy_Xt)) deallocate(xy_Xt)
@@ -124,8 +144,8 @@ if (allocated(o_lcao)) deallocate(o_lcao)
 if (allocated(v_lcao)) deallocate(v_lcao)
 if (allocated(rotated_o_lcao)) deallocate(rotated_o_lcao)
 if (allocated(rotated_v_lcao)) deallocate(rotated_v_lcao)
-if (allocated(odagso)) deallocate(odagso)
-if (allocated(vdagsv)) deallocate(vdagsv)
+if (allocated(odaggerso)) deallocate(odaggerso)
+if (allocated(vdaggersv)) deallocate(vdaggersv)
 if (allocated(gd_ao)) deallocate(gd_ao)
 if (allocated(t_ao)) deallocate(t_ao)
 if (allocated(zvec_ao)) deallocate(zvec_ao)

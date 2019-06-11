@@ -1,4 +1,24 @@
-subroutine alpha_ddag(ddensU,adensU,ddensR,adensR,overF,inpX)
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+subroutine alpha_ddagger(ddensU,adensU,ddensR,adensR,overF,inpX)
 
 ! This subroutine is self-contained.
 
@@ -320,7 +340,7 @@ delta_Asxy = dsxyAR - dsxyAU
 deallocate(temp)
 allocate(temp(nbasis))
 
-! Computes the detachment/attachment alpha^ddag.
+! Computes the detachment/attachment alpha^ddagger.
 
 sum1 = 0.0d0
 sum2 = 0.0d0
@@ -366,11 +386,11 @@ write(6,*) 'Trace of Sx*DR*Sy '
 write(6,'(f10.4)') tr_dsxyDR
 write(6,*) 'Trace of Sx*AR*Sy '
 write(6,'(f10.4)') tr_dsxyAR
-write(6,*) 'alpha^ddag(D)'
+write(6,*) 'alpha^ddagger(D)'
 write(6,'(f10.4)') alphaD 
-write(6,*) 'alpha^ddag(A)'
+write(6,*) 'alpha^ddagger(A)'
 write(6,'(f10.4)')  alphaA
-write(6,*) 'alpha^ddag'
+write(6,*) 'alpha^ddagger'
 write(6,'(f10.4)') 0.5d0*(alphaD + alphaA)
 write(6,*)
 write(50,*) 'lambda^Z '
@@ -383,11 +403,11 @@ write(50,*) 'Trace of Sx*DR*Sy '
 write(50,'(f10.4)') tr_dsxyDR
 write(50,*) 'Trace of Sx*AR*Sy '
 write(50,'(f10.4)') tr_dsxyAR
-write(50,*) 'alpha^ddag(D)'
+write(50,*) 'alpha^ddagger(D)'
 write(50,'(f10.4)') alphaD 
-write(50,*) 'alpha^ddag(A)'
+write(50,*) 'alpha^ddagger(A)'
 write(50,'(f10.4)')  alphaA
-write(50,*) 'alpha^ddag'
+write(50,*) 'alpha^ddagger'
 write(50,'(f10.4)') 0.5d0*(alphaD + alphaA)
 write(50,*)
 

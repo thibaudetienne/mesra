@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine common_XY
 
 ! Transforms the transition density matrix into the MO space, extracts X and Y.
@@ -9,7 +29,7 @@ use declare
 if (unr) then
  if (countunr .eq. 1) then
   allocate(t(norb,norb))
-  allocate(ttdag(norb,norb))
+  allocate(ttdagger(norb,norb))
   allocate(ttrsp(norb,norb))
  else if (countunr .eq. 2) then
   if (jobtype == 'daXY' .or. jobtype == 'rlxy_LA') then
@@ -17,19 +37,19 @@ if (unr) then
   else
    allocate(t(norb,norb))
   endif
-  allocate(ttdag(norb,norb))
+  allocate(ttdagger(norb,norb))
   allocate(ttrsp(norb,norb))
  endif
 else
  allocate(t(norb,norb))
- allocate(ttdag(norb,norb))
+ allocate(ttdagger(norb,norb))
  allocate(ttrsp(norb,norb))
 endif
 
 ! Shifts the values of C if countunr = 2 (beta electrons).
 
 if (countunr .eq. 2) C = Cb
-if (countunr .eq. 2) Cdag = transpose(Cb)
+if (countunr .eq. 2) Cdagger = transpose(Cb)
 
 call ao_to_mo(tK,t)
 
@@ -37,7 +57,7 @@ call ao_to_mo(tK,t)
 ! back-shifts the values of C into the alpha C matrix for further operations 
 
 if (countunr .eq. 2) C = Ca
-if (countunr .eq. 2) Cdag = transpose(C)
+if (countunr .eq. 2) Cdagger = transpose(C)
 
 ! If the number of alpha and beta electrons is different, a normalization factor applies.
 
@@ -49,22 +69,22 @@ call trace_mat(t,'t',norb)
 
 ttrsp = transpose(t)
 
-ttdag = matmul(t,ttrsp)
+ttdagger = matmul(t,ttrsp)
 
-call trace_mat(ttdag,'T(T^dag)',norb)
+call trace_mat(ttdagger,'T(T^dagger)',norb)
 
 ! Computes a transition orbitals normalization factor.
 
 xy_norm = 0.0d0
 
 do i=1,norb
- xy_norm = xy_norm + ttdag(i,i)
+ xy_norm = xy_norm + ttdagger(i,i)
 enddo
 
 ! For the EOM formulation, outputs this normalization factor.
 
 if (jobtype .eq. 'pNTOs' .or. jobtype .eq. 'orbsXY') then
-write(6,*) '(x^dag)x + (y^dag)y'
+write(6,*) '(x^dagger)x + (y^dagger)y'
 write(6,'(f12.5)') xy_norm
 endif
 
@@ -93,6 +113,6 @@ enddo
 
 xy_Y = transpose(xy_Yt)
 
-deallocate(ttrsp,ttdag)
+deallocate(ttrsp,ttdagger)
 
 end

@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine rP
 
 ! Reads the ground and excited state density matrices, and
@@ -131,22 +151,22 @@ call ao_to_mo(pxKalpha,pxalpha)
 
 if (relax) call ao_to_mo(pxKalphaRelaxed,pxalphaRelaxed)
 
-! Replacing the content of C by Cbeta (and Cdag by Cbdag) before calling the
+! Replacing the content of C by Cbeta (and Cdagger by Cbdagger) before calling the
 ! ao_to_mo subroutine allows to use a unique subroutine for converting AO matrices
 ! into the MO space.
 
 C = Cb
-Cdag = Cbdag
+Cdagger = Cbdagger
 
 call ao_to_mo(pKbeta,pbeta)
 call ao_to_mo(pxKbeta,pxbeta)
 
 if (relax) call ao_to_mo(pxKbetaRelaxed,pxbetaRelaxed)
 
-! Places back the Ca and Cadag values into the default C and Cdag matrices.
+! Places back the Ca and Cadagger values into the default C and Cdagger matrices.
 
 C = Ca
-Cdag = Cadag
+Cdagger = Cadagger
 
 endif
 

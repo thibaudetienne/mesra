@@ -1,10 +1,30 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine adiab_z
 
 use declare
 
 if (countunr .eq. 1) then
 open(10,file='adiabZalpha.log',form='formatted')
-write(10,*) '# xi, Trace of ZZdag, ThetaZ, phiSLA(Lowdin), phiSLAdag, phiLA(Lowdin), phiLAdag, psiLA(Lowdin), psiLAdag'
+write(10,*) '# xi, Trace of ZZdagger, ThetaZ, phiSLA(Lowdin), phiSLAdagger, phiLA(Lowdin), phiLAdagger, psiLA(Lowdin), psiLAdagger'
 write(10,*)
 open(11,file='acVec_Zbeta.log',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
@@ -13,7 +33,7 @@ endif
 
 if (countunr .eq. 2) then
 open(10,file='adiabZbeta.log',form='formatted')
-write(10,*) '# xi, Trace of ZZdag, ThetaZ, phiSLA(Lowdin), phiSLAdag, phiLA(Lowdin), phiLAdag, psiLA(Lowdin), psiLAdag'
+write(10,*) '# xi, Trace of ZZdagger, ThetaZ, phiSLA(Lowdin), phiSLAdagger, phiLA(Lowdin), phiLAdagger, psiLA(Lowdin), psiLAdagger'
 write(10,*)
 open(11,file='acVec_Zbeta.log',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
@@ -22,8 +42,8 @@ endif
 
 if (countunr .eq. 3) then
 open(10,file='adiabZ.log',form='formatted')
-write(10,*) '# xi, Trace of ZZdag, ThetaZ, phiSLA(Lowdin), phiSLAdag, phiSLAnewdag, phiLA(Lowdin), &
-               & phiLAdag, phiLAnewdag, psiLA(Lowdin), psiLAdag, psiLAnewdag'
+write(10,*) '# xi, Trace of ZZdagger, ThetaZ, phiSLA(Lowdin), phiSLAdagger, phiSLAnewdagger, phiLA(Lowdin), &
+               & phiLAdagger, phiLAnewdagger, psiLA(Lowdin), psiLAdagger, psiLAnewdagger'
 write(10,*)
 open(11,file='acVec_Z.log',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
@@ -67,7 +87,7 @@ if (countunr .eq. 2) gD = pxbetarelaxed - pbeta
 if (countunr .eq. 3) gD = pxrelaxed - p
 
 if (countunr .eq. 2) C = Cb
-if (countunr .eq. 2) Cdag = Cbdag
+if (countunr .eq. 2) Cdagger = Cbdagger
 
 if (countunr .eq. 1) call det_at(gD,'adiabAlpha',norb,Uvec,lvec)
 if (countunr .eq. 2) call det_at(gD,'adiabBeta',norb,Uvec,lvec)
@@ -116,21 +136,21 @@ thetaZ = 0.5d0*(trDZ + trAZ)
 pi = dacos(-1.0d0)
 
 !write(6,*) 'thetaZ ',thetaZ
-phiSLAdag =  phiSLA0 + (1-phiSLA0)*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
-phiLAdag =  phiLA0 - phiLA0*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
-psiLAdag = 2.0d0*datan(phiSLAdag/phiLAdag)/(pi)
+phiSLAdagger =  phiSLA0 + (1-phiSLA0)*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
+phiLAdagger =  phiLA0 - phiLA0*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
+psiLAdagger = 2.0d0*datan(phiSLAdagger/phiLAdagger)/(pi)
 !!!Gabriel Breuil 12-04-2019
-phiSLAnewdag=phiSLAnew0+(1-phiSLAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
-phiLAnewdag=phiLAnew0+(1-phiLAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
-psiLAnewdag=2.0d0*datan(phiSLAnewdag/phiLAnewdag)/(pi)
+phiSLAnewdagger=phiSLAnew0+(1-phiSLAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+phiLAnewdagger=phiLAnew0+(1-phiLAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+psiLAnewdagger=2.0d0*datan(phiSLAnewdagger/phiLAnewdagger)/(pi)
 
 
-!write(6,*) 'alter_phiSdag', phiSLA0 + (1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
-!phiSdag =  phiSLA0 + (1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
-!write(6,*) 'alter_phiSdag', phiSLA0 + (1-phiSLA0)*alter_thetaZ/thetaZ
+!write(6,*) 'alter_phiSdagger', phiSLA0 + (1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+!phiSdagger =  phiSLA0 + (1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+!write(6,*) 'alter_phiSdagger', phiSLA0 + (1-phiSLA0)*alter_thetaZ/thetaZ
 
-write(10,'(f10.2,11f10.4)') xi, alter_thetaZ,thetaZ,phiSLA,phiSLAdag,phiSLAnewdag,phiLA,&
-        & phiLAdag,phiLAnewdag,psiLA,psiLAdag,psiLAnewdag
+write(10,'(f10.2,11f10.4)') xi, alter_thetaZ,thetaZ,phiSLA,phiSLAdagger,phiSLAnewdagger,phiLA,&
+        & phiLAdagger,phiLAnewdagger,psiLA,psiLAdagger,psiLAnewdagger
 !!!End Gabriel Breuil
 enddo
 

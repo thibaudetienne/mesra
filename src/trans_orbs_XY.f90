@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine trans_orbs_XY
 
 ! Constructs the three types of transition matrices (t_1, t_2, and t_3)
@@ -43,7 +63,7 @@ enddo
 
 if (jobtype .eq. 'aNTOs' .or. jobtype .eq. 'orbsXY') then
 
-write(6,*) '((x+y)^dag)(x+y), and its square root'
+write(6,*) '((x+y)^dagger)(x+y), and its square root'
 write(6,'(2f12.5)') t3_norm,dsqrt(t3_norm)
 
 endif
@@ -56,7 +76,7 @@ x2y2_norm = x2y2_norm + t_02m(i,j)
  enddo
 enddo
 
-write(6,*) '(x^dag)x - (y^dag)y'
+write(6,*) '(x^dagger)x - (y^dagger)y'
 write(6,'(f12.5)') x2y2_norm
 
 xy_residue = 0.0d0

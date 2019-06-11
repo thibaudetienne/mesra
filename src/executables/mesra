@@ -1,5 +1,25 @@
 #!/bin/bash
 
+# MESRA software
+# Molecular Electronic Structure Reorganization: Analysis
+# Copyright (C) 2019 Thibaud Etienne
+# More information at mesrasoftware.wordpress.com
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License v2
+# as published by the Free Software Foundation.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to
+# 
+# Free Software Foundation, Inc. 
+# 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 # This central script takes the arguments given to mesra and launches the various processes required.
 
 # If there was an .err file in the working directory, it is removed, and a new one is "touched".
@@ -72,7 +92,7 @@ mv daU*.eig mesra-t$2 &> /dev/null
 mv *.orth mesra-t$2 &> /dev/null
 mv mesra-Job*.log mesra-t$2/daU.log &> /dev/null
 
-# The procedure is similar for the daz, dar, adiabz, daxy, orbsxy, pntos, ctos, antos, rlxypa, and alphaddag computations.
+# The procedure is similar for the daz, dar, adiabz, daxy, orbsxy, pntos, ctos, antos, rlxypa, and alphaddagger computations.
 
 elif [ $1 = 'daz' ] ; then
 
@@ -366,16 +386,16 @@ mv daZ.eig mesra-t$2 &> /dev/null
 mv *.orth mesra-t$2 &> /dev/null &> /dev/null
 mv mesra-Job-rlxy_LA.log mesra-t$2/rlxyPA.log &> /dev/null
 
-elif [ $1 = 'alphaddag' ] ; then
+elif [ $1 = 'alphaddagger' ] ; then
 
 if [ $# -lt 2 ] ; then
- echo "The mesra software with the alphaddag keyword requires at least two arguments"
+ echo "The mesra software with the alphaddagger keyword requires at least two arguments"
  echo "Type mesra_man for more information"
  echo "Exit"
  exit
 fi
 
-launch_proc alphaddag $2 $3
+launch_proc alphaddagger $2 $3
 
 ls mesra-t$2/mesra.err &> /dev/null
 
@@ -387,10 +407,10 @@ fi
 grep 'Error' mesra.err && echo 'Exit' && exit
 rm mesra.err &> /dev/null
 
-mv mesra-Job*.log mesra-t$2/alphaddag.log &> /dev/null
+mv mesra-Job*.log mesra-t$2/alphaddagger.log &> /dev/null
 
 # For the numerical integrations, mesra calls specific launch_proc routines, launch_proc_NIuzrxy,
-# launch_proc_NI or launch_proc_NIdag.
+# launch_proc_NI or launch_proc_NIdagger.
 
 elif [ $1 = 'qmniu' ] ; then
 
@@ -529,9 +549,9 @@ fi
 #rm inp_temp &> /dev/null
 rm mesra.err mesra-Job-cubeop.log &> /dev/null
 
-# qmnidag first checks that unrelaxed numerical integrations have been performed before.
+# qmnidagger first checks that unrelaxed numerical integrations have been performed before.
 
-elif [ $1 = 'qmnidag' ] ; then
+elif [ $1 = 'qmnidagger' ] ; then
 
 ls mesra-t$2 &> /dev/null
 
@@ -546,16 +566,16 @@ ls mesra-t$2/qmNI*_XY.log &> /dev/null
 
 if [ $? -eq 0 ] ; then
 
-launch_proc_NIdag $1 $2 _XY
+launch_proc_NIdagger $1 $2 _XY
 
 else
 
 ls mesra-t$2/qmNIU*.log &> /dev/null
 
 if [ $? -eq 0 ] ; then
-launch_proc_NIdag $1 $2 U
+launch_proc_NIdagger $1 $2 U
 else
-echo "Error: run a qmniu or qmnixy job before qmnidag" > mesra.err
+echo "Error: run a qmniu or qmnixy job before qmnidagger" > mesra.err
 echo "For more information, type mesra_man" >> mesra.err
 echo "Exit" >> mesra.err
 cat mesra.err
@@ -566,7 +586,7 @@ fi
 else
 
  echo "Accepted jobtype arguments are prep, dau, daz, dar, daxy, adiabz, pntos, ctos, orbsxy,rlxypa,"
- echo "qmni, qmniu, qmnixy, qmniz, qmnir, split, cubeop, increase_cube_size, qmnidag, and alphaddag."
+ echo "qmni, qmniu, qmnixy, qmniz, qmnir, split, cubeop, increase_cube_size, qmnidagger, and alphaddagger."
  echo 'Exit'
 
 fi

@@ -1,9 +1,29 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine orth(mat,whichmat,nlines,ncols)
 
 use declare
 
 integer :: nlines,ncols
-real*8 :: mat(nlines,ncols),matdag(ncols,nlines)
+real*8 :: mat(nlines,ncols),matdagger(ncols,nlines)
 character*(*) :: whichmat
 character*128 :: orth_filename
 
@@ -12,9 +32,9 @@ orth_filename = whichmat//'.orth'
 allocate(tLK(ncols,nlines))
 allocate(tLL(ncols,ncols))
 
-matdag = transpose(mat)
+matdagger = transpose(mat)
 
-tLK = matmul(matdag,S)
+tLK = matmul(matdagger,S)
 tLL = matmul(tLK,mat)
 
 open(15,file=orth_filename,form='formatted')

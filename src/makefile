@@ -25,7 +25,7 @@ LFLAGS=-L/usr/lib -llapack -lblas
 # Defines a .o for any file entering the compilation.
 
 OBJS= \
-declare.o rgen_info.o rLA_status.o rdagf.o rinp.o \
+declare.o rgen_info.o rLA_status.o rdaggerf.o rinp.o \
 rfchk.o orth.o rC.o rS.o rP.o rP_g.o rPx_g.o rPxspin_g.o rP_qp.o \
 mo_to_ao.o ao_to_mo.o double_mat_prod.o rPx_qp.o \
 trace_mat.o det_at.o weigen.o dau_main.o \
@@ -39,7 +39,7 @@ deal.o increase_cube_size.o \
 rlxy_LA.o rlxy_LAops.o \
 rqm_NI_info.o rdcubehdr.o consistency.o rddensities.o printingdadens.o qm_NI.o \
 split.o cubeop.o \
-alphaddag.o alpha_ddag.o qmNIdag.o \
+alphaddagger.o alpha_ddagger.o qmNIdagger.o \
 main_mesra.o \
 
 # Command line for the creation of the .o files.

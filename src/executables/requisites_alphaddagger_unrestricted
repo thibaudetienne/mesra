@@ -1,19 +1,39 @@
 #!/bin/bash
 
+# MESRA software
+# Molecular Electronic Structure Reorganization: Analysis
+# Copyright (C) 2019 Thibaud Etienne
+# More information at mesrasoftware.wordpress.com
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License v2
+# as published by the Free Software Foundation.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to
+# 
+# Free Software Foundation, Inc. 
+# 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 # '1' means that the calculation was unrestricted (non-equal number of alpha and beta electrons).
 
 # Also checks that the required files are present in the directory.
 
- echo '1' > alphaddag_dat
+ echo '1' > alphaddagger_dat
 
  ls detachmentUalpha.fchk &> /dev/null
 
  if [ $? -eq 0 ] ; then
-  echo detachmentUalpha.fchk >> alphaddag_dat
+  echo detachmentUalpha.fchk >> alphaddagger_dat
  else
   ls detachmentAlpha_XY.fchk &> /dev/null
   if [ $? -eq 0 ] ; then
-   echo detachmentAlpha_XY.fchk >> alphaddag_dat
+   echo detachmentAlpha_XY.fchk >> alphaddagger_dat
   else
    echo "Error: Where is the detachmentUalpha.fchk or detachmentAlpha_XY.fchk file?"
    echo 'Exit'
@@ -23,11 +43,11 @@
  ls attachmentUalpha.fchk &> /dev/null
 
  if [ $? -eq 0 ] ; then
-  echo attachmentUalpha.fchk >> alphaddag_dat 
+  echo attachmentUalpha.fchk >> alphaddagger_dat 
  else
   ls attachmentAlpha_XY.fchk &> /dev/null
   if [ $? -eq 0 ] ; then
-   echo attachmentAlpha_XY.fchk >> alphaddag_dat
+   echo attachmentAlpha_XY.fchk >> alphaddagger_dat
   else
    echo "Error: Where is the attachmentUalpha.fchk or attachmentAlpha_XY.fchk file?"
    echo 'Exit'
@@ -37,7 +57,7 @@
  ls detachmentRalpha.fchk &> /dev/null
 
  if [ $? -eq 0 ] ; then
-  echo detachmentRalpha.fchk >> alphaddag_dat
+  echo detachmentRalpha.fchk >> alphaddagger_dat
  else
   echo "Error: Where is the detachmentRalpha.fchk file?"
   echo 'Exit'
@@ -46,7 +66,7 @@
  ls attachmentRalpha.fchk &> /dev/null
 
  if [ $? -eq 0 ] ; then
-  echo attachmentRalpha.fchk >> alphaddag_dat
+  echo attachmentRalpha.fchk >> alphaddagger_dat
  else
   echo "Error: Where is the attachmentRalpha.fchk file?"
   echo 'Exit'
@@ -55,11 +75,11 @@
  ls detachmentUbeta.fchk &> /dev/null
 
  if [ $? -eq 0 ] ; then
-  echo detachmentUbeta.fchk >> alphaddag_dat
+  echo detachmentUbeta.fchk >> alphaddagger_dat
  else
   ls detachmentBeta_XY.fchk &> /dev/null
   if [ $? -eq 0 ] ; then
-   echo detachmentBeta_XY.fchk >> alphaddag_dat
+   echo detachmentBeta_XY.fchk >> alphaddagger_dat
   else
    echo "Error: Where is the detachmentUbeta.fchk or detachmentBeta_XY.fchk file?"
    echo 'Exit'
@@ -69,11 +89,11 @@
  ls attachmentUbeta.fchk &> /dev/null
 
  if [ $? -eq 0 ] ; then
-  echo attachmentUbeta.fchk >> alphaddag_dat 
+  echo attachmentUbeta.fchk >> alphaddagger_dat 
  else
   ls attachmentBeta_XY.fchk &> /dev/null
   if [ $? -eq 0 ] ; then
-   echo attachmentBeta_XY.fchk >> alphaddag_dat
+   echo attachmentBeta_XY.fchk >> alphaddagger_dat
   else
    echo "Error: Where is the attachmentUbeta.fchk or attachmentBeta_XY.fchk file?"
    echo 'Exit'
@@ -83,7 +103,7 @@
  ls detachmentRbeta.fchk &> /dev/null
 
  if [ $? -eq 0 ] ; then
-  echo detachmentRbeta.fchk >> alphaddag_dat
+  echo detachmentRbeta.fchk >> alphaddagger_dat
  else
   echo "Error: Where is the detachmentRbeta.fchk file?"
   echo 'Exit'
@@ -92,7 +112,7 @@
  ls attachmentRbeta.fchk &> /dev/null
 
  if [ $? -eq 0 ] ; then
-  echo attachmentRbeta.fchk >> alphaddag_dat
+  echo attachmentRbeta.fchk >> alphaddagger_dat
  else
   echo "Error: Where is the attachmentRbeta.fchk file?"
   echo 'Exit'

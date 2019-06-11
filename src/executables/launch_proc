@@ -1,5 +1,25 @@
 #!/bin/bash
 
+# MESRA software
+# Molecular Electronic Structure Reorganization: Analysis
+# Copyright (C) 2019 Thibaud Etienne
+# More information at mesrasoftware.wordpress.com
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License v2
+# as published by the Free Software Foundation.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to
+# 
+# Free Software Foundation, Inc. 
+# 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 # Checks that a prep process has been done before.
 
 ls mesra_general_info &> /dev/null
@@ -61,7 +81,7 @@ default_xLA $3 > defaultxLAfile
 LA=`cat defaultxLAfile`
 
 # If decimal number has been provided, returns an error.
-# It also returns an error is no population analysis has been required together with an alphaddag calculation.
+# It also returns an error is no population analysis has been required together with an alphaddagger calculation.
 
 fgrep "." defaultxLAfile &> /dev/null
 
@@ -72,8 +92,8 @@ else
  if [ $LA = 'nopa' ] ; then
   LA_status=`echo noLA` ;
   xLA=`echo `
-  if [ $1 = 'alphaddag' ] ; then
-   echo Error: nopa not permitted with the alphaddag jobtype >> mesra.err.temp
+  if [ $1 = 'alphaddagger' ] ; then
+   echo Error: nopa not permitted with the alphaddagger jobtype >> mesra.err.temp
    echo Exit >> mesra.err.temp
   fi
  elif [ $LA = 'scanpa' ] ; then
@@ -95,9 +115,9 @@ rm defaultxLAfile
 
 requisites $namefchk $ntr $t &> mesra.err
 
-# If an alphaddag calculation has been requested, uses specific 'requisites' routines.
+# If an alphaddagger calculation has been requested, uses specific 'requisites' routines.
 
-if [ $1 = 'alphaddag' ] ; then
+if [ $1 = 'alphaddagger' ] ; then
 
  ls mesra-t$t &> /dev/null
 
@@ -110,9 +130,9 @@ if [ $1 = 'alphaddag' ] ; then
  cd mesra-t$t
 
  if [ $diffnumalphabeta -eq 0 ] ; then
-  requisites_alphaddag &> mesra.err.temp_alphaddag
+  requisites_alphaddagger &> mesra.err.temp_alphaddagger
  else
-  requisites_alphaddag_unrestricted &> mesra.err.temp_alphaddag
+  requisites_alphaddagger_unrestricted &> mesra.err.temp_alphaddagger
  fi
 
 # Manages the error files.
@@ -135,11 +155,11 @@ if [ $1 = 'alphaddag' ] ; then
   :
  fi
 
- ls mesra.err.temp_alphaddag &> /dev/null
+ ls mesra.err.temp_alphaddagger &> /dev/null
 
  if [ $? -eq 0 ] ; then
-  cat mesra.err.temp_alphaddag >> ../mesra.err ;
-  rm mesra.err.temp_alphaddag ;
+  cat mesra.err.temp_alphaddagger >> ../mesra.err ;
+  rm mesra.err.temp_alphaddagger ;
  else
   :
  fi
@@ -183,10 +203,10 @@ elif [ $soft = 'qp' ] ; then
 fi
 
 # Checks if the sub-working directory is present. If not, creates it.
-# If alphaddag computation has been requested, we are already in the sub-working directory.
+# If alphaddagger computation has been requested, we are already in the sub-working directory.
 
 
-if [ $1 = 'alphaddag' ] ; then
+if [ $1 = 'alphaddagger' ] ; then
  :
 else
  ls mesra-t$t &> /dev/null
@@ -199,12 +219,12 @@ else
 fi
 
 # Starts preparing the input for mesra.
-# Specific precautions are taken for alphaddag computations since we are 
+# Specific precautions are taken for alphaddagger computations since we are 
 # already in the sub-working directory.
 
 echo "$1" > inp_mesra-$1-$name-t$t 
 
-if [ $1 = 'alphaddag' ] ; then
+if [ $1 = 'alphaddagger' ] ; then
  cat ../mesra_general_info >> inp_mesra-$1-$name-t$t
 else
  cat mesra_general_info >> inp_mesra-$1-$name-t$t 
@@ -214,8 +234,8 @@ echo $t >> inp_mesra-$1-$name-t$t
 echo $LA_status >> inp_mesra-$1-$name-t$t
 echo $xLA >> inp_mesra-$1-$name-t$t
 
-if [ $1 = 'alphaddag' ] ; then
- cat alphaddag_dat >> inp_mesra-$1-$name-t$t
+if [ $1 = 'alphaddagger' ] ; then
+ cat alphaddagger_dat >> inp_mesra-$1-$name-t$t
  cp ../overlap .
 fi
 
@@ -225,10 +245,10 @@ main_mesra inp_mesra-$1-$name-t$t
 
 # Removes useless or doubled files.
 
-rm alphaddag_dat &> /dev/null
+rm alphaddagger_dat &> /dev/null
 rm inp_mesra-$1-$name-t$t &> /dev/null
 
-if [ $1 = 'alphaddag' ] ; then
+if [ $1 = 'alphaddagger' ] ; then
  rm overlap &> /dev/null
  cd ..
 fi

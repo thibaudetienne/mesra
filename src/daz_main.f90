@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine daz_main
 
 ! Computes the detachment/attachment density matrices
@@ -11,7 +31,7 @@ if (countunr .eq. 1) call trace_mat(zvec,'zvecAlpha',norb)
 if (countunr .eq. 2) call trace_mat(zvec,'zvecBeta',norb)
 if (countunr .eq. 3) call trace_mat(zvec,'zvec',norb)
 
-! Computes the Z(Z^dag) \oplus (Z^dag) \oplus Z matrix (Hereafter named zzd_zdz).
+! Computes the Z(Z^dagger) \oplus (Z^dagger) \oplus Z matrix (Hereafter named zzd_zdz).
 
 zzd_zdz = matmul(zvec,zvec)
 

@@ -1,6 +1,26 @@
 #!/bin/bash
 
-# Checks that the required files are present. If a daz calculation has not been performed prior to the qmnidag one,
+# MESRA software
+# Molecular Electronic Structure Reorganization: Analysis
+# Copyright (C) 2019 Thibaud Etienne
+# More information at mesrasoftware.wordpress.com
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License v2
+# as published by the Free Software Foundation.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to
+# 
+# Free Software Foundation, Inc. 
+# 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+# Checks that the required files are present. If a daz calculation has not been performed prior to the qmnidagger one,
 # a daz calculation is done.
 
 ls mesra-t$2/daz.log &> /dev/null
@@ -44,7 +64,7 @@ diffnumalphabeta=`echo $numalpha - $numbeta | bc -l`
 
 if [ $diffnumalphabeta -eq 0 ] ; then
 
- echo qmnidag > inp_mesra-$1-t$2
+ echo qmnidagger > inp_mesra-$1-t$2
 
  grep -A1 'Trace of gamma_d' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'Integral' mesra-t$2/qmNI$3.log | tail -1 >> inp_mesra-$1-t$2
@@ -70,7 +90,7 @@ else
   echo
  fi
 
- echo qmnidag > inp_mesra-$1-t$2
+ echo qmnidagger > inp_mesra-$1-t$2
 
  grep -A1 'Trace of gamma_d' mesra-t$2/daz.log | head -2 | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'Integral' mesra-t$2/qmNI$3-alpha.log | tail -1 >> inp_mesra-$1-t$2
@@ -97,7 +117,7 @@ else
   exit
  fi
 
- echo qmnidag > inp_mesra-$1-t$2
+ echo qmnidagger > inp_mesra-$1-t$2
 
  grep -A1 'Trace of gamma_d' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'Integral' mesra-t$2/qmNI$3-beta.log | tail -1 >> inp_mesra-$1-t$2
@@ -122,5 +142,5 @@ fi
 
 rm mesra.err &> /dev/null
 rm inp_mesra-$1-t$2 &> /dev/null
-rm mesra-Job-qmnidag.log &> /dev/null
+rm mesra-Job-qmnidagger.log &> /dev/null
 

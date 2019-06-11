@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine da(Umatrix,mvector,matrix0,matrix1,matrix2,matrix_dimension)
 
 ! Diagonalizes a matrix, separates its eigenvalues according to their sign,
@@ -15,7 +35,7 @@ real*8 :: Mm(matrix_dimension,matrix_dimension)
 real*8 :: m(matrix_dimension)
 real*8 :: kp(matrix_dimension,matrix_dimension)
 real*8 :: km(matrix_dimension,matrix_dimension)
-real*8 :: Mmdag(matrix_dimension,matrix_dimension)
+real*8 :: Mmdagger(matrix_dimension,matrix_dimension)
 
 ! Initializes the arrays.
 
@@ -43,10 +63,10 @@ enddo
 
 ! Backtransforms the resulting matrices.
 
-Mmdag = transpose(Mm)
+Mmdagger = transpose(Mm)
 
-call double_mat_prod(Mm,km,Mmdag,matrix1,norb)
-call double_mat_prod(Mm,kp,Mmdag,matrix2,norb)
+call double_mat_prod(Mm,km,Mmdagger,matrix1,norb)
+call double_mat_prod(Mm,kp,Mmdagger,matrix2,norb)
 
 ! Computes the trace of the resulting two matrices.
 

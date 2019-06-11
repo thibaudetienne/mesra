@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 program main_mesra
 
 use declare
@@ -45,9 +65,9 @@ else if (jobtype .eq. 'split') then
  continue
 else if (jobtype .eq. 'cubeop') then
  continue
-else if (jobtype .eq. 'alphaddag') then
+else if (jobtype .eq. 'alphaddagger') then
  continue
-else if (jobtype .eq. 'qmnidag') then
+else if (jobtype .eq. 'qmnidagger') then
 continue
 else
 
@@ -92,9 +112,9 @@ if (jobtype .eq. 'split') call split(cubefile)
 
 if (jobtype .eq. 'cubeop') call cubeop(cubefile1,cubefile2,cubefile3,op1,op2)
 
-if (jobtype .eq. 'alphaddag') call alphaddag
+if (jobtype .eq. 'alphaddagger') call alphaddagger
 
-if (jobtype .eq. 'qmnidag') call qmNIdag
+if (jobtype .eq. 'qmnidagger') call qmNIdagger
 
 ! Deallocates the matrices.
 
@@ -104,9 +124,9 @@ else if (jobtype .eq. 'split') then
  continue
 else if (jobtype .eq. 'cubeop') then
  continue
-else if (jobtype .eq. 'alphaddag') then
+else if (jobtype .eq. 'alphaddagger') then
 continue
-else if (jobtype .eq. 'qmnidag') then
+else if (jobtype .eq. 'qmnidagger') then
 continue
 else
  call deal

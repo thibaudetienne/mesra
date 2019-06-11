@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine rC
 
 ! Reads the LCAO coefficients matrix.
@@ -61,7 +81,7 @@ do i = 1,norb
  enddo
 enddo
 
-! Computes the adjoint of C, Cdag.
+! Computes the adjoint of C, Cdagger.
 
 write(50,*)
 
@@ -71,9 +91,9 @@ else
 call orth(C,'C',nbs,norb)
 endif
 
-allocate(Cdag(norb,nbs))
+allocate(Cdagger(norb,nbs))
 
-Cdag = transpose(C)
+Cdagger = transpose(C)
 
 ! If the number of alpha and beta electrons is different, reads also the beta C matrix, Cb.
 
@@ -120,11 +140,11 @@ enddo
 
 ! Allocates and generates the adjoint of Ca and Cb.
 
-allocate(Cadag(norb,nbs))
-allocate(Cbdag(norb,nbs))
+allocate(Cadagger(norb,nbs))
+allocate(Cbdagger(norb,nbs))
 
-Cadag = transpose(Ca)
-Cbdag = transpose(Cb)
+Cadagger = transpose(Ca)
+Cbdagger = transpose(Cb)
 
 call orth(Cb,'Cbeta',nbs,norb)
 

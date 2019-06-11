@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 module declare
 
 implicit none
@@ -29,7 +49,7 @@ logical :: unr
 ! LCAO matrices
 
 real*8,allocatable :: triangle(:),trianglespin(:),lvec(:),triangled(:),trianglea(:)
-real*8,allocatable :: C(:,:),Ca(:,:),Cb(:,:),Cdag(:,:),Cadag(:,:),Cbdag(:,:)
+real*8,allocatable :: C(:,:),Ca(:,:),Cb(:,:),Cdagger(:,:),Cadagger(:,:),Cbdagger(:,:)
 character*128 :: marker_Ca, marker_Cb, marker_Ea, marker_Eb
 
 ! State density matrices
@@ -66,7 +86,7 @@ real*8 :: pi,phiSLA0,phiLA0
 !!!Gabriel Breuil 12-04-2019
 real*8 :: phiSLAnew0,phiLAnew0
 !!!End Gabriel Breuil
-real*8 :: phiSdag,phidag,psidag
+real*8 :: phiSdagger,phidagger,psidagger
 real*8,allocatable :: fd(:),fa(:),fdta(:),famd(:),famdp(:),famdm(:)
 real*8,allocatable :: gamma_d_XY_ao(:,:),gamma_a_XY_ao(:,:)
 
@@ -84,7 +104,7 @@ real*8,allocatable :: newzzd_zdz(:,:)
 
 real*8,allocatable :: tK(:,:),t(:,:),TS(:,:),diff_mat_unrelaxed(:,:)
 real*8,allocatable :: tKb(:,:),tb(:,:),TSb(:,:)
-real*8,allocatable :: ttrsp(:,:),ttdag(:,:)
+real*8,allocatable :: ttrsp(:,:),ttdagger(:,:)
 real*8,allocatable :: xy_X(:,:),xy_Y(:,:),xy_Xt(:,:),xy_Yt(:,:),XYt(:,:),YXt(:,:)
 real*8,allocatable :: xy_XXt(:,:),xy_XtX(:,:),xy_YYt(:,:),xy_YtY(:,:)
 real*8,allocatable :: t_0p(:,:),t_0m(:,:),t_02m(:,:),t_02p(:,:),t_0pt(:,:),t_0pt_0pt(:,:)
@@ -100,7 +120,7 @@ character*128 :: orbs_filename
 real*8,allocatable :: lcao_coeff_mat(:,:)
 real*8,allocatable :: lambda(:),left_eig(:,:),right_eig_t(:,:),mat_to_svd(:,:),right_eig(:,:)
 real*8,allocatable :: O_lcao(:,:),V_lcao(:,:),rotated_O_lcao(:,:),rotated_V_lcao(:,:)
-real*8,allocatable :: OdagSO(:,:),VdagSV(:,:)
+real*8,allocatable :: OdaggerSO(:,:),VdaggerSV(:,:)
 
 ! AO matrices
 
@@ -115,13 +135,13 @@ real*8 :: phiSLAUalpha, phiSLAUbeta
 real*8 :: phiLAUalpha, phiLAUbeta
 real*8 :: thetaZalpha, thetaZbeta
 
-real*8 :: phiSLAU,phiLAU,psiLAU,thetaU,phiSLAdag,phiLAdag,psiLAdag
-real*8 :: phiSLAdagalpha, phiSLAdagbeta
-real*8 :: phiLAdagalpha, phiLAdagbeta
-real*8 :: psiLAdagalpha, psiLAdagbeta
+real*8 :: phiSLAU,phiLAU,psiLAU,thetaU,phiSLAdagger,phiLAdagger,psiLAdagger
+real*8 :: phiSLAdaggeralpha, phiSLAdaggerbeta
+real*8 :: phiLAdaggeralpha, phiLAdaggerbeta
+real*8 :: psiLAdaggeralpha, psiLAdaggerbeta
 
 !!!Gabriel Breuil 11-04-2019
-real*8 :: phiSLAnewdag,phiLAnewdag,psiLAnewdag,zcoef
+real*8 :: phiSLAnewdagger,phiLAnewdagger,psiLAnewdagger,zcoef
 !!!End Gabriel Breuil 11-04-2019
 
 
@@ -146,7 +166,7 @@ real*8, allocatable :: pp(:,:,:),pm(:,:,:),diff(:,:,:)
 
 character*128 :: cubefile,cubefile1,cubefile2,cubefile3,op1,op2
 
-! dag
+! dagger
 
 character*128 :: detachmentU,attachmentU,detachmentR,attachmentR
 character*128 :: detachmentUalpha,attachmentUalpha,detachmentRalpha,attachmentRalpha
@@ -154,10 +174,10 @@ character*128 :: detachmentUbeta,attachmentUbeta,detachmentRbeta,attachmentRbeta
 
 ! qmNIr
 
-real*8 :: theta_unrelaxed,phiS_unrelaxed,phi_unrelaxed,lambda_dag,theta_z
+real*8 :: theta_unrelaxed,phiS_unrelaxed,phi_unrelaxed,lambda_dagger,theta_z
 real*8 :: phiS_relaxed,phi_relaxed,psi_relaxed,eta
 !!!Gabriel Breuil 12-04-2019
-real*8 :: newphiS_relaxed,newphi_relaxed,newlambda_dag,newpsi_relaxed
+real*8 :: newphiS_relaxed,newphi_relaxed,newlambda_dagger,newpsi_relaxed
 !!!End Gabriel Breuil
 
 

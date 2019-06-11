@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine rinp
 
 ! Reads the input.
@@ -80,18 +100,18 @@ read(10,*) cubefile3
 read(10,*) op1
 read(10,*) op2
 
-! "alphaddag" Performs the population analysis, based on matrices already computed in a previous operation.
-! NB: rdagf reads the name of the matrices .fchk files.
+! "alphaddagger" Performs the population analysis, based on matrices already computed in a previous operation.
+! NB: rdaggerf reads the name of the matrices .fchk files.
 
-else if (jobtype .eq. 'alphaddag') then
+else if (jobtype .eq. 'alphaddagger') then
 
 call rgen_info
 call rLA_status
-call rdagf
+call rdaggerf
 
-! "qmnidag" Computes the relaxed quantum-topological metrics, based on calculations already performed previously.
+! "qmnidagger" Computes the relaxed quantum-topological metrics, based on calculations already performed previously.
 
-else if (jobtype .eq. 'qmnidag') then
+else if (jobtype .eq. 'qmnidagger') then
 
 read(10,*) theta_z
 read(10,*) theta_unrelaxed

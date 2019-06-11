@@ -1,3 +1,23 @@
+! MESRA software
+! Molecular Electronic Structure Reorganization: Analysis
+! Copyright (C) 2019 Thibaud Etienne
+! More information at mesrasoftware.wordpress.com
+! 
+! This program is free software; you can redistribute it and/or
+! modify it under the terms of the GNU General Public License v2
+! as published by the Free Software Foundation.
+! 
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU General Public License for more details.
+! 
+! You should have received a copy of the GNU General Public License
+! along with this program; if not, write to
+! 
+! Free Software Foundation, Inc. 
+! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 subroutine printingdadens(sn1,sinteg1, sinteg2, sintegm, sintegp, &
 & sxrm, syrm, szrm, sxrp, syrp, szrp, sx1c, sy1c, sz1c, sx2c, sy2c, &
 & sz2c, srct, sr12ct, sphis)
@@ -42,16 +62,16 @@ write(6,'(f13.4,f13.4)') 0.5d0*(sintegp-sintegm),&
 write(6,*) " " 
 write(6,*) '3. Centroid coordinates (bohr) from n-/n+ densities, zeta(+/-) '
 write(6,*) " " 
-write(6,*) 'Negative centroid coordinates'
+write(6,*) 'n- centroid coordinates'
 write(6,'(3f13.4)') sxrm, syrm, szrm
 write(6,*) " " 
-write(6,*) 'Positive centroid coordinates'
+write(6,*) 'n+ centroid coordinates'
 write(6,'(3f13.4)')  sxrp, syrp, szrp
 write(6,*) " "
-write(6,*) 'CT distance from p-/p+ in Bohr and Angstrom'
+write(6,*) 'CT distance from n-/n+ in Bohr and Angstrom'
 write(6,'(2f13.4)') srct,srct*ata
 write(6,*) " " 
-write(6,*) '4. Centroid coordinates (bohr) from D/A, zeta'
+write(6,*) '4. Centroid coordinates (bohr) from D/A, zeta(D/A)'
 write(6,*) " " 
 write(6,*) 'Detachment density centroid coordinates'
 write(6,'(3f13.4)') sx1c, sy1c, sz1c

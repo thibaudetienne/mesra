@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# MESRA software
+# Molecular Electronic Structure Reorganization: Analysis
+# Copyright (C) 2019 Thibaud Etienne
+# More information at mesrasoftware.wordpress.com
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License v2
+# as published by the Free Software Foundation.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to
+# 
+# Free Software Foundation, Inc. 
+# 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+# '0' is used to state that the computation is restricted (equal number of
+# alpha and beta electrons).
+
+# Checks that the required files are present.
+
+ echo '0' > alphaddagger_dat
+
+ ls detachmentU.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo detachmentU.fchk >> alphaddagger_dat
+ else
+  ls detachment_XY.fchk &> /dev/null
+  if [ $? -eq 0 ] ; then
+   echo detachment_XY.fchk >> alphaddagger_dat
+  else
+   echo "Error: Where is the detachmentU.fchk or detachment_XY.fchk file?"
+   echo 'Exit'
+  fi
+ fi
+
+ ls attachmentU.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo attachmentU.fchk >> alphaddagger_dat 
+ else
+  ls attachment_XY.fchk &> /dev/null
+  if [ $? -eq 0 ] ; then
+   echo attachment_XY.fchk >> alphaddagger_dat
+  else
+   echo "Error: Where is the attachmentU.fchk or attachment_XY.fchk file?"
+   echo 'Exit'
+  fi
+ fi
+
+ ls detachmentR.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo detachmentR.fchk >> alphaddagger_dat
+ else
+  echo "Error: Where is the detachmentR.fchk file?"
+  echo 'Exit'
+ fi
+
+ ls attachmentR.fchk &> /dev/null
+
+ if [ $? -eq 0 ] ; then
+  echo attachmentR.fchk >> alphaddagger_dat
+ else
+  echo "Error: Where is the attachmentR.fchk file?"
+  echo 'Exit'
+ fi
+
