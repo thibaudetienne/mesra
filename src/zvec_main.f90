@@ -87,10 +87,6 @@ countunr = 3
 
 call common_dar_daz
 
-
-
-
-
 !!!Gabriel Breuil 11/12-04-2019
 
 allocate(newzzd_zdz(norb,norb))
@@ -106,9 +102,9 @@ zcoef=0.5d0*zcoef
 
 write(6,*)
 write(50,*)
-write(6,*) 'Integral of relaxation-related to the new LA calculation method'
+write(6,*) 'Integral of ZZ^dagger'
 write(6,'(f13.5)') zcoef
-write(50,*) 'Integral of relaxation-related to the new LA calculation method'
+write(50,*) 'Integral of ZZ^dagger'
 write(50,'(f13.5)') zcoef
 
 deallocate(newzzd_zdz)

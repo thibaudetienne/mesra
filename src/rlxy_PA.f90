@@ -18,30 +18,41 @@
 ! Free Software Foundation, Inc. 
 ! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-subroutine rLA_status
+subroutine rlxy_PA
 
-! Reads the status to be decided relatively to the population analysis to perform.
+! Relaxes the descriptors.
 
 use declare
 
-! Reads the status from the input.
+! Launches rlxy_PAops a different number of times according to whether the 'scanpa' keyword
+! has been given in the input.
 
-read(10,*) LA_status
+! PA = population analysis
+! scanPA = x is scanned from 0 to 1.
 
-! LA = population analysis (Linear Algebra) => which exponents (x)?
-! noLA = no population analysis;
-! scan = a scan of the x exponents from 0 to 1.
+if (scanPA) then
 
- if (LA_status .eq. 'LA') then
-  LA = .true.
-  scanLA = .false.
-  read(10,*) xLA
- else if (LA_status .eq. 'noLA') then
-  LA = .false.
-  scanLA = .false.
- else if (LA_status .eq. 'scan') then
-  LA = .true.
-  scanLA = .true.
- endif
+do iteration=0,100
+
+ PA = .true. 
+ scanPA = .false.
+   write(6,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(6,*)
+   write(50,*)
+   write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
+   write(50,*)
+ xPA = iteration*0.01d0
+
+ call rlxy_PAops
+
+deallocate(p,px,pK,pxK,pKS,pxKS,pxKrelaxed,pxKrelaxedS,pxrelaxed)
+
+enddo
+
+else
+
+call rlxy_PAops
+
+endif
 
 end

@@ -104,7 +104,7 @@ if (jobtype .eq. 'aNTOs') call orbs_XY
 
 if (jobtype .eq. 'daXY') call daXY
 
-if (jobtype .eq. 'rlxy_LA') call rlxy_LA
+if (jobtype .eq. 'rlxy_PA') call rlxy_PA
 
 if (jobtype .eq. 'qm_NI') call qm_NI
 

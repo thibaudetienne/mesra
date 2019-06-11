@@ -18,13 +18,13 @@
 ! Free Software Foundation, Inc. 
 ! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-subroutine LA_mat(d_matao,a_matao,xy_d,xy_a,x_LA,y_LA)
+subroutine PA_mat(d_matao,a_matao,xy_d,xy_a,x_PA,y_PA)
 
 ! Computes S^x and S^y, creates the actual (S^x)P(S^y) (P = D,A) matrices, and computes their trace.
 
 use declare
 
-real*8 :: x_LA,y_LA
+real*8 :: x_PA,y_PA
 real*8 :: d_matao(nbs,nbs),a_matao(nbs,nbs),xy_d(nbs,nbs),xy_a(nbs,nbs)
 real*8 :: uS(nbs,nbs),lS(nbs),Sx(nbs,nbs),Sy(nbs,nbs)
 real*8 :: uSt(nbs,nbs),lSx(nbs),lSy(nbs),diag_Sx(nbs,nbs),diag_Sy(nbs,nbs)
@@ -51,8 +51,8 @@ uSt = transpose(uS)
 
 do i=1,nbs
  if (lS(i) .lt. 0.0d0) lS(i) = 0.0d0
- lSx(i) = (lS(i))**x_LA
- lSy(i) = (lS(i))**y_LA
+ lSx(i) = (lS(i))**x_PA
+ lSy(i) = (lS(i))**y_PA
  diag_Sx(i,i) = lSx(i)
  diag_Sy(i,i) = lSy(i)
 enddo

@@ -31,19 +31,19 @@ use declare
 
 if (shell_statement .eq. 0) then
 
-if (scanLA) then
+if (scanPA) then
  do iteration=0,100
    write(6,'(a11,f5.2)') 'x value: ', iteration*0.01d0
    write(6,*)
    write(50,*)
    write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
    write(50,*)
-  xLA = iteration*0.01d0
-  call alpha_ddagger(detachmentU,attachmentU,detachmentR,attachmentR,fov,xLA)
+  xPA = iteration*0.01d0
+  call alpha_ddagger(detachmentU,attachmentU,detachmentR,attachmentR,fov,xPA)
  enddo
 else
- xLA = 0.01d0*xlA
- call alpha_ddagger(detachmentU,attachmentU,detachmentR,attachmentR,fov,xLA)
+ xPA = 0.01d0*xPA
+ call alpha_ddagger(detachmentU,attachmentU,detachmentR,attachmentR,fov,xPA)
 endif
 
 else if (shell_statement .eq. 1) then
@@ -54,19 +54,19 @@ write(50,*)
 write(50,*) '# Part A - Alpha density matrices'
 write(50,*)
 
-if (scanLA) then
+if (scanPA) then
  do iteration=0,100
    write(6,'(a11,f5.2)') 'x value: ', iteration*0.01d0
    write(6,*)
    write(50,*)
    write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
    write(50,*)
-  xLA = iteration*0.01d0
-  call alpha_ddagger(detachmentUalpha,attachmentUalpha,detachmentRalpha,attachmentRalpha,fov,xLA)
+  xPA = iteration*0.01d0
+  call alpha_ddagger(detachmentUalpha,attachmentUalpha,detachmentRalpha,attachmentRalpha,fov,xPA)
  enddo
 else
- xLA = 0.01d0*xlA
- call alpha_ddagger(detachmentUalpha,attachmentUalpha,detachmentRalpha,attachmentRalpha,fov,xLA)
+ xPA = 0.01d0*xPA
+ call alpha_ddagger(detachmentUalpha,attachmentUalpha,detachmentRalpha,attachmentRalpha,fov,xPA)
 endif
 
 write(6,*) '# Part B - Beta density matrices'
@@ -74,19 +74,19 @@ write(6,*)
 write(50,*) '# Part B - Beta density matrices'
 write(50,*)
 
-if (scanLA) then
+if (scanPA) then
  do iteration=0,100
    write(6,'(a11,f5.2)') 'x value: ', iteration*0.01d0
    write(6,*)
    write(50,*)
    write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
    write(50,*)
-  xLA = iteration*0.01d0
-  call alpha_ddagger(detachmentUbeta,attachmentUbeta,detachmentRbeta,attachmentRbeta,fov,xLA)
+  xPA = iteration*0.01d0
+  call alpha_ddagger(detachmentUbeta,attachmentUbeta,detachmentRbeta,attachmentRbeta,fov,xPA)
  enddo
 else
- xLA = 0.01d0*xlA
- call alpha_ddagger(detachmentUbeta,attachmentUbeta,detachmentRbeta,attachmentRbeta,fov,xLA)
+ xPA = 0.01d0*xPA
+ call alpha_ddagger(detachmentUbeta,attachmentUbeta,detachmentRbeta,attachmentRbeta,fov,xPA)
 endif
 
 endif

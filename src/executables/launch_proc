@@ -61,7 +61,7 @@ if [ $1 = 'orbsXY' -o $1 = 'pNTOs' -o $1 = 'CTOs' -o $1 = 'aNTOs' ] ; then
  head -n $nline_AlphaOrb_minus_one $namefchk > header_fchk
 fi
 
-if [ $1 = 'dau' -o $1 = 'daz' -o $1 = 'dar' -o $1 = 'daXY' -o $1 = 'rlxypa' -o $1 = 'rlxy_LA' ] ; then
+if [ $1 = 'dau' -o $1 = 'daz' -o $1 = 'dar' -o $1 = 'daXY' -o $1 = 'rlxypa' -o $1 = 'rlxy_PA' ] ; then
  nline_SCF=`grep -n 'Total SCF Density' $namefchk | awk '{print $1}' | sed "s/:/ /" | awk '{print $1}'`
  nline_SCF_minus_one=`echo $nline_SCF -1 | bc -l`
  head -n $nline_SCF_minus_one $namefchk > header_fchk
@@ -74,42 +74,42 @@ name=`basename $namefchk .fchk`
 ntr=`tail -1 mesra_general_info`
 t=`echo $2`
 
-# Calls the default_xLA routine, which returns 50 if there is nothing suitable in the arguments.
+# Calls the default_xPA routine, which returns 50 if there is nothing suitable in the arguments.
 
-default_xLA $3 > defaultxLAfile
+default_xPA $3 > defaultxPAfile
 
-LA=`cat defaultxLAfile`
+PA=`cat defaultxPAfile`
 
 # If decimal number has been provided, returns an error.
 # It also returns an error is no population analysis has been required together with an alphaddagger calculation.
 
-fgrep "." defaultxLAfile &> /dev/null
+fgrep "." defaultxPAfile &> /dev/null
 
 if [ $? -eq 0 ] ; then
  echo Error: PA exponent should be between 0 and 100 >> mesra.err.temp ;
  echo Exit >> mesra.err.temp 
 else
- if [ $LA = 'nopa' ] ; then
-  LA_status=`echo noLA` ;
-  xLA=`echo `
+ if [ $PA = 'nopa' ] ; then
+  PA_status=`echo noPA` ;
+  xPA=`echo `
   if [ $1 = 'alphaddagger' ] ; then
    echo Error: nopa not permitted with the alphaddagger jobtype >> mesra.err.temp
    echo Exit >> mesra.err.temp
   fi
- elif [ $LA = 'scanpa' ] ; then
-  LA_status=`echo scan` ;
-  xLA=`echo `
+ elif [ $PA = 'scanpa' ] ; then
+  PA_status=`echo scan` ;
+  xPA=`echo `
  else
-  LA_status=`echo LA` ;
-  xLA=`cat defaultxLAfile | bc -l` ;
-  if [ $xLA -lt 0 -o $xLA -gt 100 ] ; then
+  PA_status=`echo PA` ;
+  xPA=`cat defaultxPAfile | bc -l` ;
+  if [ $xPA -lt 0 -o $xPA -gt 100 ] ; then
    echo Error: PA exponent should be between 0 and 100 >> mesra.err.temp ;
    echo Exit >> mesra.err.temp 
   fi
  fi
 fi
 
-rm defaultxLAfile
+rm defaultxPAfile
 
 # Checks that the information provided by the user is compatible with the requested use of mesra.
 
@@ -231,8 +231,8 @@ else
 fi
 
 echo $t >> inp_mesra-$1-$name-t$t 
-echo $LA_status >> inp_mesra-$1-$name-t$t
-echo $xLA >> inp_mesra-$1-$name-t$t
+echo $PA_status >> inp_mesra-$1-$name-t$t
+echo $xPA >> inp_mesra-$1-$name-t$t
 
 if [ $1 = 'alphaddagger' ] ; then
  cat alphaddagger_dat >> inp_mesra-$1-$name-t$t

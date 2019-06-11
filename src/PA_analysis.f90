@@ -18,41 +18,30 @@
 ! Free Software Foundation, Inc. 
 ! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-subroutine rlxy_LA
+subroutine PA_analysis(matrix_dPA,matrix_aPA,x_PA,y_PA)
 
-! Relaxes the descriptors.
+! Performs the actual D/A population analysis.
 
 use declare
 
-! Launches rlxy_LAops a different number of times according to whether the 'scanpa' keyword
-! has been given in the input.
+real*8 :: x_PA,y_PA
+real*8 :: matrix_dPA(nbs,nbs),matrix_aPA(nbs,nbs)
 
-! LA = 'Linear Algebra' = population analysis
-! scanLA = x is scanned from 0 to 1.
+! Allocates the (S^x)P(S^y) arrays (P = D,A) 
 
-if (scanLA) then
+allocate(SxDSy(nbs,nbs))
+allocate(SxASy(nbs,nbs))
 
-do iteration=0,100
+! Creates S^x, S^y and (S^x)P(S^y) (P = D,A).
 
- LA = .true. 
- scanLA = .false.
-   write(6,'(a11,f5.2)') 'x value: ', iteration*0.01d0
-   write(6,*)
-   write(50,*)
-   write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
-   write(50,*)
- xLA = iteration*0.01d0
+call PA_mat(matrix_dPA,matrix_aPA,SxDSy,SxASy,x_PA,y_PA)
 
- call rlxy_LAops
+! Computes the descriptors from (S^x)P(S^y) (P = D,A).
 
-deallocate(p,px,pK,pxK,pKS,pxKS,pxKrelaxed,pxKrelaxedS,pxrelaxed)
+call QuantumDescriptorsPA(SxDSy,SxASy)
 
-enddo
+! Deallocates the (S^x)P(S^y) matrices (P = D,A).
 
-else
-
-call rlxy_LAops
-
-endif
+deallocate(SxDSy,SxASy)
 
 end

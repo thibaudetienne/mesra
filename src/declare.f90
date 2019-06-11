@@ -24,16 +24,16 @@ implicit none
 
 ! General
 
-integer :: error,i,j,k,nLA,nAdiab,jobN,countunr,countrlx,shell_statement,iteration
-real*8 :: x,y,z,xi,xLA,yLA,trmat1,trmat2,LinearX
-character*128 :: LA_status,eigname
+integer :: error,i,j,k,nPA,nAdiab,jobN,countunr,countrlx,shell_statement,iteration
+real*8 :: x,y,z,xi,xPA,yPA,trmat1,trmat2,PopX
+character*128 :: PA_status,eigname
 
 ! Input reading
 
-character*128 :: jobname,jobtype,qmLA_obj,subjobtype
+character*128 :: jobname,jobtype,qmPA_obj,subjobtype
 character*128 :: soft,fchk,fov,fdens,input,fdensx
 integer :: nt,ns
-logical :: relax,adiab,LA,LAr,xy,scanLA,qmLA,t_LA,t_scanLA
+logical :: relax,adiab,PA,PAr,xy,scanPA,qmPA,t_PA,t_scanPA
 character*128,allocatable :: dummy_array(:)
 
 ! Output
@@ -81,10 +81,10 @@ real*8,allocatable :: gamma_d1(:,:),gamma_a1(:,:),gamma_d_ao(:,:),gamma_a_ao(:,:
 real*8,allocatable :: triangle_gamma_d_ao(:),triangle_gamma_a_ao(:)
 real*8,allocatable :: Mmg(:,:),Mmd(:,:)
 real*8,allocatable :: SxDSy(:,:),SxASy(:,:),Uvec(:,:)
-real*8 :: trD,trA,trDZ,trAZ,phiSLA,chimLA,chipLA,phiLA,psiLA,theta,theta0,thetaZ,alter_thetaZ
-real*8 :: pi,phiSLA0,phiLA0
+real*8 :: trD,trA,trDZ,trAZ,phiSPA,chimPA,chipPA,phiPA,psiPA,theta,theta0,thetaZ,alter_thetaZ
+real*8 :: pi,phiSPA0,phiPA0
 !!!Gabriel Breuil 12-04-2019
-real*8 :: phiSLAnew0,phiLAnew0
+real*8 :: phiSPAnew0,phiPAnew0
 !!!End Gabriel Breuil
 real*8 :: phiSdagger,phidagger,psidagger
 real*8,allocatable :: fd(:),fa(:),fdta(:),famd(:),famdp(:),famdm(:)
@@ -127,21 +127,21 @@ real*8,allocatable :: OdaggerSO(:,:),VdaggerSV(:,:)
 real*8,allocatable :: gD_ao(:,:),T_ao(:,:),zvec_ao(:,:)
 real*8,allocatable :: triangle_gD_ao(:),triangle_T_ao(:),triangle_zvec_ao(:)
 
-! Relaxed metrics (rlxy_LA)
+! Relaxed descriptors (rlxy_PA)
 
 
 real*8 :: thetaUalpha, thetaUbeta
-real*8 :: phiSLAUalpha, phiSLAUbeta
-real*8 :: phiLAUalpha, phiLAUbeta
+real*8 :: phiSPAUalpha, phiSPAUbeta
+real*8 :: phiPAUalpha, phiPAUbeta
 real*8 :: thetaZalpha, thetaZbeta
 
-real*8 :: phiSLAU,phiLAU,psiLAU,thetaU,phiSLAdagger,phiLAdagger,psiLAdagger
-real*8 :: phiSLAdaggeralpha, phiSLAdaggerbeta
-real*8 :: phiLAdaggeralpha, phiLAdaggerbeta
-real*8 :: psiLAdaggeralpha, psiLAdaggerbeta
+real*8 :: phiSPAU,phiPAU,psiPAU,thetaU,phiSPAdagger,phiPAdagger,psiPAdagger
+real*8 :: phiSPAdaggeralpha, phiSPAdaggerbeta
+real*8 :: phiPAdaggeralpha, phiPAdaggerbeta
+real*8 :: psiPAdaggeralpha, psiPAdaggerbeta
 
 !!!Gabriel Breuil 11-04-2019
-real*8 :: phiSLAnewdagger,phiLAnewdagger,psiLAnewdagger,zcoef
+real*8 :: phiSPAnewdagger,phiPAnewdagger,psiPAnewdagger,zcoef
 !!!End Gabriel Breuil 11-04-2019
 
 

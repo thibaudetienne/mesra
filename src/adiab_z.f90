@@ -24,7 +24,7 @@ use declare
 
 if (countunr .eq. 1) then
 open(10,file='adiabZalpha.log',form='formatted')
-write(10,*) '# xi, Trace of ZZdagger, ThetaZ, phiSLA(Lowdin), phiSLAdagger, phiLA(Lowdin), phiLAdagger, psiLA(Lowdin), psiLAdagger'
+write(10,*) '# xi, Trace of ZZdagger, ThetaZ, phiSPA(Lowdin), phiSPAdagger, phiPA(Lowdin), phiPAdagger, psiPA(Lowdin), psiPAdagger'
 write(10,*)
 open(11,file='acVec_Zbeta.log',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
@@ -33,7 +33,7 @@ endif
 
 if (countunr .eq. 2) then
 open(10,file='adiabZbeta.log',form='formatted')
-write(10,*) '# xi, Trace of ZZdagger, ThetaZ, phiSLA(Lowdin), phiSLAdagger, phiLA(Lowdin), phiLAdagger, psiLA(Lowdin), psiLAdagger'
+write(10,*) '# xi, Trace of ZZdagger, ThetaZ, phiSPA(Lowdin), phiSPAdagger, phiPA(Lowdin), phiPAdagger, psiPA(Lowdin), psiPAdagger'
 write(10,*)
 open(11,file='acVec_Zbeta.log',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
@@ -42,8 +42,8 @@ endif
 
 if (countunr .eq. 3) then
 open(10,file='adiabZ.log',form='formatted')
-write(10,*) '# xi, Trace of ZZdagger, ThetaZ, phiSLA(Lowdin), phiSLAdagger, phiSLAnewdagger, phiLA(Lowdin), &
-               & phiLAdagger, phiLAnewdagger, psiLA(Lowdin), psiLAdagger, psiLAnewdagger'
+write(10,*) '# xi, Trace of ZZdagger, ThetaZ, phiSPA(Lowdin), phiSPAdagger, phiSPAnewdagger, phiPA(Lowdin), &
+               & phiPAdagger, phiPAnewdagger, psiPA(Lowdin), psiPAdagger, psiPAnewdagger'
 write(10,*)
 open(11,file='acVec_Z.log',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
@@ -58,7 +58,7 @@ allocate(Uvec(norb,norb))
 allocate(gD(norb,norb))
 allocate(lvec(norb))
 
-LA = .true.
+PA = .true.
 
 xi = 0.0d0
 
@@ -93,14 +93,14 @@ if (countunr .eq. 1) call det_at(gD,'adiabAlpha',norb,Uvec,lvec)
 if (countunr .eq. 2) call det_at(gD,'adiabBeta',norb,Uvec,lvec)
 if (countunr .eq. 3) call det_at(gD,'adiab',norb,Uvec,lvec)
 
-if (iteration .eq. 0) phiSLA0 = phiSLA
-if (iteration .eq. 0) phiLA0 = phiLA
+if (iteration .eq. 0) phiSPA0 = phiSPA
+if (iteration .eq. 0) phiPA0 = phiPA
 if (iteration .eq. 0) theta0 = theta
 if (iteration .eq. 0) U0 = Uvec
 !!!Gabriel Breuil 12-04-2019
 if (iteration .eq. 0) then
-phiSLAnew0=phiSLA0+(1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
-phiLAnew0=phiLA0+(1-phiLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+phiSPAnew0=phiSPA0+(1-phiSPA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+phiPAnew0=phiPA0+(1-phiPA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
 endif
 !!!End Gabriel Breuil
 
@@ -111,16 +111,16 @@ do i=1,norb
 write(11,'(f10.2,i8,f12.8)') xi,i,dabs(U0tU(i,i))
 enddo
 
-t_LA = .false.
-t_scanLA = .false.
-if (LA) t_LA = .true.
-if (scanLA) t_scanLA = .true.
+t_PA = .false.
+t_scanPA = .false.
+if (PA) t_PA = .true.
+if (scanPA) t_scanPA = .true.
 
-LA = .false.
-scanLA = .false.
+PA = .false.
+scanPA = .false.
 call det_at(zvecxi,'adiab',norb,Uvec,lvec)
-if (t_LA) LA = .true.
-if (t_scanLA) scanLA = .true.
+if (t_PA) PA = .true.
+if (t_scanPA) scanPA = .true.
 
 trDZ = 0.0d0
 trAZ = 0.0d0
@@ -136,21 +136,21 @@ thetaZ = 0.5d0*(trDZ + trAZ)
 pi = dacos(-1.0d0)
 
 !write(6,*) 'thetaZ ',thetaZ
-phiSLAdagger =  phiSLA0 + (1-phiSLA0)*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
-phiLAdagger =  phiLA0 - phiLA0*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
-psiLAdagger = 2.0d0*datan(phiSLAdagger/phiLAdagger)/(pi)
+phiSPAdagger =  phiSPA0 + (1-phiSPA0)*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
+phiPAdagger =  phiPA0 - phiPA0*((thetaZ/(theta0+thetaZ))**(1+thetaZ))
+psiPAdagger = 2.0d0*datan(phiSPAdagger/phiPAdagger)/(pi)
 !!!Gabriel Breuil 12-04-2019
-phiSLAnewdagger=phiSLAnew0+(1-phiSLAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
-phiLAnewdagger=phiLAnew0+(1-phiLAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
-psiLAnewdagger=2.0d0*datan(phiSLAnewdagger/phiLAnewdagger)/(pi)
+phiSPAnewdagger=phiSPAnew0+(1-phiSPAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+phiPAnewdagger=phiPAnew0+(1-phiPAnew0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+psiPAnewdagger=2.0d0*datan(phiSPAnewdagger/phiPAnewdagger)/(pi)
 
 
-!write(6,*) 'alter_phiSdagger', phiSLA0 + (1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
-!phiSdagger =  phiSLA0 + (1-phiSLA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
-!write(6,*) 'alter_phiSdagger', phiSLA0 + (1-phiSLA0)*alter_thetaZ/thetaZ
+!write(6,*) 'alter_phiSdagger', phiSPA0 + (1-phiSPA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+!phiSdagger =  phiSPA0 + (1-phiSPA0)*((alter_thetaZ/(theta0+alter_thetaZ))**(1+alter_thetaZ))
+!write(6,*) 'alter_phiSdagger', phiSPA0 + (1-phiSPA0)*alter_thetaZ/thetaZ
 
-write(10,'(f10.2,11f10.4)') xi, alter_thetaZ,thetaZ,phiSLA,phiSLAdagger,phiSLAnewdagger,phiLA,&
-        & phiLAdagger,phiLAnewdagger,psiLA,psiLAdagger,psiLAnewdagger
+write(10,'(f10.2,11f10.4)') xi, alter_thetaZ,thetaZ,phiSPA,phiSPAdagger,phiSPAnewdagger,phiPA,&
+        & phiPAdagger,phiPAnewdagger,psiPA,psiPAdagger,psiPAnewdagger
 !!!End Gabriel Breuil
 enddo
 

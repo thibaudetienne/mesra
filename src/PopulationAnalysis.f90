@@ -18,19 +18,19 @@
 ! Free Software Foundation, Inc. 
 ! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-subroutine LinearAlgebra(matrix_d,matrix_a,LA_x)
+subroutine PopulationAnalysis(matrix_d,matrix_a,PA_x)
 
 ! D/A population analysis
 
 use declare
 
-real*8 :: LA_x,LA_y
+real*8 :: PA_x,PA_y
 real*8 :: matrix_d(nbs,nbs), matrix_a(nbs,nbs)
 
 ! If the "scanpa" option has been selected in the input,
 ! scans the x and y exponents in S^x P S^y (with P = D,A)
 
- if (scanLA) then
+ if (scanPA) then
 
 ! Defines the x and y exponents as decimal numbers
 
@@ -40,12 +40,12 @@ real*8 :: matrix_d(nbs,nbs), matrix_a(nbs,nbs)
    write(50,*)
    write(50,'(a11,f5.2)') 'x value: ', iteration*0.01d0
    write(50,*)
-   LA_x = iteration*0.01d0
-   LA_y = 1.0d0 - LA_x 
+   PA_x = iteration*0.01d0
+   PA_y = 1.0d0 - PA_x 
 
 ! Calls the population analysis subroutine
 
-   call LA_analysis(matrix_d,matrix_a,LA_x,LA_y)
+   call PA_analysis(matrix_d,matrix_a,PA_x,PA_y)
 
   enddo
 
@@ -55,12 +55,12 @@ real*8 :: matrix_d(nbs,nbs), matrix_a(nbs,nbs)
 ! population analysis is performed with the x and y exponents given
 ! in the input (actually, only x is given, since y = 1 - x)
 
-  LA_x = LA_x*0.01d0
-  LA_y = 1.0d0 - LA_x
+  PA_x = PA_x*0.01d0
+  PA_y = 1.0d0 - PA_x
 
 ! Calls the population analysis subroutine
 
-  call LA_analysis(matrix_d,matrix_a,LA_x,LA_y)
+  call PA_analysis(matrix_d,matrix_a,PA_x,PA_y)
 
  endif
 

@@ -361,7 +361,7 @@ if [ $# -lt 2 ] ; then
  exit
 fi
 
-launch_proc rlxy_LA $2 $3
+launch_proc rlxy_PA $2 $3
 
 grep 'Error' mesra.err && echo 'Exit' && exit
 rm mesra.err
@@ -384,7 +384,7 @@ rm header_fchk &> /dev/null
 mv daU.eig mesra-t$2 &> /dev/null
 mv daZ.eig mesra-t$2 &> /dev/null
 mv *.orth mesra-t$2 &> /dev/null &> /dev/null
-mv mesra-Job-rlxy_LA.log mesra-t$2/rlxyPA.log &> /dev/null
+mv mesra-Job-rlxy_PA.log mesra-t$2/rlxyPA.log &> /dev/null
 
 elif [ $1 = 'alphaddagger' ] ; then
 

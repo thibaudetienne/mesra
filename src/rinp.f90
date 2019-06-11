@@ -39,7 +39,7 @@ read(10,*) jobtype
 
 if (jobtype(1:2) .eq. 'da') then
 call rgen_info
-call rLA_status
+call rPA_status
 
 ! "adiabz" = adiabatic connection of the Z-vector to the difference density matrix.
 
@@ -47,7 +47,7 @@ else if (jobtype .eq. 'adiabZ') then
 
 adiab = .true.
 call rgen_info
-call rLA_status
+call rPA_status
 
 ! "orbsXY" = transition orbitals, computed from a XY-type method.
 ! Those methods include: CIS, TDA and RPA, TDHF, TDDFT, BSE. They have the particularity to have a
@@ -57,7 +57,7 @@ else if (jobtype .eq. 'orbsXY' .or. jobtype .eq. 'pNTOs' .or. jobtype .eq. 'CTOs
 jobtype .eq. 'aNTOs') then
 
 call rgen_info
-call rLA_status
+call rPA_status
 
 ! "daXY" = detachment/attachment, computed from a XY-type method.
 ! Those methods include: CIS, TDA and RPA, TDHF, TDDFT, BSE. They have the particularity to have a
@@ -66,19 +66,19 @@ call rLA_status
 else if (jobtype .eq. 'daXY') then
 
 call rgen_info
-call rLA_status
+call rPA_status
 
-! "rlxy_LA" = relaxation-adapted descriptors, computed with a population analysis only,
+! "rlxy_PA" = relaxation-adapted descriptors, computed with a population analysis only,
 ! and from a XY-type method.
 ! Those methods include: CIS, TDA and RPA, TDHF, TDDFT, BSE. They have the particularity to have a
 ! block-diagonal difference density matrix.
 
-else if (jobtype .eq. 'rlxy_LA') then
+else if (jobtype .eq. 'rlxy_PA') then
 
 call rgen_info
-call rLA_status
+call rPA_status
 
-! "qm_NI" Computates the topological descriptors by Numerical Integration (NI). The grids are read from cube files.
+! "qm_NI" Computes the density-based descriptors by Numerical Integration (NI). The grids are read from cube files.
 
 else if (jobtype .eq. 'qm_NI') then
 
@@ -106,10 +106,10 @@ read(10,*) op2
 else if (jobtype .eq. 'alphaddagger') then
 
 call rgen_info
-call rLA_status
+call rPA_status
 call rdaggerf
 
-! "qmnidagger" Computes the relaxed quantum-topological metrics, based on calculations already performed previously.
+! "qmnidagger" Computes the relaxed density-based descriptors, based on calculations already performed previously.
 
 else if (jobtype .eq. 'qmnidagger') then
 

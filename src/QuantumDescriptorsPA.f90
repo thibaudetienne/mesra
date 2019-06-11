@@ -18,9 +18,9 @@
 ! Free Software Foundation, Inc. 
 ! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-subroutine QuantumMetricsLA(d_xy,a_xy)
+subroutine QuantumDescriptorsPA(d_xy,a_xy)
 
-! Computes the topological metrics from a linear algebraic analysis of the detachment/attachment
+! Computes the density-based descriptors from a population analysis of the detachment/attachment
 ! through population analysis of (S^x)P(S^y) (P = D,A), written d_xy and a_xy
 
 use declare
@@ -42,11 +42,11 @@ fdta = 0.0d0
 famd = 0.0d0
 famdm = 0.0d0
 famdp = 0.0d0
-chimLA = 0.0d0
-chipLA = 0.0d0
-phiSLA = 0.0d0
-phiLA = 0.0d0
-psiLA = 0.0d0
+chimPA = 0.0d0
+chipPA = 0.0d0
+phiSPA = 0.0d0
+phiPA = 0.0d0
+psiPA = 0.0d0
 theta = 0.0d0
 pi = 0.0d0
 trD = 0.0d0
@@ -76,7 +76,7 @@ do i=1,nbs
  fd(i) = d_xy(i,i)
  fa(i) = a_xy(i,i)
  fdta(i) = fd(i)*fa(i)
- if (fd(i) .gt. 0.0d0 .and. fa(i) .gt. 0.0d0) phiSLA = phiSLA + (dsqrt(fdta(i)))/theta
+ if (fd(i) .gt. 0.0d0 .and. fa(i) .gt. 0.0d0) phiSPA = phiSPA + (dsqrt(fdta(i)))/theta
  if (fd(i) .lt. 0.0d0 .or. fa(i) .lt. 0.0d0) then
   fd(i) = 0.0d0
   fa(i) = 0.0d0
@@ -87,59 +87,59 @@ do i=1,nbs
  else
   famdp(i) = famd(i)
  endif
- chimLA = chimLA + famdm(i)
- chipLA = chipLA + famdp(i)
+ chimPA = chimPA + famdm(i)
+ chipPA = chipPA + famdp(i)
 enddo
 
-! The phi metric is approximated.
+! The phi descriptor is approximated.
 
-phiLA = 0.5d0*(chimLA + chipLA)/theta
+phiPA = 0.5d0*(chimPA + chipPA)/theta
 
 pi = dacos(-1.0d0)
 
-! The psiLA metric is approximated.
+! The psi descriptor is approximated.
 
-psiLA = 2.0d0*(datan(phiSLA/phiLA))/(pi)
+psiPA = 2.0d0*(datan(phiSPA/phiPA))/(pi)
 
 if (adiab) then
  continue
 else
 
-! The quantum metrics evaluated from the D/A population analysis are then printed.
+! The density-based descriptors evaluated from the D/A population analysis are then printed.
 
 write(6,*)
 write(50,*)
 
 write(6,*) 'Integral of detachment/attachment density'
 write(6,'(f11.4)') theta
-write(6,*) 'Hole/particle overlap (phiS, from linear algebra)'
-write(6,'(f11.4)') phiSLA
-write(6,*) 'Effectively displaced charge (phi, from linear algebra)'
-write(6,'(f11.4)') phiLA
-write(6,*) 'psi metric (from linear algebra)'
-write(6,'(f11.4)') psiLA
+write(6,*) 'Hole/particle overlap (phiS, from population analysis)'
+write(6,'(f11.4)') phiSPA
+write(6,*) 'Fraction of D/A contributing to the net displaced charge (phi, from population analysis)'
+write(6,'(f11.4)') phiPA
+write(6,*) 'psi (from population analysis)'
+write(6,'(f11.4)') psiPA
 write(50,*) 'Integral of detachment/attachment density'
 write(50,'(f11.4)') theta
-write(50,*) 'Hole/particle overlap (phiS, from linear algebra)'
-write(50,'(f11.4)') phiSLA
-write(50,*) 'Effectively displaced charge (phi, from linear algebra)'
-write(50,'(f11.4)') phiLA
-write(50,*) 'psi metric (from linear algebra)'
-write(50,'(f11.4)') psiLA
+write(50,*) 'Hole/particle overlap (phiS, from population analysis)'
+write(50,'(f11.4)') phiSPA
+write(50,*) 'Fraction of D/A contributing to the net displaced charge (phi, from population analysis)'
+write(50,'(f11.4)') phiPA
+write(50,*) 'psi (from population analysis)'
+write(50,'(f11.4)') psiPA
 write(6,*)
 write(50,*)
 endif
 
-if (jobtype == 'rlxy_LA') then
+if (jobtype == 'rlxy_PA') then
  if (unr) then
   if (countunr .eq. 1) then
    thetaUalpha = theta
-   phisLAUalpha = phiSLA
-   phiLAUalpha = phiLA
+   phisPAUalpha = phiSPA
+   phiPAUalpha = phiPA
   else if (countunr .eq. 2) then
    thetaUbeta = theta
-   phisLAUbeta = phiSLA
-   phiLAUbeta = phiLA
+   phisPAUbeta = phiSPA
+   phiPAUbeta = phiPA
   endif
  endif
 endif

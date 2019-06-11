@@ -18,30 +18,30 @@
 ! Free Software Foundation, Inc. 
 ! 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-subroutine LA_analysis(matrix_dLA,matrix_aLA,x_PA,y_PA)
+subroutine rPA_status
 
-! Performs the actual D/A population analysis.
+! Reads the status to be decided relatively to the population analysis to perform.
 
 use declare
 
-real*8 :: x_PA,y_PA
-real*8 :: matrix_dLA(nbs,nbs),matrix_aLA(nbs,nbs)
+! Reads the status from the input.
 
-! Allocates the (S^x)P(S^y) arrays (P = D,A) 
+read(10,*) PA_status
 
-allocate(SxDSy(nbs,nbs))
-allocate(SxASy(nbs,nbs))
+! PA = population analysis => which exponents (x)?
+! noPA = no population analysis;
+! scan = a scan of the x exponents from 0 to 1.
 
-! Creates S^x, S^y and (S^x)P(S^y) (P = D,A).
-
-call LA_mat(matrix_dLA,matrix_aLA,SxDSy,SxASy,x_PA,y_PA)
-
-! Computes the descriptors from (S^x)P(S^y) (P = D,A).
-
-call QuantumMetricsLA(SxDSy,SxASy)
-
-! Deallocates the (S^x)P(S^y) matrices (P = D,A).
-
-deallocate(SxDSy,SxASy)
+ if (PA_status .eq. 'PA') then
+  PA = .true.
+  scanPA = .false.
+  read(10,*) xPA
+ else if (PA_status .eq. 'noPA') then
+  PA = .false.
+  scanPA = .false.
+ else if (PA_status .eq. 'scan') then
+  PA = .true.
+  scanPA = .true.
+ endif
 
 end

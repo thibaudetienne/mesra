@@ -102,8 +102,8 @@ endif
 
 ! D/A population analysis, if requested.
 
-LinearX = xLA
-if (LA) call LinearAlgebra(gamma_d_ao,gamma_a_ao,LinearX)
+PopX = xPA
+if (PA) call PopulationAnalysis(gamma_d_ao,gamma_a_ao,PopX)
 
 ! Deallocation of the arrays.
 

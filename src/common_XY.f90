@@ -32,7 +32,7 @@ if (unr) then
   allocate(ttdagger(norb,norb))
   allocate(ttrsp(norb,norb))
  else if (countunr .eq. 2) then
-  if (jobtype == 'daXY' .or. jobtype == 'rlxy_LA') then
+  if (jobtype == 'daXY' .or. jobtype == 'rlxy_PA') then
    continue
   else
    allocate(t(norb,norb))

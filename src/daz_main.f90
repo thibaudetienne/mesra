@@ -52,10 +52,10 @@ if (countunr .eq. 1) call det_at(zvec,'Zalpha',norb,Uvec,lvec)
 if (countunr .eq. 2) call det_at(zvec,'Zbeta',norb,Uvec,lvec)
 if (countunr .eq. 3) call det_at(zvec,'Z',norb,Uvec,lvec)
 
-! In case the linear-algebraic derivation of the relaxed quantum metrics
+! In case the population analysis-based derivation of the relaxed density-based descriptors
 ! was required, computes the theta_Z factor.
 
-if (subjobtype .eq. 'rlxy_LA') then
+if (subjobtype .eq. 'rlxy_PA') then
  x = 0.0d0
  y = 0.0d0
  do i=1,norb

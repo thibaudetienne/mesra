@@ -20,7 +20,7 @@
 
 subroutine qm_NI
 
-! Computation of the quantum-topological descriptors from the numerical integration
+! Computation of the density-based descriptors from the numerical integration
 ! of detachment/attachment density functions on a grid of points.
 
 use declare

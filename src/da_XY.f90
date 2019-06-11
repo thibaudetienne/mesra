@@ -96,9 +96,9 @@ call print_mat_mo_to_ao_fchk(gamma_d_XY,'detachment_XY.fchk')
 call print_mat_mo_to_ao_fchk(gamma_a_XY,'attachment_XY.fchk')
 endif
 
-! Computes the descriptors from population analysis (LA = Linear Algebra), if requested.
+! Computes the descriptors from population analysis (PA = Population Analysis), if requested.
 
-if (LA) then
+if (PA) then
 
  allocate(gamma_d_XY_ao(nbs,nbs))
  allocate(gamma_a_XY_ao(nbs,nbs))
@@ -111,11 +111,11 @@ if (LA) then
  call mo_to_ao(gamma_d_XY,gamma_d_XY_ao)
  call mo_to_ao(gamma_a_XY,gamma_a_XY_ao)
 
-! xLA is the x exponent in the generalized population analysis.
+! xPA is the x exponent in the generalized population analysis.
 
- LinearX = xLA
+ PopX = xPA
  
- call LinearAlgebra(gamma_d_XY_ao,gamma_a_XY_ao,LinearX)
+ call PopulationAnalysis(gamma_d_XY_ao,gamma_a_XY_ao,PopX)
 
  deallocate(gamma_d_XY_ao,gamma_a_XY_ao)
 
