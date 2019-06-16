@@ -92,11 +92,9 @@ else
 
 ! Prints the largest eigenvalues.
 
+write(6,*) 'Largest eigenvalues (> 0.1, if any)'
 write(6,*)
-write(6,*) 'Largest eigenvalues (> 0.1)'
-write(6,*)
-write(50,*)
-write(50,*) 'Largest eigenvalues (> 0.1)'
+write(50,*) 'Largest eigenvalues (> 0.1, if any)'
 write(50,*)
 
 j = 0
@@ -113,11 +111,14 @@ do i=1,matrix_dimension
   write(50,'(A6,f9.5)') 'eig- ',m(i)
  endif
 enddo
+  write(6,*)
   write(50,*)
 
 if (j .eq. 0) then
  write(6,*) 'No eigenvalue superior to 0.1'
  write(50,*) 'No eigenvalue superior to 0.1'
+  write(6,*)
+  write(50,*)
 endif
 
 endif

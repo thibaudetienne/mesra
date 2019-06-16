@@ -42,14 +42,28 @@ fi
 
 if [ $1 = 'prep'  ] ; then
 
-if [ $# -lt 4 ] ; then
- echo "The mesra software with the prep keyword requires at least four arguments"
+if [ $# -lt 3 ] ; then
+ echo "The mesra software with the prep keyword requires at least three arguments"
  echo "Type mesra_man for more information" 
  echo "Exit"
  exit
 fi
 
+if [ $2 = 'g16' ] ; then
+
+launch_prep prep $2 $3
+
+elif [ $2 = 'g03' -o $2 = 'g09' -o $2 = 'qp' ] ; then
+
 launch_prep prep $2 $3 $4
+
+else
+
+echo "Only g03, g09, g16, and qp softwares are supported"
+echo "Exit"
+exit
+
+fi
 
 grep 'Error' mesra.err && echo 'Exit' && exit
 rm mesra.err
@@ -585,7 +599,7 @@ fi
 
 else
 
- echo "Accepted jobtype arguments are prep, dau, daz, dar, daxy, adiabz, pntos, ctos, orbsxy,rlxypa,"
+ echo "Accepted jobtype arguments are prep, dau, daz, dar, daxy, adiabz, pntos, antos, ctos, orbsxy,rlxypa,"
  echo "qmni, qmniu, qmnixy, qmniz, qmnir, split, cubeop, increase_cube_size, qmnidagger, and alphaddagger."
  echo 'Exit'
 

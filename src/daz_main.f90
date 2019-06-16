@@ -31,15 +31,17 @@ if (countunr .eq. 1) call trace_mat(zvec,'zvecAlpha',norb)
 if (countunr .eq. 2) call trace_mat(zvec,'zvecBeta',norb)
 if (countunr .eq. 3) call trace_mat(zvec,'zvec',norb)
 
-! Computes the Z(Z^dagger) \oplus (Z^dagger) \oplus Z matrix (Hereafter named zzd_zdz).
+! Computes the Z(Z^dagger) \oplus (Z^dagger)Z matrix (Hereafter named zzd_zdz).
 
 zzd_zdz = matmul(zvec,zvec)
 
-! Computes the trace of zzd_zdz.
+zzd_zdz = 0.5d0*zzd_zdz
 
-if (countunr .eq. 1) call trace_mat(zzd_zdz,'zzd_zdzAlpha',norb)
-if (countunr .eq. 2) call trace_mat(zzd_zdz,'zzd_zdzBeta',norb)
-if (countunr .eq. 3) call trace_mat(zzd_zdz,'zzd_zdz',norb)
+! Computes the trace of Z(Z^dagger).
+
+if (countunr .eq. 1) call trace_mat(zzd_zdz,'Z(Z^dagger) Alpha',norb)
+if (countunr .eq. 2) call trace_mat(zzd_zdz,'Z(Z^dagger) Beta',norb)
+if (countunr .eq. 3) call trace_mat(zzd_zdz,'Z(Z^dagger)',norb)
 
 ! Allocates the eigenvectors matrix, and the eigenvalues array.
 
@@ -51,31 +53,6 @@ allocate(lvec(norb))
 if (countunr .eq. 1) call det_at(zvec,'Zalpha',norb,Uvec,lvec)
 if (countunr .eq. 2) call det_at(zvec,'Zbeta',norb,Uvec,lvec)
 if (countunr .eq. 3) call det_at(zvec,'Z',norb,Uvec,lvec)
-
-! In case the population analysis-based derivation of the relaxed density-based descriptors
-! was required, computes the theta_Z factor.
-
-if (subjobtype .eq. 'rlxy_PA') then
- x = 0.0d0
- y = 0.0d0
- do i=1,norb
-  if (lvec(i) .lt. 0.0d0) x = x - lvec(i)
-  if (lvec(i) .gt. 0.0d0) y = y + lvec(i)
- enddo
- thetaZ = 0.5d0*(x+y)
-
-write(6,*)
-write(50,*)
-write(6,*) 'Integral of relaxation-related detachment/attachment density'
-write(6,'(f13.4)') thetaZ
-write(50,*) 'Integral of relaxation-related detachment/attachment density'
-write(50,'(f13.5)') thetaZ
-
-if (countunr .eq. 1)  write(6,*) 
-if (countunr .eq. 1)  write(50,*) 
-if (countunr .eq. 1) thetaZalpha = thetaZ
-if (countunr .eq. 2) thetaZbeta = thetaZ
-endif
 
 ! Deallocates the allocated arrays.
 

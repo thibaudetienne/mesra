@@ -25,10 +25,30 @@
 
 soft=`echo $2`
 
-if [ $soft = 'g03' -o $soft = 'g09' -o $soft = 'g16' ] ; then
+if [ $soft = 'g16' ] ; then
+
+name=`basename $3 .fchk`
+ntr=`ns_reader $3`
+
+elif [ $soft = 'g03' -o $soft = 'g09' ] ; then
  
 name=`basename $3 .fchk`
 ntr=`echo $4`
+
+
+elif [ $soft = 'qp' ] ; then
+
+ :
+
+else
+
+ echo 'Only g03, g09, g16 and qp softwares are supported'
+ echo 'Exit'
+ exit
+
+fi
+
+if [ $soft = 'g03' -o $soft = 'g09' -o $soft = 'g16' ] ; then
 
  ls $3 &> /dev/null
 
@@ -65,16 +85,6 @@ ntr=`echo $4`
   echo 'Exit'
   exit
  fi
-
-elif [ $soft = 'qp' ] ; then
-
- :
-
-else
-
- echo 'Only g03, g09, g16 and qp softwares are supported'
- echo 'Exit'
- exit
 
 fi
 

@@ -63,6 +63,8 @@ if (unr) then
 
 write(6,*) '# Part A - Alpha orbitals'
 write(6,*)
+write(50,*) '# Part A - Alpha orbitals'
+write(50,*)
 
 endif
 
@@ -100,6 +102,9 @@ write(6,*)
 write(6,*)
 write(6,*) '# Part B - Beta orbitals'
 write(6,*)
+write(50,*)
+write(50,*) '# Part B - Beta orbitals'
+write(50,*)
 
  nel = neb
  tK = tKb 

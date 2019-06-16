@@ -60,6 +60,12 @@ write(6,*) 'singular values, it is reported below'
 write(6,*)
 write(6,*) 'Singular value, squared singular value, and percentage of its contribution'
 write(6,*)
+write(50,*) 'If the square of a singular value contributes'
+write(50,*) 'by more than ten percent to the sum of squared' 
+write(50,*) 'singular values, it is reported below'
+write(50,*)
+write(50,*) 'Singular value, squared singular value, and percentage of its contribution'
+write(50,*)
 
 j = 0
 
@@ -68,6 +74,7 @@ lambda_percent = (lambda(i)**2.0d0)/lambda_lambdadagger_trace
 if (lambda_percent .gt. 0.1d0) then
 j = j + 1
 write(6,'(2f12.5,f12.1)') lambda(i),lambda(i)**2.0d0,lambda_percent*100.0d0
+write(50,'(2f12.5,f12.1)') lambda(i),lambda(i)**2.0d0,lambda_percent*100.0d0
 endif
 enddo
 
@@ -75,6 +82,7 @@ if (j .eq. 0) then
  write(6,*) 'There is no singular value superior to 0.1'
  write(50,*) 'There is no singular value superior to 0.1'
 endif
+write(50,*)
 
 ! test the SVD
 

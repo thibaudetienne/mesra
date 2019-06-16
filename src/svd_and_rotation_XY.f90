@@ -54,9 +54,16 @@ if (jobtype .eq. 'pNTOs' .or. jobtype .eq. 'orbsXY') then
  write(6,*)
  write(6,*) '# pNTOs computation'
  write(6,*)
+ write(50,*)
+ write(50,*) '# pNTOs computation'
+ write(50,*)
  if (0.5d0*(xy_norm-1.0d0) .ge. 0.0d0) then
   write(6,*) 'Amplitude of the particle-hole correlation'
   write(6,'(f12.5)') 0.5d0*(xy_norm-1.0d0)
+  write(6,*)
+  write(50,*) 'Amplitude of the particle-hole correlation'
+  write(50,'(f12.5)') 0.5d0*(xy_norm-1.0d0)
+  write(50,*)
  endif
 
 ! mat_to_svd is a key array that allows to use the launch_svd_and_rotate subroutine
@@ -71,8 +78,8 @@ if (jobtype .eq. 'pNTOs' .or. jobtype .eq. 'orbsXY') then
 
 ! Checks the orthonormality conservation.
 
- call orth(rotated_O_lcao,'pNTOsO',nbs,nel)
- call orth(rotated_V_lcao,'pNTOsV',nbs,norb-nel)
+! call orth(rotated_O_lcao,'pNTOsO',nbs,nel)
+! call orth(rotated_V_lcao,'pNTOsV',nbs,norb-nel)
 
 ! Uses the appropriate subroutine for writing the fchk files. For closed-shell molecules,
 ! the orbitals to be output are usually the alpha orbitals (arbitrarily).
@@ -96,13 +103,16 @@ if (jobtype .eq. 'CTOs' .or. jobtype .eq. 'orbsXY') then
  write(6,*)
  write(6,*) '# CTOs computation'
  write(6,*)
+ write(50,*)
+ write(50,*) '# CTOs computation'
+ write(50,*)
 
  mat_to_svd = t_2
  orbs_filename = 'CTOs'
 
  call launch_svd_and_rotate
- call orth(rotated_O_lcao,'CTOsO',nbs,nel)
- call orth(rotated_V_lcao,'CTOsV',nbs,norb-nel)
+! call orth(rotated_O_lcao,'CTOsO',nbs,nel)
+! call orth(rotated_V_lcao,'CTOsV',nbs,norb-nel)
 
  if (unr) then
   if (countunr .eq. 1) then
@@ -123,13 +133,16 @@ if (jobtype .eq. 'aNTOs' .or. jobtype .eq. 'orbsXY') then
  write(6,*)
  write(6,*) '# aNTOs computation'
  write(6,*)
+ write(50,*)
+ write(50,*) '# aNTOs computation'
+ write(50,*)
 
  mat_to_svd = t_3
  orbs_filename = 'aNTOs'
 
  call launch_svd_and_rotate
- call orth(rotated_O_lcao,'aNTOsO',nbs,nel)
- call orth(rotated_V_lcao,'aNTOsV',nbs,norb-nel)
+! call orth(rotated_O_lcao,'aNTOsO',nbs,nel)
+! call orth(rotated_V_lcao,'aNTOsV',nbs,norb-nel)
 
  if (unr) then
   if (countunr .eq. 1) then

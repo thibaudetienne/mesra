@@ -113,14 +113,14 @@ call rdaggerf
 
 else if (jobtype .eq. 'qmnidagger') then
 
-read(10,*) theta_z
 read(10,*) theta_unrelaxed
 read(10,*) phiS_unrelaxed
 read(10,*) phi_unrelaxed
 read(10,*) eta
-!!!Gabriel Breuil 12-04-2019
+! Implemented by GB
 read(10,*) zcoef
-!!!End Gabriel Breuil
+write(6,*) eta, zcoef, 'oui'
+! Endo f GB implementation
 
 ! "incrcube" outputs the header to provide to the cubegen utility for getting cubes of increased size.
 

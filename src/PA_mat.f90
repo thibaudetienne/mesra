@@ -72,21 +72,8 @@ else
 ! Computes their trace.
 ! (x and y here have nothing to do with the x and y exponents used before. Here, they are simple real numbers.)
 
-call trace_mat(xy_d,'SxDSy',nbs)
-call trace_mat(xy_a,'SxASy',nbs)
-
-x = 0.0d0
-y = 0.0d0
-
-do i=1,nbs
- x = x + xy_d(i,i)
- y = y + xy_a(i,i)
-enddo
-
-write(50,*) 'Tr SxDSy'
-write(50,'(f12.5)') x
-write(50,*) 'Tr SxASy'
-write(50,'(f12.5)')  y
+call trace_mat(xy_d,'(S^x)DS^y',nbs)
+call trace_mat(xy_a,'(S^x)AS^y',nbs)
 
 endif
 

@@ -251,9 +251,6 @@ enddo
 write(50,*) 'Sum of S eigenvalues '
 write(50,'(f10.4)') sum1
 
-write(6,*)
-write(50,*)
-
 ! Though by definition S is positive definite, checks that no numerical issue was 
 ! encountered during the diagonalization by checking that eigenvalues are positive.
 ! Constructs S^x and S^y.

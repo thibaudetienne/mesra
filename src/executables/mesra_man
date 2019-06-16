@@ -22,18 +22,18 @@
 
 cat > manual_temporary << EOF
 
-! Every keyword except file names should be lower cased !
-! Optional keywords are indicated by their default value between square brackets !
+! Every keyword except file names should be lower cased
 
-! Post-processing of the Quantum Package are only for unrelaxed !
-! detachment/attachment (dau) calculations on closed-shell molecules !
+! Optional keywords are indicated by their default value between square brackets
+
+! Post-processing of the Quantum Package are only for unrelaxed detachment/attachment (dau) calculations on closed-shell molecules
 
 JobType: Preparation of the working folder
 
 Argument 1: prep
 Argument 2: Software (g03, g09, g16, qp)
-Argument 3: Fchk file name (if applicable)
-Argument 4: Total number of transitions computed
+Argument 3: Fchk file name (if applicable - Gaussian postprocessing)
+Argument 4: Total number of transitions computed (if Software is different from g16)
 
 JobType: Unrelaxed detachment/attachment density matrices for CIS, TDHF, TDA, TDDFT (XY methods)
 
@@ -51,8 +51,9 @@ JobType: Adiabatic connection of the Z-vector
 
 Argument 1: adiabz
 Argument 2: Number of the transition of interest
-Argument 3: [50] "nopa" (no population analysis), or any integer between 0 and 100 
+Argument 3: [50] any integer between 0 and 100 
 ! scanpa not authorized
+! nopa not authorized
 
 JobType: Transition orbitals for CIS, TDHF, TDA, TDDFT (XY methods)
 
@@ -61,8 +62,10 @@ Argument 2: Number of the transition of interest
 Argument 3: [50] "nopa" (no population analysis), "scanpa" or any integer between 0 and 100
 
 JobType: Computes the descriptors from a numerical integration
+! The cube files should be in the mesra-tx file
+! (x being the number of the transition of interest)
 
-Argument 1: qmni (qmniu, qmnixy, qmniz, qmnir)
+Argument 1: qmniu, qmnixy, qmniz, or qmnir
 Argument 2: Number of the transition of interest
 
 JobType: Computes alpha^ddagger integrals
@@ -80,13 +83,13 @@ Argument 3: [50] "scanpa", or any integer between 0 and 100
 ! nopa not authorized
 
 Jobtype: Relaxing the descriptors (numerical integration)
-! Requests the log from a qmni calculation in the mesra-tx directory
+! Requests the log from a qmni(u,xy) calculation in the mesra-tx directory
 ! (x being the number of the transition of interest)
 
 Argument 1: qmnidagger
 Argument 2: Number of the transition of interest
 
-### Direct use of cubes in their current directory
+### Direct use of cubes in any directory
 
 JobType: Splits the entries of a cube file according to their sign, and integrates
 

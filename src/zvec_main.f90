@@ -53,6 +53,29 @@ countunr = 1
 
 call common_dar_daz
 
+! Computes alpha zcoef (eta)
+
+allocate(newzzd_zdz(norb,norb))
+
+newzzd_zdz=matmul(zvec,zvec)
+zcoefalpha=0.0d0
+
+do i=1,norb
+ zcoefalpha=zcoefalpha+newzzd_zdz(i,i)
+enddo
+
+zcoefalpha=0.5d0*zcoefalpha
+
+write(6,*) 'Trace of alpha ZZ^dagger (eta)'
+write(6,'(f13.5)') zcoefalpha
+write(50,*) 'Trace of alpha ZZ^dagger (eta)'
+write(50,'(f13.5)') zcoefalpha
+
+if (jobtype == 'daz') write(6,*)
+if (jobtype == 'daz') write(50,*)
+
+deallocate(newzzd_zdz)
+
 if (jobtype == 'daz') call daz_main
 if (jobtype == 'dar') call no_adiab_z
 if (jobtype == 'adiabZ') call adiab_z
@@ -75,6 +98,26 @@ endif
  
  call common_dar_daz
 
+! Computes beta zcoef (eta)
+
+allocate(newzzd_zdz(norb,norb))
+
+newzzd_zdz=matmul(zvec,zvec)
+zcoefbeta=0.0d0
+
+do i=1,norb
+ zcoefbeta=zcoefbeta+newzzd_zdz(i,i)
+enddo
+
+zcoefbeta=0.5d0*zcoefbeta
+
+write(6,*) 'Trace of beta ZZ^dagger (eta)'
+write(6,'(f13.5)') zcoefbeta
+write(50,*) 'Trace of beta ZZ^dagger (eta)'
+write(50,'(f13.5)') zcoefbeta
+
+deallocate(newzzd_zdz)
+
 if (jobtype == 'daz') call daz_main
 if (jobtype == 'dar') call no_adiab_z
 if (jobtype == 'adiabZ') call adiab_z
@@ -87,7 +130,7 @@ countunr = 3
 
 call common_dar_daz
 
-!!!Gabriel Breuil 11/12-04-2019
+! Implemented by GB
 
 allocate(newzzd_zdz(norb,norb))
 
@@ -100,16 +143,14 @@ enddo
 
 zcoef=0.5d0*zcoef
 
-write(6,*)
-write(50,*)
-write(6,*) 'Integral of ZZ^dagger'
+write(6,*) 'Trace of ZZ^dagger (eta)'
 write(6,'(f13.5)') zcoef
-write(50,*) 'Integral of ZZ^dagger'
+write(50,*) 'Trace of ZZ^dagger (eta)'
 write(50,'(f13.5)') zcoef
 
 deallocate(newzzd_zdz)
 
-!!! END Gabriel Breuil 11-04-2019
+! END of GB implementation
 
 if (jobtype == 'daz') call daz_main
 if (jobtype == 'dar') call no_adiab_z

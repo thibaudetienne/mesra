@@ -107,9 +107,6 @@ else
 
 ! The density-based descriptors evaluated from the D/A population analysis are then printed.
 
-write(6,*)
-write(50,*)
-
 write(6,*) 'Integral of detachment/attachment density'
 write(6,'(f11.4)') theta
 write(6,*) 'Hole/particle overlap (phiS, from population analysis)'

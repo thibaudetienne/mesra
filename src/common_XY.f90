@@ -71,7 +71,7 @@ ttrsp = transpose(t)
 
 ttdagger = matmul(t,ttrsp)
 
-call trace_mat(ttdagger,'T(T^dagger)',norb)
+call trace_mat(ttdagger,'t(t^dagger)',norb)
 
 ! Computes a transition orbitals normalization factor.
 

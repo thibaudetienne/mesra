@@ -65,6 +65,8 @@ if (jobtype .eq. 'aNTOs' .or. jobtype .eq. 'orbsXY') then
 
 write(6,*) '((x+y)^dagger)(x+y), and its square root'
 write(6,'(2f12.5)') t3_norm,dsqrt(t3_norm)
+write(50,*) '((x+y)^dagger)(x+y), and its square root'
+write(50,'(2f12.5)') t3_norm,dsqrt(t3_norm)
 
 endif
 
@@ -78,6 +80,8 @@ enddo
 
 write(6,*) '(x^dagger)x - (y^dagger)y'
 write(6,'(f12.5)') x2y2_norm
+write(50,*) '(x^dagger)x - (y^dagger)y'
+write(50,'(f12.5)') x2y2_norm
 
 xy_residue = 0.0d0
 
@@ -93,6 +97,8 @@ if (jobtype .eq. 'CTOs' .or. jobtype .eq. 'orbsXY') then
 
 write(6,*) 'CTOs residue'
 write(6,'(f12.5)') xy_residue - x2y2_norm
+write(50,*) 'CTOs residue'
+write(50,'(f12.5)') xy_residue - x2y2_norm
 
 endif
 

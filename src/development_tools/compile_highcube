@@ -1,3 +1,0 @@
-#!/bin/bash
-
-gfortran -o highcube highcube.f -L/usr/lib -llapack -lblas

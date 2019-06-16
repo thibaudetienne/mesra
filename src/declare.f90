@@ -141,7 +141,7 @@ real*8 :: phiPAdaggeralpha, phiPAdaggerbeta
 real*8 :: psiPAdaggeralpha, psiPAdaggerbeta
 
 !!!Gabriel Breuil 11-04-2019
-real*8 :: phiSPAnewdagger,phiPAnewdagger,psiPAnewdagger,zcoef
+real*8 :: phiSPAnewdagger,phiPAnewdagger,psiPAnewdagger,zcoef,zcoefalpha,zcoefbeta
 !!!End Gabriel Breuil 11-04-2019
 
 
@@ -176,9 +176,11 @@ character*128 :: detachmentUbeta,attachmentUbeta,detachmentRbeta,attachmentRbeta
 
 real*8 :: theta_unrelaxed,phiS_unrelaxed,phi_unrelaxed,lambda_dagger,theta_z
 real*8 :: phiS_relaxed,phi_relaxed,psi_relaxed,eta
-!!!Gabriel Breuil 12-04-2019
+real*8 :: phiS_relaxedPA0,phi_relaxedPA0
+real*8 :: phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
+! Implemented by GB
 real*8 :: newphiS_relaxed,newphi_relaxed,newlambda_dagger,newpsi_relaxed
-!!!End Gabriel Breuil
+! End of GB implementation
 
 
 end

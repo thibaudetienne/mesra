@@ -50,11 +50,16 @@ do i=1,ncols
   write(6,*) 'Deviation on the orthonormality of an orbital is superior to one percent'
   write(6,*)
   write(6,'(i5,f12.8)') i,tLL(i,i)
+  write(50,*) 'Caution!'
+  write(50,*) 'Deviation on the orthonormality of an orbital is superior to one percent'
+  write(50,*)
+  write(50,'(i5,f12.8)') i,tLL(i,i)
 endif
 enddo
 
-write(50,*) 'Orthonormality test on matrix ', whichmat
+write(50,*) 'Trace of (',whichmat,'^dag)S',whichmat
 write(50,'(f12.5)') x
+write(50,*)
 
 deallocate(tLK,tLL)
 
