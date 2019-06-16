@@ -59,7 +59,6 @@ enddo
 
 write(50,*) 'Trace of (',whichmat,'^dag)S',whichmat
 write(50,'(f12.5)') x
-write(50,*)
 
 deallocate(tLK,tLL)
 

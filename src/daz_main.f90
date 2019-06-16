@@ -31,17 +31,19 @@ if (countunr .eq. 1) call trace_mat(zvec,'zvecAlpha',norb)
 if (countunr .eq. 2) call trace_mat(zvec,'zvecBeta',norb)
 if (countunr .eq. 3) call trace_mat(zvec,'zvec',norb)
 
-! Computes the Z(Z^dagger) \oplus (Z^dagger)Z matrix (Hereafter named zzd_zdz).
+write(50,*)
 
-zzd_zdz = matmul(zvec,zvec)
-
-zzd_zdz = 0.5d0*zzd_zdz
-
-! Computes the trace of Z(Z^dagger).
-
-if (countunr .eq. 1) call trace_mat(zzd_zdz,'Z(Z^dagger) Alpha',norb)
-if (countunr .eq. 2) call trace_mat(zzd_zdz,'Z(Z^dagger) Beta',norb)
-if (countunr .eq. 3) call trace_mat(zzd_zdz,'Z(Z^dagger)',norb)
+!! Computes the Z(Z^dagger) \oplus (Z^dagger)Z matrix (Hereafter named zzd_zdz).
+!
+!zzd_zdz = matmul(zvec,zvec)
+!
+!zzd_zdz = 0.5d0*zzd_zdz
+!
+!! Computes the trace of Z(Z^dagger).
+!
+!if (countunr .eq. 1) call trace_mat(zzd_zdz,'Z(Z^dagger) Alpha',norb)
+!if (countunr .eq. 2) call trace_mat(zzd_zdz,'Z(Z^dagger) Beta',norb)
+!if (countunr .eq. 3) call trace_mat(zzd_zdz,'Z(Z^dagger)',norb)
 
 ! Allocates the eigenvectors matrix, and the eigenvalues array.
 
@@ -56,6 +58,6 @@ if (countunr .eq. 3) call det_at(zvec,'Z',norb,Uvec,lvec)
 
 ! Deallocates the allocated arrays.
 
-deallocate(zvec,zzd_zdz,Uvec,lvec)
+deallocate(zvec,Uvec,lvec)
 
 end

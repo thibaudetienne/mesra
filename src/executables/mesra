@@ -424,7 +424,7 @@ rm mesra.err &> /dev/null
 mv mesra-Job*.log mesra-t$2/alphaddagger.log &> /dev/null
 
 # For the numerical integrations, mesra calls specific launch_proc routines, launch_proc_NIuzrxy,
-# launch_proc_NI or launch_proc_NIdagger.
+# launch_proc_NI or launch_proc_NIrlx.
 
 elif [ $1 = 'qmniu' ] ; then
 
@@ -563,9 +563,9 @@ fi
 #rm inp_temp &> /dev/null
 rm mesra.err mesra-Job-cubeop.log &> /dev/null
 
-# qmnidagger first checks that unrelaxed numerical integrations have been performed before.
+# qmnirlx first checks that unrelaxed numerical integrations have been performed before.
 
-elif [ $1 = 'qmnidagger' ] ; then
+elif [ $1 = 'qmnirlx' ] ; then
 
 ls mesra-t$2 &> /dev/null
 
@@ -576,20 +576,20 @@ echo "Start by performing a detachment/attachment analysis"
 echo "Exit"
 fi
 
-ls mesra-t$2/qmNI*_XY.log &> /dev/null
+ls mesra-t$2/qmNI*_XY*.log &> /dev/null
 
 if [ $? -eq 0 ] ; then
 
-launch_proc_NIdagger $1 $2 _XY
+launch_proc_NIrlx $1 $2 _XY
 
 else
 
-ls mesra-t$2/qmNIU*.log &> /dev/null
+ls mesra-t$2/qmNI*U*.log &> /dev/null
 
 if [ $? -eq 0 ] ; then
-launch_proc_NIdagger $1 $2 U
+launch_proc_NIrlx $1 $2 U
 else
-echo "Error: run a qmniu or qmnixy job before qmnidagger" > mesra.err
+echo "Error: run a qmniu or qmnixy job before qmnirlx" > mesra.err
 echo "For more information, type mesra_man" >> mesra.err
 echo "Exit" >> mesra.err
 cat mesra.err
@@ -600,7 +600,7 @@ fi
 else
 
  echo "Accepted jobtype arguments are prep, dau, daz, dar, daxy, adiabz, pntos, antos, ctos, orbsxy,rlxypa,"
- echo "qmni, qmniu, qmnixy, qmniz, qmnir, split, cubeop, increase_cube_size, qmnidagger, and alphaddagger."
+ echo "qmni, qmniu, qmnixy, qmniz, qmnir, split, cubeop, increase_cube_size, qmnirlx, and alphaddagger."
  echo 'Exit'
 
 fi

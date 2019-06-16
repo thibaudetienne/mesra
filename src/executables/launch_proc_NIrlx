@@ -20,8 +20,7 @@
 # Free Software Foundation, Inc. 
 # 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-# Checks that the required files are present. If a daz calculation has not been performed prior to the qmnidagger one,
-# a daz calculation is done.
+# Checks that the required files are present. If a daz calculation has not been performed prior to the qmnirlx one, a daz calculation is done.
 
 ls mesra-t$2/daz.log &> /dev/null
 
@@ -64,17 +63,15 @@ diffnumalphabeta=`echo $numalpha - $numbeta | bc -l`
 
 if [ $diffnumalphabeta -eq 0 ] ; then
 
- echo qmnidagger > inp_mesra-$1-t$2
+ echo qmnirlx > inp_mesra-$1-t$2
 
-# grep -A1 'Trace of gamma_d' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'Integral' mesra-t$2/qmNI$3.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phiS integral value' mesra-t$2/qmNI$3.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phi ' mesra-t$2/qmNI$3.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
  grep -A1 '(eta)' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
-# Gabriel Breuil 12-04-2019
-# grep -A1 'Integral of relaxation-related to the new PA' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
-# End Gabriel Breuil  
+
  main_mesra inp_mesra-$1-t$2 
+ mv mesra-Job-qmnirlx.log mesra-t$2 &> /dev/null
 
  echo
 
@@ -87,22 +84,23 @@ else
  else
   echo
   echo "Where is qmNI$3-alpha.log?"
-  echo
+  echo "Exit"
+  exit
  fi
 
- echo qmnidagger > inp_mesra-$1-t$2
+ echo qmnirlx > inp_mesra-$1-t$2
 
- grep -A1 'Trace of gamma_d' mesra-t$2/daz.log | head -2 | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'Integral' mesra-t$2/qmNI$3-alpha.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phiS integral value' mesra-t$2/qmNI$3-alpha.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phi ' mesra-t$2/qmNI$3-alpha.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
- grep -A1 'zzd_zdz' mesra-t$2/daz.log | head -2 | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 '(eta)' mesra-t$2/daz.log | head -2 | tail -1 >> inp_mesra-$1-t$2
 
  main_mesra inp_mesra-$1-t$2 | head -8
 
  echo "# Part A - Alpha numerical analysis"
 
- main_mesra inp_mesra-$1-t$2 | tail -3
+ main_mesra inp_mesra-$1-t$2 | tail -10
+ mv mesra-Job-qmnirlx.log mesra-t$2/mesra-Job-qmnirlx-alpha.log &> /dev/null
  
  echo
  echo "# Part B - Beta numerical analysis"
@@ -117,15 +115,15 @@ else
   exit
  fi
 
- echo qmnidagger > inp_mesra-$1-t$2
+ echo qmnirlx > inp_mesra-$1-t$2
 
- grep -A1 'Trace of gamma_d' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'Integral' mesra-t$2/qmNI$3-beta.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phiS integral value' mesra-t$2/qmNI$3-beta.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phi ' mesra-t$2/qmNI$3-beta.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
- grep -A1 'zzd_zdz' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 '(eta)' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
 
- main_mesra inp_mesra-$1-t$2 | tail -3
+ main_mesra inp_mesra-$1-t$2 | tail -10
+ mv mesra-Job-qmnirlx.log mesra-t$2/mesra-Job-qmnirlx-beta.log &> /dev/null
  
  echo 
 
@@ -142,5 +140,4 @@ fi
 
 rm mesra.err &> /dev/null
 rm inp_mesra-$1-t$2 &> /dev/null
-rm mesra-Job-qmnidagger.log &> /dev/null
 

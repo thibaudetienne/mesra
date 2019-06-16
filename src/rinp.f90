@@ -109,18 +109,14 @@ call rgen_info
 call rPA_status
 call rdaggerf
 
-! "qmnidagger" Computes the relaxed density-based descriptors, based on calculations already performed previously.
+! "qmnirlx" Computes the relaxed density-based descriptors, based on calculations already performed previously.
 
-else if (jobtype .eq. 'qmnidagger') then
+else if (jobtype .eq. 'qmnirlx') then
 
 read(10,*) theta_unrelaxed
 read(10,*) phiS_unrelaxed
 read(10,*) phi_unrelaxed
 read(10,*) eta
-! Implemented by GB
-read(10,*) zcoef
-write(6,*) eta, zcoef, 'oui'
-! Endo f GB implementation
 
 ! "incrcube" outputs the header to provide to the cubegen utility for getting cubes of increased size.
 

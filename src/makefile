@@ -39,7 +39,7 @@ deal.o increase_cube_size.o \
 rlxy_PA.o rlxy_PAops.o \
 rqm_NI_info.o rdcubehdr.o consistency.o rddensities.o printingdadens.o qm_NI.o \
 split.o cubeop.o \
-alphaddagger.o alpha_ddagger.o qmNIdagger.o \
+alphaddagger.o alpha_ddagger.o qmNIrlx.o \
 main_mesra.o \
 
 # Command line for the creation of the .o files.

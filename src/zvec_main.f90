@@ -55,26 +55,23 @@ call common_dar_daz
 
 ! Computes alpha zcoef (eta)
 
-allocate(newzzd_zdz(norb,norb))
-
-newzzd_zdz=matmul(zvec,zvec)
+zzd_zdz=matmul(zvec,zvec)
 zcoefalpha=0.0d0
 
 do i=1,norb
- zcoefalpha=zcoefalpha+newzzd_zdz(i,i)
+ zcoefalpha=zcoefalpha+zzd_zdz(i,i)
 enddo
 
 zcoefalpha=0.5d0*zcoefalpha
 
 write(6,*) 'Trace of alpha ZZ^dagger (eta)'
-write(6,'(f13.5)') zcoefalpha
+write(6,'(f12.5)') zcoefalpha
 write(50,*) 'Trace of alpha ZZ^dagger (eta)'
-write(50,'(f13.5)') zcoefalpha
+write(50,'(f12.5)') zcoefalpha
 
 if (jobtype == 'daz') write(6,*)
-if (jobtype == 'daz') write(50,*)
 
-deallocate(newzzd_zdz)
+deallocate(zzd_zdz)
 
 if (jobtype == 'daz') call daz_main
 if (jobtype == 'dar') call no_adiab_z
@@ -100,13 +97,11 @@ endif
 
 ! Computes beta zcoef (eta)
 
-allocate(newzzd_zdz(norb,norb))
-
-newzzd_zdz=matmul(zvec,zvec)
+zzd_zdz=matmul(zvec,zvec)
 zcoefbeta=0.0d0
 
 do i=1,norb
- zcoefbeta=zcoefbeta+newzzd_zdz(i,i)
+ zcoefbeta=zcoefbeta+zzd_zdz(i,i)
 enddo
 
 zcoefbeta=0.5d0*zcoefbeta
@@ -116,7 +111,9 @@ write(6,'(f13.5)') zcoefbeta
 write(50,*) 'Trace of beta ZZ^dagger (eta)'
 write(50,'(f13.5)') zcoefbeta
 
-deallocate(newzzd_zdz)
+if (jobtype == 'daz') write(6,*)
+
+deallocate(zzd_zdz)
 
 if (jobtype == 'daz') call daz_main
 if (jobtype == 'dar') call no_adiab_z
@@ -132,13 +129,11 @@ call common_dar_daz
 
 ! Implemented by GB
 
-allocate(newzzd_zdz(norb,norb))
-
-newzzd_zdz=matmul(zvec,zvec)
+zzd_zdz=matmul(zvec,zvec)
 zcoef=0.0d0
 
 do i=1,norb
- zcoef=zcoef+newzzd_zdz(i,i)
+ zcoef=zcoef+zzd_zdz(i,i)
 enddo
 
 zcoef=0.5d0*zcoef
@@ -148,7 +143,9 @@ write(6,'(f13.5)') zcoef
 write(50,*) 'Trace of ZZ^dagger (eta)'
 write(50,'(f13.5)') zcoef
 
-deallocate(newzzd_zdz)
+if (jobtype == 'daz') write(6,*)
+
+deallocate(zzd_zdz)
 
 ! END of GB implementation
 

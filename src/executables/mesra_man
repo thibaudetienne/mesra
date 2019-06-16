@@ -86,7 +86,7 @@ Jobtype: Relaxing the descriptors (numerical integration)
 ! Requests the log from a qmni(u,xy) calculation in the mesra-tx directory
 ! (x being the number of the transition of interest)
 
-Argument 1: qmnidagger
+Argument 1: qmnirlx
 Argument 2: Number of the transition of interest
 
 ### Direct use of cubes in any directory

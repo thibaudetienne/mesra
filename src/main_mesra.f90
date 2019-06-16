@@ -67,7 +67,7 @@ else if (jobtype .eq. 'cubeop') then
  continue
 else if (jobtype .eq. 'alphaddagger') then
  continue
-else if (jobtype .eq. 'qmnidagger') then
+else if (jobtype .eq. 'qmnirlx') then
 continue
 else
 
@@ -114,7 +114,7 @@ if (jobtype .eq. 'cubeop') call cubeop(cubefile1,cubefile2,cubefile3,op1,op2)
 
 if (jobtype .eq. 'alphaddagger') call alphaddagger
 
-if (jobtype .eq. 'qmnidagger') call qmNIdagger
+if (jobtype .eq. 'qmnirlx') call qmNIrlx
 
 ! Deallocates the matrices.
 
@@ -126,7 +126,7 @@ else if (jobtype .eq. 'cubeop') then
  continue
 else if (jobtype .eq. 'alphaddagger') then
 continue
-else if (jobtype .eq. 'qmnidagger') then
+else if (jobtype .eq. 'qmnirlx') then
 continue
 else
  call deal

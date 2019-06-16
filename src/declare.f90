@@ -83,10 +83,9 @@ real*8,allocatable :: Mmg(:,:),Mmd(:,:)
 real*8,allocatable :: SxDSy(:,:),SxASy(:,:),Uvec(:,:)
 real*8 :: trD,trA,trDZ,trAZ,phiSPA,chimPA,chipPA,phiPA,psiPA,theta,theta0,thetaZ,alter_thetaZ
 real*8 :: pi,phiSPA0,phiPA0
-!!!Gabriel Breuil 12-04-2019
+! Implemented by GB
 real*8 :: phiSPAnew0,phiPAnew0
-!!!End Gabriel Breuil
-real*8 :: phiSdagger,phidagger,psidagger
+! End of GB implementation
 real*8,allocatable :: fd(:),fa(:),fdta(:),famd(:),famdp(:),famdm(:)
 real*8,allocatable :: gamma_d_XY_ao(:,:),gamma_a_XY_ao(:,:)
 
@@ -95,10 +94,10 @@ real*8,allocatable :: gamma_d_XY_ao(:,:),gamma_a_XY_ao(:,:)
 real*8,allocatable :: pxKrelaxed(:,:),pxKrelaxedS(:,:),pxrelaxed(:,:)
 real*8,allocatable :: zvec(:,:),zzd_zdz(:,:),zvecxi(:,:)
 real*8,allocatable :: U0(:,:),U0t(:,:),U0tU(:,:)
-!!!Gabriel Breuil 12-04-2019
-real*8,allocatable :: newzzd_zdz(:,:)
-!!!End Gabriel Breuil
-
+real*8 :: Rcoef
+! Implemented by GB
+!real*8,allocatable :: newzzd_zdz(:,:)
+! End of GB implementation
 
 ! Orbitals
 
@@ -129,20 +128,19 @@ real*8,allocatable :: triangle_gD_ao(:),triangle_T_ao(:),triangle_zvec_ao(:)
 
 ! Relaxed descriptors (rlxy_PA)
 
-
 real*8 :: thetaUalpha, thetaUbeta
 real*8 :: phiSPAUalpha, phiSPAUbeta
 real*8 :: phiPAUalpha, phiPAUbeta
 real*8 :: thetaZalpha, thetaZbeta
 
-real*8 :: phiSPAU,phiPAU,psiPAU,thetaU,phiSPAdagger,phiPAdagger,psiPAdagger
-real*8 :: phiSPAdaggeralpha, phiSPAdaggerbeta
-real*8 :: phiPAdaggeralpha, phiPAdaggerbeta
-real*8 :: psiPAdaggeralpha, psiPAdaggerbeta
+real*8 :: phiSPAU,phiPAU,psiPAU,thetaU,phiSPArlx,phiPArlx,psiPArlx
+real*8 :: phiSPArlxalpha, phiSPArlxbeta
+real*8 :: phiPArlxalpha, phiPArlxbeta
+real*8 :: psiPAlxalpha, psiPArlxbeta
 
-!!!Gabriel Breuil 11-04-2019
-real*8 :: phiSPAnewdagger,phiPAnewdagger,psiPAnewdagger,zcoef,zcoefalpha,zcoefbeta
-!!!End Gabriel Breuil 11-04-2019
+! Implemented by GB
+real*8 :: zcoef,zcoefalpha,zcoefbeta
+! Implemented by GB
 
 
 ! Numerical Integration
@@ -172,15 +170,11 @@ character*128 :: detachmentU,attachmentU,detachmentR,attachmentR
 character*128 :: detachmentUalpha,attachmentUalpha,detachmentRalpha,attachmentRalpha
 character*128 :: detachmentUbeta,attachmentUbeta,detachmentRbeta,attachmentRbeta
 
-! qmNIr
+! qmNIrlx
 
 real*8 :: theta_unrelaxed,phiS_unrelaxed,phi_unrelaxed,lambda_dagger,theta_z
 real*8 :: phiS_relaxed,phi_relaxed,psi_relaxed,eta
 real*8 :: phiS_relaxedPA0,phi_relaxedPA0
 real*8 :: phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
-! Implemented by GB
-real*8 :: newphiS_relaxed,newphi_relaxed,newlambda_dagger,newpsi_relaxed
-! End of GB implementation
-
 
 end
