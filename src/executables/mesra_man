@@ -26,12 +26,12 @@ cat > manual_temporary << EOF
 
 ! Optional keywords are indicated by their default value between square brackets
 
-! Post-processing of the Quantum Package are only for unrelaxed detachment/attachment (dau) calculations on closed-shell molecules
+! Post-processing of the Quantum Package is not yet available
 
 JobType: Preparation of the working folder
 
 Argument 1: prep
-Argument 2: Software (g03, g09, g16, qp)
+Argument 2: Software (g03, g09, g16)
 Argument 3: Fchk file name (if applicable - Gaussian postprocessing)
 Argument 4: Total number of transitions computed (if Software is different from g16)
 
@@ -39,19 +39,19 @@ JobType: Unrelaxed detachment/attachment density matrices for CIS, TDHF, TDA, TD
 
 Argument 1: daxy
 Argument 2: Number of the transition of interest
-Argument 3: [50] "nopa" (no population analysis), "scanpa" or any integer between 0 and 100 
+Argument 3: [50] statement about the population analysis : can be "nopa" (no population analysis), "scanpa" or any integer between 0 and 100 
 
 JobType: Detachment/attachment density matrices
 
 Argument 1: da (dau, daz, dar)
 Argument 2: Number of the transition of interest
-Argument 3: [50] "nopa" (no population analysis), "scanpa" or any integer between 0 and 100 
+Argument 3: [50] statement about the population analysis : can be "nopa" (no population analysis), "scanpa" or any integer between 0 and 100 
 
 JobType: Adiabatic connection of the Z-vector
 
 Argument 1: adiabz
 Argument 2: Number of the transition of interest
-Argument 3: [50] any integer between 0 and 100 
+Argument 3: statement about the population analysis : can be [50] any integer between 0 and 100 
 ! scanpa not authorized
 ! nopa not authorized
 
@@ -59,10 +59,9 @@ JobType: Transition orbitals for CIS, TDHF, TDA, TDDFT (XY methods)
 
 Argument 1: orbsxy (or pntos, ctos, antos)
 Argument 2: Number of the transition of interest
-Argument 3: [50] "nopa" (no population analysis), "scanpa" or any integer between 0 and 100
 
-JobType: Computes the descriptors from a numerical integration
-! The cube files should be in the mesra-tx file
+JobType: Computes the descriptors using a numerical integration
+! The cube files should be in the mesra-tx directory
 ! (x being the number of the transition of interest)
 
 Argument 1: qmniu, qmnixy, qmniz, or qmnir
@@ -72,14 +71,14 @@ JobType: Computes alpha^ddagger integrals
 
 Argument 1: alphaddagger
 Argument 2: Number of the transition of interest
-Argument 3: [50] "scanpa", or any integer between 0 and 100
+Argument 3: [50] statement about the population analysis : can be "scanpa", or any integer between 0 and 100
 ! nopa not authorized
 
 Jobtype: Relaxing the descriptors (population analysis)
 
 Argument 1: rlxypa
 Argument 2: Number of the transition of interest
-Argument 3: [50] "scanpa", or any integer between 0 and 100
+Argument 3: [50] statement about the population analysis : can be "scanpa", or any integer between 0 and 100
 ! nopa not authorized
 
 Jobtype: Relaxing the descriptors (numerical integration)
@@ -105,7 +104,7 @@ Argument 4: cube3 file name
 Argument 5: op1 (p or m, standing for plus or minus)
 Argument 6: op2 (p or m, standing for plus or minus)
 
-JobType: Increase a cube size
+JobType: Increase of a cube size
 
 Argument 1: incrcube
 Argument 2: cube file name

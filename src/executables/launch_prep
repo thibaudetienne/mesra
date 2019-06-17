@@ -42,7 +42,7 @@ elif [ $soft = 'qp' ] ; then
 
 else
 
- echo 'Only g03, g09, g16 and qp softwares are supported'
+ echo 'Only g03, g09, and g16 softwares are supported'
  echo 'Exit'
  exit
 

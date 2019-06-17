@@ -23,29 +23,34 @@ subroutine adiab_z
 use declare
 
 if (countunr .eq. 1) then
-open(10,file='adiabZalpha.log',form='formatted')
+open(10,file='adiabZalpha.ac',form='formatted')
 write(10,*) '# xi, Trace of ZZ^dagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
 write(10,*)
-open(11,file='acVec_Zbeta.log',form='formatted')
+write(6,*)
+write(6,*) '# xi, Trace of ZZ^dagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
+open(11,file='acVec_Zalpha.ac',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
 write(11,*)
 endif
 
 if (countunr .eq. 2) then
-open(10,file='adiabZbeta.log',form='formatted')
+write(6,*)
+write(6,*) '# xi, Trace of ZZ^dagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
+open(10,file='adiabZbeta.ac',form='formatted')
 write(10,*) '# xi, Trace of ZZdagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
 write(10,*)
-open(11,file='acVec_Zbeta.log',form='formatted')
+open(11,file='acVec_Zbeta.ac',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
 write(11,*)
 endif
 
 if (countunr .eq. 3) then
-open(10,file='adiabZ.log',form='formatted')
+open(10,file='adiabZ.ac',form='formatted')
 write(10,*) '# xi, Trace of ZZdagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
 write(10,*)
-
-open(11,file='acVec_Z.log',form='formatted')
+write(6,*)
+write(6,*) '# xi, Trace of ZZ^dagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
+open(11,file='acVec_Z.ac',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
 write(11,*)
 endif
@@ -68,7 +73,6 @@ do iteration=0,100
 
 xi = iteration*0.01d0
 zvecxi = xi*zvec
-write(6,'(a3,f10.2)') 'xi ',xi
 
 if (countunr .eq. 1) pxalpharelaxed = pxalpha + zvecxi
 if (countunr .eq. 2) pxbetarelaxed = pxbeta + zvecxi
@@ -153,8 +157,8 @@ psi_relaxedPA=2.0d0*datan(phiS_relaxedPA/phi_relaxedPA)/(pi)
 !write(6,*) 'alter_phiSdagger', phiSPA0 + (1-phiSPA0)*((eta/(theta0+eta))**(1+eta))
 !phiSdagger =  phiSPA0 + (1-phiSPA0)*((eta/(theta0+eta))**(1+eta))
 !write(6,*) 'alter_phiSdagger', phiSPA0 + (1-phiSPA0)*eta/thetaZ
-
 write(10,'(f10.2,5f10.4)') xi, eta, (eta/(theta0+eta)),phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
+write(6,'(a4,f4.2,5f8.4)') 'xi ',xi, eta, (eta/(theta0+eta)),phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
 ! End of GB implementation
 enddo
 

@@ -59,7 +59,7 @@ launch_prep prep $2 $3 $4
 
 else
 
-echo "Only g03, g09, g16, and qp softwares are supported"
+echo "Only g03, g09, and g16 softwares are supported"
 echo "Exit"
 exit
 
@@ -197,8 +197,8 @@ launch_proc adiabZ $2 $3
 grep 'Error' mesra.err && echo 'Exit' && exit
 rm mesra.err
 
-mv adiabZ*.log mesra-t$2 &> /dev/null
-mv acVec_Z*.log mesra-t$2 &> /dev/null
+mv adiabZ*.ac mesra-t$2 &> /dev/null
+mv acVec_Z*.ac mesra-t$2 &> /dev/null
 mv *.orth mesra-t$2 &> /dev/null
 mv mesra-Job*.log mesra-t$2 &> /dev/null
 

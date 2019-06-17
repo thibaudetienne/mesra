@@ -35,3 +35,4 @@ rm adiabZ.log &> /dev/null
 rm acVec_Z.log &> /dev/null
 rm header_fchk &> /dev/null
 rm qmNI*.log &> /dev/null
+rm *.ac &> /dev/null
