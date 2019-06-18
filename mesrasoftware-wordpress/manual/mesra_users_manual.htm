@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User&#8217;s Manual | MESRA</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://mesrasoftware.wordpress.com/xmlrpc.php">
+<script type="text/javascript">
+  WebFontConfig = {"google":{"families":["Playfair+Display:r:latin,latin-ext"]}};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://s0.wp.com/wp-content/plugins/custom-fonts/js/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+	})();
+</script><style id="jetpack-custom-fonts-css">.wf-active h1{font-style:normal;font-weight:400}.wf-active h2{font-style:normal;font-weight:400}.wf-active h3{font-style:normal;font-weight:400}.wf-active h4{font-style:normal;font-weight:400}.wf-active h5{font-style:normal;font-weight:400}.wf-active h6{font-style:normal;font-weight:400}@media ( min-width: 980px ){.wf-active h1{font-style:normal;font-weight:400}}@media ( min-width: 980px ){.wf-active h2{font-style:normal;font-weight:400}}@media ( min-width: 980px ){.wf-active h3{font-style:normal;font-weight:400}}@media ( min-width: 980px ){.wf-active h4{font-style:normal;font-weight:400}}@media ( min-width: 980px ){.wf-active h5{font-style:normal;font-weight:400}}@media ( min-width: 980px ){.wf-active h6{font-style:normal;font-weight:400}}.wf-active h1, .wf-active h2, .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6{font-family:"Playfair Display",serif;font-weight:400;font-style:normal}.wf-active .site-title{font-style:normal;font-weight:400}.wf-active .site-description{font-weight:400;font-family:"Playfair Display",serif;font-style:normal}.wf-active .page-title{font-style:normal;font-weight:400}.wf-active .comments-title{font-weight:400;font-style:normal}.wf-active .widget-title{font-style:normal;font-weight:400}</style>
+<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//wordpress.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="MESRA &raquo; Feed" href="https://mesrasoftware.wordpress.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="MESRA &raquo; Comments Feed" href="https://mesrasoftware.wordpress.com/comments/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1556893897h&ver=5.2.2-RC2-45535"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s2.wp.com/_static/??-eJx9UttOwzAM/SGyUKSB9oD4ljjNWq+5KXYY+3vcK2iDvlT2ybkpqb5mZVNkF1mHqrKvHUbS12xTUBTQu9vddrBET/pvGVUgWzAzJtnOyft03eP36dMVBRXAO1HzzbuNjtH62gosgG4N9SgGdAgYHykX0iznA6SvbdjL9TiMKsfZ2EFN2z+5SKzBp4kFxZTb0vJ3jTVgdT9X7xUhO+VaZIzdkqtzIiYxIlaT52x/j+4VN60EKzBleZNtn0WoY+LpnrZhz82m4gQP2fDICFLXOO+C0PZkIb+uqnHs5Q53Y+aqALk4IiXfgDUo7iXoUTfDOlfQgJ2CkgQpP//GR3hvjsfTS/PWnJ4v31h/CGk=?cssminify=yes' type='text/css' media='all' />
+<style id='wpcom-admin-bar-inline-css' type='text/css'>
+
+			.admin-bar {
+				position: inherit !important;
+				top: auto !important;
+			}
+			.admin-bar .goog-te-banner-frame {
+				top: 32px !important
+			}
+			@media screen and (max-width: 782px) {
+				.admin-bar .goog-te-banner-frame {
+					top: 46px !important;
+				}
+			}
+			@media screen and (max-width: 480px) {
+				.admin-bar .goog-te-banner-frame {
+					position: absolute;
+				}
+			}
+		
+</style>
+<link rel='stylesheet' id='big-brother-gentium-css'  href='https://fonts.googleapis.com/css?family=Gentium+Basic%3A400%2C700%2C400italic%2C700italic&#038;subset=latin%2Clatin-ext&#038;ver=5.2.2-RC2-45535' type='text/css' media='all' />
+<link rel='stylesheet' id='big-brother-open-sans-css'  href='https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C800&#038;subset=latin%2Clatin-ext&#038;ver=5.2.2-RC2-45535' type='text/css' media='all' />
+<link rel='stylesheet' id='all-css-4-1' href='https://s2.wp.com/_static/??-eJx9jcFOxDAMRH8I45YC2suKb0lSN5hN4shxqfh7Uk5lEb3NeOaNcasQpBgVw7xCTWvk0jBSIeUe/CMfQ2sPeGDtnTI1rKtHzxG8Sr8ocgnY7CsRbDVI/oMdXm48R7KGtPZUbkyQ3IZGuSZnffpn5mwgkkCS4Iyl/DKwJMd6hhbZP7g5cwHvFD6fztpKPknsMmJvHewZZNJAqYoaLKL53u/oW76OL9P0ehmG5/HjGw08mag=?cssminify=yes' type='text/css' media='all' />
+<link rel='stylesheet' id='print-css-5-1' href='https://s2.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1465851035h&cssminify=yes' type='text/css' media='print' />
+<link rel='stylesheet' id='all-css-6-1' href='https://s1.wp.com/_static/??-eJx1jEEOQDAQAD+klgSJg3hL1YZKdyvdxfdx4SBuk8lk4FiNi6zICrSZNWyTZwE7kmcz2ARkRTFdZOKOKfkR5XW5E8ngZ+HUR74XD31ynZGu31zBFOJgwx301JV1U1RNW7b1cgIYejq3?cssminify=yes' type='text/css' media='all' />
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJx9kFEKwjAMQC9kV2R0+COeZavZyGzT2qQbenr7MRFHFQIh5JHkRa9RIVmXr8B6LnHPkB5bamY+6H+A8jilXqDxSG/YBhIg0T6r6PKExJrzwDZhFAylGoNzYd3jZXQMLB6Y+wkqXR8GdKAyQyoASblqDBXu2wBpQagt24mCxN7eVALGJ9S8OX4Ufz9soy7+fDTm1JquM+38AkldhUA='></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://mesrasoftware.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://mesrasoftware.wordpress.com/users-manual/" />
+<link rel='shortlink' href='https://wp.me/P70PxK-i' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fmesrasoftware.wordpress.com%2Fusers-manual%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fmesrasoftware.wordpress.com%2Fusers-manual%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="User&#8217;s Manual" />
+<meta property="og:url" content="https://mesrasoftware.wordpress.com/users-manual/" />
+<meta property="og:description" content="A downloadable version of this web page is accessible by clicking here. Important Note: Any blue color text below is a clickable link to a pdf or log file.  Outline i. Preliminaries ii. Requirement…" />
+<meta property="article:published_time" content="2015-12-04T15:42:43+00:00" />
+<meta property="article:modified_time" content="2019-06-18T16:31:34+00:00" />
+<meta property="og:site_name" content="MESRA" />
+<meta property="og:image" content="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png" />
+<meta property="og:image:width" content="1330" />
+<meta property="og:image:height" content="904" />
+<meta property="og:image:alt" content="Capture dâeÌcran 2019-06-10 aÌ 17.02.01" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@wordpressdotcom" />
+<meta name="twitter:text:title" content="User&#8217;s Manual" />
+<meta name="twitter:card" content="summary" />
+<meta property="fb:app_id" content="249643311490" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon-precomposed" href="https://s2.wp.com/i/webclip.png" />
+<link rel='openid.server' href='https://mesrasoftware.wordpress.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://mesrasoftware.wordpress.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://mesrasoftware.wordpress.com/osd.xml" title="MESRA" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="theme-color" content="#595959" />
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+				<script type="text/javascript">
+		function __ATA_CC() {var v = document.cookie.match('(^|;) ?personalized-ads-consent=([^;]*)(;|$)');return v ? 1 : 0;}
+		var __ATA_PP = { pt: 2, ht: 0, tn: 'big-brother', amp: false, siteid: 8982, blogid: 103632488, consent: __ATA_CC(), uloggedin: 1, flag: 2 };
+		</script>
+		<script type="text/javascript">
+        !function(){var e=document.createElement("script");e.async=!0,e.type="text/javascript";var t=window.__ATA_PP||{},n=["r="+(new Date).getTime()];for(var r in t)t.hasOwnProperty(r)&&("amp"===r&&(t[r]=Number(t[r])),n.push(r+"="+encodeURIComponent(t[r])));e.src="//s.pubmine.com/mhead.js?"+n.join("&");var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(e,a)}();
+        </script><meta name="application-name" content="MESRA" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="Molecular Electronic-Structure Reorganization: Analysis" /><meta name="msapplication-task" content="name=Edit page;action-uri=https://wordpress.com/page/mesrasoftware.wordpress.com/18;icon-uri=https://s1.wp.com/i/icons/page.ico" /><meta name="msapplication-task" content="name=Write a post;action-uri=https://wordpress.com/post/mesrasoftware.wordpress.com;icon-uri=https://s2.wp.com/i/icons/post.ico" /><meta name="msapplication-task" content="name=Moderate comments;action-uri=https://mesrasoftware.wordpress.com/wp-admin/edit-comments.php?comment_status=moderated;icon-uri=https://s2.wp.com/i/icons/comment.ico" /><meta name="msapplication-task" content="name=Upload new media;action-uri=https://mesrasoftware.wordpress.com/wp-admin/media-new.php;icon-uri=https://s2.wp.com/i/icons/media.ico" /><meta name="msapplication-task" content="name=Blog stats;action-uri=https://mesrasoftware.wordpress.com/wp-admin/index.php?page=stats;icon-uri=https://s1.wp.com/i/icons/stats.ico" /><meta name="description" content="A downloadable version of this web page is accessible by clicking here. Important Note: Any blue color text below is a clickable link to a pdf or log file.  Outline i. Preliminaries ii. Requirements iii. Downloading and installing MESRA iv. Preparation of the Gaussian inputs, and pre-treatment of the Gaussian outputs v. Use of the MESRA software: the principle vi. Keywords&hellip;" />
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #595959; }
+</style>
+	<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+	<style type="text/css" media="screen">
+	html { margin-top: 32px !important; }
+	* html body { margin-top: 32px !important; }
+	@media screen and ( max-width: 782px ) {
+		html { margin-top: 46px !important; }
+		* html body { margin-top: 46px !important; }
+	}
+</style>
+	<style type="text/css" id="syntaxhighlighteranchor"></style>
+<style type="text/css" id="custom-colors-css">@media screen and (max-width:767px){.breadcrumbs-root,.breadcrumbs-root:visited,.breadcrumbs-ancestor{background-color:transparent !important;color:inherit !important}}@media screen and (max-width:959px){.main-navigation ul ul,.main-navigation ul ul li,.main-navigation li:hover,.main-navigation li:hover a{background-color:transparent !important;color:#fff !important}}body{color:#444}.widget{color:#d8d8d8}.widget-title{color:#d8d8d8}.widget,.site-footer{background-color:#eaecee}.widget,.site-footer{background-color:rgba(234,236,238,.3)}.widget{border-top-color:#eaecee}.widget{border-top-color:rgba(234,236,238,.2)}.site-title a,.site-title a:visited,.site-description{color:#fff}::selection,:selection{color:#fff}.breadcrumbs-root,.breadcrumbs-root:visited{color:#fff}.main-navigation ul ul li,.main-navigation li:hover{background-color:#fff}.menu-toggle{color:#fff}.breadcrumbs-current{color:#6d6d6d}.site-footer,.site-info{color:#e2eef7}.nav-previous a,.nav-next a,.nav-previous a:visited,.nav-next a:visited,.nav-previous a:hover,.nav-next a:hover{color:#fff}.main-navigation a,.main-navigation a:visited{color:#fff}button:hover,html input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,.button:hover,button,html input[type="button"],input[type="reset"],input[type="submit"],.button,.button:visited,#infinite-handle span,#infinite-handle span:hover{color:#fff}body,#infinite-footer{background-color:#595959}.entry-title a{color:#3d3d3d}.custom-background .site-footer{border-color:#3d3d3d}::selection,:selection{background-color:#3d3d3d}.nav-previous a,.nav-next a{background-color:#3d3d3d}.main-navigation li:hover a,.main-navigation li:hover a:visited{color:#3d3d3d}.breadcrumbs-ancestor a,.breadcrumbs-ancestor a:visited{color:#adadad}a,a:visited,.comment-metadata .comment-edit-link,.comment-metadata .comment-edit-link:visited{color:#3d3d3d}.widget a,.widget a:visited,.widget a:hover,.widget a:focus,.widget a:active{color:#d8d8d8}a:hover,a:focus,a:active{color:#3d3d3d}.site-footer a,.site-footer a:visited,.site-footer a:hover,.site-footer a:focus,.site-footer a:active{color:#d8d8d8}.main-navigation{background-color:#303030}.main-navigation.has-header{background-color:#3d3d3d}.main-navigation.has-header{background-color:rgba(61,61,61,.6)}.menu-toggle,.main-navigation.toggled>div>ul{background-color:#303030}.breadcrumbs-ancestor a:before,.breadcrumbs-ancestor.cat-parents .sep:before{border-left-color:#353535}.breadcrumbs-root,.breadcrumbs-root:visited{background-color:#303030}.breadcrumbs-root:before{border-left-color:#303030}.main-navigation ul li a{border-bottom-color:#383838}.main-navigation.toggled>div>ul{border-top-color:#383838}.page-title{color:#3d3d3d}.site-header{background-color:#383838}blockquote{border-color:#303030}button,html input[type="button"],input[type="reset"],input[type="submit"],.button,.button:visited,#infinite-handle span{background-color:#383838}.breadcrumbs-ancestor{background-color:#494949}.breadcrumbs-ancestor a:after,.breadcrumbs-ancestor.cat-parents .sep:after{border-left-color:#494949}.main-navigation ul ul{border-color:#3d3d3d}.main-navigation ul ul{border-color:rgba(61,61,61,.5)}.main-navigation ul ul li,.main-navigation li:hover a{background-color:#3d3d3d}.main-navigation ul ul li,.main-navigation li:hover a{background-color:rgba(61,61,61,.3)}button:hover,html input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,.button:hover{background-color:#424242}</style>
+
+</head>
+
+<body class="page-template page-template-full-width page-template-full-width-php page page-id-18 logged-in admin-bar no-customize-support custom-background mp6 customizer-styles-applied highlander-enabled highlander-light">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+		<header id="masthead" class="site-header clearfix" role="banner">
+				<div class="site-branding">
+						<h1 class="site-title"><a href="https://mesrasoftware.wordpress.com/" rel="home">MESRA</a></h1>
+			<h2 class="site-description">Molecular Electronic-Structure Reorganization: Analysis</h2>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation nav-horizontal" role="navigation">
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</button>
+			<div class="menu-menu-1-container"><ul id="primary-menu" class="menu"><li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-31"><a href="https://mesrasoftware.wordpress.com/">Home</a></li>
+<li id="menu-item-94" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94"><a href="https://mesrasoftware.wordpress.com/contact/">Contact</a></li>
+<li id="menu-item-70" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70"><a href="https://mesrasoftware.wordpress.com/acknowledgements/">Acknowledgements</a></li>
+<li id="menu-item-36" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36"><a href="https://mesrasoftware.wordpress.com/theory/">Theory</a></li>
+<li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33"><a href="https://mesrasoftware.wordpress.com/download/">Download</a></li>
+<li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35"><a href="https://mesrasoftware.wordpress.com/license/">License</a></li>
+<li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-18 current_page_item menu-item-37"><a href="https://mesrasoftware.wordpress.com/users-manual/" aria-current="page">User&#8217;s Manual</a></li>
+<li id="menu-item-138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138"><a href="https://mesrasoftware.wordpress.com/updates/">Updates</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content clearfix">
+
+			<div class="breadcrumbs">
+			<a class="breadcrumbs-root" href="https://mesrasoftware.wordpress.com/">Home</a><span class="breadcrumbs-current">User&#8217;s Manual</span>		</div>
+		<div class="content-area primary">
+		<main id="main" class="site-main" role="main">
+
+							<div class="article-wrapper">
+					
+<article id="post-18" class="post-18 page type-page status-publish hentry">
+	<header class="entry-header">
+		<h1 class="entry-title">User&#8217;s Manual</h1>
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>A downloadable version of this web page is accessible by clicking <span style="color:#0000ff;"><a style="color:#0000ff;" title="MESRA_Users_Manual" href="https://mesrasoftware.files.wordpress.com/2019/06/mesra_users_manual-1.pdf" target="_blank" rel="noopener">here</a></span>.</p>
+<hr />
+<p style="text-align:justify;"><span style="color:#0000ff;"><strong>Important Note: Any blue color text below is a clickable link to a pdf or log file. </strong></span></p>
+<hr />
+<p style="text-align:justify;"><strong>Outline</strong></p>
+<p style="text-align:justify;"><strong>i.</strong><em> Preliminaries</em></p>
+<p style="text-align:justify;"><strong>ii.</strong> <em>Requirements</em></p>
+<p style="text-align:justify;"><strong>iii.</strong> <em>Downloading and installing</em> MESRA</p>
+<p style="text-align:justify;"><strong>iv.</strong> <em>Preparation of the Gaussian inputs, and pre-treatment of the Gaussian outputs</em></p>
+<p style="text-align:justify;"><strong>v.</strong> <em>Use of the </em>MESRA <em>software: the principle</em></p>
+<p style="text-align:justify;"><strong>vi.</strong> <em>Keywords list and options</em></p>
+<p style="text-align:justify;"><strong>vii</strong>. <em>Advices</em></p>
+<p style="text-align:justify;"><strong>viii.</strong> <em>The </em>.log <em>files</em></p>
+<p style="text-align:justify;"><strong>ix.</strong> <em>Quantities, with their original reference</em></p>
+<hr />
+<p style="text-align:justify;"><strong>i.</strong><em> Preliminaries</em></p>
+<p style="text-align:justify;">The nomenclature in the MESRA output is made clear by simply transposing the one used in presentation <a href="https://www.dropbox.com/s/wh6pebkvr1tflzm/TE_molecular_electronic_structure_reorganization_analysis.pdf?dl=0" target="_blank" rel="noopener"><span style="color:#0000ff;">[P]</span></a> and in Ref. <span style="color:#0000ff;"><span style="color:#000000;"><a style="color:#0000ff;" href="https://arxiv.org/pdf/1902.05840.pdf" target="_blank" rel="noopener">[15]</a></span></span>, unless the contrary is explicitly stated. Few advices are given in paragraph <strong>vii</strong> of this manual.</p>
+<p style="text-align:justify;">The MESRA software comes after his predecessor, NANCY_EX 2.0 <span style="color:#339966;"><a style="color:#339966;" href="https://sourceforge.net/projects/nancyex/files/" target="_blank" rel="noopener">(link)</a></span>, which solely aimed at producing unrelaxed detachment/attachment density matrices, natural and canonical transition orbitals, as well as unrelaxed density-based descriptors of molecular electronic transitions.</p>
+<p style="text-align:justify;"><strong>ii.</strong> <em>Requirements</em></p>
+<p class="p1" style="text-align:justify;">MESRA is written in Fortran 90, currently interfaced with multiple versions of the Gaussian software <a href="http://gaussian.com" target="_blank" rel="noopener"><span style="color:#339966;">(link)</span></a>.</p>
+<p class="p1" style="text-align:justify;">Requirements for MESRA to work are</p>
+<ul style="text-align:justify;">
+<li class="p1" style="text-align:justify;">Unix operating system (Linux/Mac OS) with bash environment</li>
+<li class="p1" style="text-align:justify;">Fortran compiler installed (Intel or GNU compilers like gfortran are recommended; if Intel compiler is used, it is advised to use the mkl libraries indicated in the makefile)</li>
+<li class="p1" style="text-align:justify;">The gmake build automation tool installed (MESRA is compiled using a makefile)</li>
+<li class="p1">BLAS and LAPACK mathematical libraries installed</li>
+<li class="p1">Gaussian software is installed and sourced</li>
+<li class="p1">The formchk, rwfdump, and cubegen utilities of Gaussian are sourced</li>
+<li>Permissions to modify and source your <em>$HOME/.bashrc </em>file</li>
+</ul>
+<p style="text-align:justify;"><strong>iii.</strong> <em>Downloading and installing</em> MESRA</p>
+<p class="p1" style="text-align:justify;"><strong>1.</strong> Place the mesra.tar.bz2 archive in the directory where you wish to store the mesra software.</p>
+<p class="p1" style="text-align:justify;"><strong>2.</strong> Untar the compressed file</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><em>tar -jxvf mesra.tar.bz2 &amp;&amp; rm mesra.tar.bz2</em></p>
+<p class="p1" style="text-align:justify;"><strong>3.</strong> Go inside the mesra directory</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><em>cd mesra</em></p>
+<p class="p1" style="text-align:justify;"><strong>4.</strong> Modify the makefile according to your installation</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><em>vi src/makefile</em></p>
+<p class="p1" style="text-align:justify;">In that file, FC stands for Fortran Compiler, and LFLAGS stands for Libraries flags; make sure the $() and -o tags are correctly placed according to the compiler you use. When you are done, save and exit the file by typing &#8220;<em>:wq&#8221;.</em></p>
+<p class="p1" style="text-align:justify;"><strong>5.</strong> Install mesra</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><em>./install_mesra</em></p>
+<p style="text-align:justify;"><strong>Important: </strong>when typing this command, you will be prompted an answer (y/n) for allowing MESRA to add the path to its executables in your $HOME/.bashrc file, and to source the .bashrc file. If you do not have the permissions for these operations, please  type &#8216;<em>n&#8217;</em> and contact your administrator. In case you have the permissions for this and type &#8216;<em>y&#8217;, </em>a new « PATH=$PATH: » line should have appeared in your $HOME/.bashrc file with the location of MESRA software and executables ($PATH/mesra/bin). You might wish to check that this operation was successful by typing</p>
+<p style="padding-left:30px;"><em>grep &#8216;mesra&#8217; $HOME/.bashrc</em></p>
+<p class="p1" style="text-align:justify;">If you get an error message when running the <em>./install_mesra</em> command due to a problem with your compiler, try to modify again the <em>src/makefile</em> and relaunch the installation, or contact your administrator. If the problem persists, use the e-mail address in the <em>Contact </em>section of this web site to report the problem.</p>
+<p>MESRA installation generates an <em>installation.log </em>file that you might wish to compare with our reference one, downloadable by clicking <span style="color:#0000ff;"><a style="color:#0000ff;" href="https://www.dropbox.com/s/vyifmauibvh8wiz/installation.log?dl=0" target="_blank" rel="noopener">here</a></span>.</p>
+<p class="p1" style="text-align:justify;">Installing MESRA created a <i>test </i>directory in mesra/. This directory contains sub-directories that you can use for testing MESRA before moving to your own calculations. The <i>test </i>directory contains three sub-directories</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><i>cubes</i></p>
+<p class="p1" style="text-align:justify;">contains two cube files for performing numerical integration and/or cube manipulations.</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><i>restricted</i></p>
+<p class="p1" style="text-align:justify;">contains a directory with the outcome of a TDDFT calculation, and one with the outcome of a CIS calculation, both for closed-shell molecules.</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><i>unrestricted</i></p>
+<p class="p1" style="text-align:justify;">is equivalent but for open-shell molecules. In particular, each sub-directory (<i>tddft</i> and <i>cis</i>) contains two sub-sub-directories, <i>form </i>(unrestricted SCF with both alpha and beta electrons) and <i>H2 </i>(unrestricted SCF with only alpha electrons).</p>
+<p class="p1" style="text-align:justify;"><strong>6.</strong> Open a new tab, and check that the installation of the MESRA environment was successful by typing <i>mesra_man</i>. An in-line manual should be displayed on your screen. If not, check your ~/.bashrc file, or re-open your terminal.</p>
+<p class="p1" style="text-align:justify;">Other utilities installed in the <i>mesra/bin </i>directory are</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><i>clean_mesra </i></p>
+<p class="p1" style="text-align:justify;">cleans the files and directories after a MESRA calculation in case of trouble</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><i>test_mesra</i></p>
+<p class="p1" style="text-align:justify;">launches the quick test that has been launched after installing MESRA.</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><i>uninstall_mesra </i>(for developers)</p>
+<p class="p1" style="text-align:justify;">uninstalls MESRA. This can also be useful if you misused the makefile when trying to install MESRA, and wish to restart the installation with the proper parameters in the makefile.</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><i>reinstall_mesra</i> (for developers)</p>
+<p class="p1" style="text-align:justify;">reinstalls MESRA, accounting for the modifications the developer made in the Fortran source files (<i>mesra/src/</i>) and executables (<i>mesra/src/executables/</i>), and launches the test with <em>test_mesra.</em></p>
+<p style="padding-left:30px;"><em>recompile_mesra </em>(for developers)</p>
+<p style="text-align:justify;">simply recompiles the Fortran sources without performing <em>test_mesra </em><em>a</em> <em>posteriori</em><em>.</em> Useful  and fast if you did not modify executable files from <em>mesra/src/executables/</em>. The equivalent if you modified executable files from <em>mesra/src/executables/ </em>is not necessary: you simply need to copy/paste the modified file(s) directly in<em> mesra/bin/. </em>Never modify files in the <em>/mesra/bin/ </em>directory: your modifications will be discarded when reinstalling (<em>reinstall_mesra</em>) or recompiling (<em>recompile_mesra</em>).</p>
+<p style="text-align:justify;"><strong>iv.</strong> <em>Preparation of the Gaussian inputs, and pre-treatment of the Gaussian outputs</em></p>
+<p class="p1" style="text-align:justify;"><strong>iv.A</strong> Preparing the Gaussian excited-state calculation input</p>
+<p class="p1" style="text-align:justify;">These two lines should be placed at the beginning of your Gaussian input:</p>
+<p class="p1" style="text-align:justify;padding-left:30px;"><em>%chk = chk_filename.chk</em></p>
+<p class="p1" style="text-align:justify;padding-left:30px;"><em>%rwf = rwf_filename.rwf</em></p>
+<p class="p1" style="text-align:justify;">(simply replace « chk_filename » and « rwf_filename » by the name you want)</p>
+<p class="p1" style="text-align:justify;">The MESRA software is compatible with the <i>CIS, TDA</i> and <i>TD</i> keywords in Gaussian. The minimum number of roots (<i>Nstates=J</i> option to the <i>CIS, TDA</i> or <i>TD</i> keyword) to be computed is <i>J=3</i>.</p>
+<p class="p1" style="text-align:justify;">If you wish to compute « relaxed » quantities, you should add the <i>density=all</i> keyword and option to your Gaussian excited-state calculation input.</p>
+<p class="p1" style="text-align:justify;"><strong>iv.B</strong> Pre-treatment of Gaussian’s output files</p>
+<p style="text-align:justify;">After Gaussian&#8217;s calculation is performed, you should use the formchk and rwfdump utilities to produce files that will be used by MESRA</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><em>formchk chk_filename.chk</em></p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><em>rwfdump rwf_filename.rwf overlap 514r</em></p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><em>rwfdump rwf_filename.rwf density 633r</em></p>
+<p style="text-align:justify;"><strong>Caution: </strong>When relaxing the hole-particle pair with the <em>density=all </em>key, i.e., using the Z-vector method, Gaussian&#8217;s default excited state for the relaxation is the first one. If you wish to compute the relaxation-related features on excited states of higher energy, you should relaunch a Gaussian job adding the <em>read </em>and <em>root=N </em>options to those originally used with the excited state keyword (<em>CIS</em>, <em>TDA</em>, <em>TD</em>), where <em>N </em>is the number of your excited state of interest.</p>
+<p style="text-align:justify;"><strong>v.</strong> <em>Use of the </em>MESRA <em>software: the principle</em></p>
+<p style="text-align:justify;"><strong>Important note 1: </strong>unless you simply wish to process cube files, you should create a <span style="color:#339966;">working directory</span> with files related to the only one Gaussian calculation you target with MESRA. This directory should <strong>solely</strong> contain the following files: the .fchk file of the calculation, the &#8220;overlap&#8221; and &#8220;density&#8221; files. The quotation marks mean that these files should have this <strong>exact</strong>, lower cased, file name: <em>overlap </em>and <em>density.</em></p>
+<p style="text-align:justify;"><strong>Important note 2: </strong>all the keywords and options  given to MESRA except file names should be <strong>lower cased!</strong></p>
+<p style="text-align:justify;">Using MESRA is extremely simple. There are two situations:</p>
+<ul style="text-align:justify;">
+<li>You are in a directory with cube files that you want to analyze or manipulate</li>
+</ul>
+<p style="text-align:justify;">Then you just need to type <em>mesra</em>, followed by the appropriate series of arguments (details below under the <strong>utilities </strong>title)</p>
+<ul style="text-align:justify;">
+<li style="text-align:justify;">You are in the <span style="color:#339966;">working directory</span> depicted above (specific to each Gaussian excited-state calculation, and contains solely the .fchk, <em>overlap</em> and <em>density</em> files) and wish to perform one of the <strong>main tasks </strong>listed below</li>
+</ul>
+<p style="text-align:justify;">Then you just need to start by &#8220;preparing&#8221; the use of MESRA by typing</p>
+<p style="padding-left:30px;text-align:justify;"><em>mesra prep</em> <em>$soft</em> <em>$fchk_file</em> <em>$roots</em></p>
+<p style="text-align:justify;"><em>$soft</em> is the software name you used (g03, g09, and g16 only are accepted)</p>
+<p style="text-align:justify;"><em>$fchk_file </em>is the name of your .fchk file</p>
+<p style="text-align:justify;"><em>$roots </em>is the number of transitions that were computed by Gaussian. Please note that if you are using g16, MESRA will automatically detect the number of transitions that were computed, so the last argument is not necessary in that case, and that case only.</p>
+<p style="text-align:justify;">Example of use:</p>
+<p style="padding-left:30px;text-align:justify;"><em>mesra prep g16 pp3.fchk</em></p>
+<p style="text-align:justify;">Another example:</p>
+<p style="padding-left:30px;text-align:justify;"><em>mesra prep g09 butadiene.fchk 6</em></p>
+<p style="text-align:justify;">Now that you generated a &#8220;general information file&#8221; with the <em>prep </em>keyword, you can use MESRA, that will read this general information file, so you just need to provide information on the current job you want to perform. If we continue with the butadiene example, we can type</p>
+<p style="padding-left:30px;text-align:justify;"><em>mesra dau 2</em></p>
+<p style="text-align:justify;">which will cause the computation and storage of the detachment/attachment density matrices, and the evaluation of density-based descriptors using Löwdin-like detachment/attachment population. A directory &#8220;<em>mesra-t2</em>&#8221; will be created in the working directory, and MESRA&#8217;s output files will be stored there.</p>
+<p style="text-align:justify;">Jobs can be done consecutively: the general information file remains in the working directory. For instance, one can type</p>
+<p style="padding-left:30px;text-align:justify;"><em>mesra dau 2</em></p>
+<p style="text-align:justify;">then</p>
+<p style="padding-left:30px;text-align:justify;"><em>mesra orbsxy 3</em></p>
+<p style="text-align:justify;">then</p>
+<p style="padding-left:30px;text-align:justify;">&#8230;</p>
+<p style="text-align:justify;">without any unsafe interference between past and current MESRA jobs.</p>
+<p style="text-align:justify;">The outcome of MESRA calculations for the <em>x</em>th excited state of a molecule is a set of files, gathered in the <em>mesra-tx</em> directory. Here are the file types that can be produced by MESRA:</p>
+<p style="padding-left:30px;text-align:justify;"><em>.log</em></p>
+<p style="text-align:justify;">collects the information printed on screen, and some additional, secondary information for developers (see below).</p>
+<p style="padding-left:30px;text-align:justify;"><em>.fchk</em></p>
+<p style="text-align:justify;">MESRA produces two types of .<em>fchk </em>files: those that will contain a density matrix, which can be visualized by using the <em>cubegen </em>utility with the <em>fdensity=scf</em>. These files have explicit names (<em>detachmentU.fchk</em>, <em>DeltaR.fchk</em>, etc.) with Delta being the (unrelaxed or relaxed) difference density matrix. In this context, <em>DeltaZ</em> stands for the Z-vector (<em>gamma^Z </em>matrix). The other type of <em>.fchk</em> that MESRA outputs contains orbitals (<em>p</em>NTOs, <em>a</em>NTOs, CTOs). Those can be visualized by creating a cube using the <em>cubegen </em>utility with the <em>mo=1,2[,3,4,&#8230;]</em>. The numbers between square brackets are optional. The orbitals are paired in the <em>.fchk </em>file, so the couples are arranged as <em>occ1</em>, <em>virt1, occ2, virt2</em>, etc. which means that using the <em>mo=1,2</em> keyword and option with the <em>cubegen </em>utility will produce a cube with the first couple <em>(occ1/virt1)</em> of transition orbitals. Using the <em>mo=1,2,3,4</em> keyword and option will produce a cube with the first two couples.</p>
+<p style="padding-left:30px;text-align:justify;"><em>.eig</em></p>
+<p style="text-align:justify;">When performing a matrix diagonalization, MESRA produces a file with the eigenvalues. Again, the nomenclature of these files is made very explicit. For instance <em>daU.eig</em> will contain the eigenvalues of the unrelaxed difference density matrix, used for producing the unrelaxed detachment/attachment density matrices.</p>
+<p style="padding-left:30px;text-align:justify;"><em>C.orth</em></p>
+<p style="text-align:justify;">contains the diagonal entries of (C^dagger)SC, to check that the LCAO coefficients are properly read and that there is no orthogonality problem between the canonical orbitals.</p>
+<p style="padding-left:30px;text-align:justify;"><em>.ac</em></p>
+<p style="text-align:justify;">The <em>.ac </em>files arise from the <em>a</em>diabatic <em>c</em>onnection (<em>ac</em>) of the Z-vector. There are two of them: <em>adiabZ.ac </em>which stores the numerical results (evolution of the relative amplitude of the relaxation, relaxed descriptors) along the adiabatic connection. The second file, <em>acVec_Z.ac</em> stores the auto-correlation of the <em>natural difference orbitals </em>(the eigenvectors of the difference density matrix) along the adiabatic connection.</p>
+<p style="padding-left:30px;text-align:justify;"><em>.cube</em></p>
+<p style="text-align:justify;">The outcome of cube manipulations is another cube file.</p>
+<p style="text-align:justify;"><strong>vi.</strong> <em>Keywords list and options</em></p>
+<p style="text-align:justify;"><strong>Note 1: </strong>the list of keywords and options is visible from anywhere in the terminal by simply typing</p>
+<p style="text-align:justify;padding-left:30px;"><em>mesra_man</em></p>
+<p style="text-align:justify;">They are written so that the MESRA software can be executed as</p>
+<p style="padding-left:30px;text-align:justify;"><em>mesra argument1 argument2 [&#8230;]</em></p>
+<p style="text-align:justify;"><strong>Note 2: </strong>some features can be accompanied by a population analysis (PA) of the detachment/attachment density matrices. This means that one of the arguments to the <em>mesra </em>command should be an integer between 0 and 100, that will be converted into a percentage (<em>x</em>, decimal number between 0 and 1). For example, the default value (<em>x = 1/2</em>) corresponds to 50. The full DS (<em>x =</em> 0) to SD (<em>x = 1</em>) and SA to AS spectrum can be scanned using the <em>scanpa</em> option.</p>
+<p style="text-align:justify;">The keywords labelled with an asterisk (*) are compatible with population analysis to produce approximation of the density-based descriptors; the operation can be discarded by using the <em>nopa </em>option. Two asterisks (**) mean that population analysis is mandatory. Three asterisks (***) means that population analysis is mandatory, and that the <em>scanpa</em> option is forbidden.</p>
+<p class="p1" style="text-align:justify;">The keywords marked by a circle (°) require cube files to be in the <em>mesra-tx</em> repository (x is the target transition number). These cube files can be obtained by using the command</p>
+<p class="p1" style="padding-left:30px;text-align:justify;"><em>cubegen 0 fdensity=scf formchk_filename.fchk formchk_filename.cube -X h</em></p>
+<p class="p1" style="text-align:justify;">by replacing <em>X</em> by 3 for a numerical integration analysis of the density or for producing figures with a good density resolution. <em>X</em> can alternatively be replaced by 2 to provide a coarse grid, for a quick visualization of the density.</p>
+<p class="p1" style="text-align:justify;">Note that when using the cubegen command above for producing cubes that are to be used for numerical integration, it is important to keep consistency between the fchk and cube base names, so that only the extension (.fchk, .cube) differ.</p>
+<p class="p1" style="text-align:justify;">Keywords marked by a double circle (°°) require a &#8220;U&#8221; or &#8220;XY&#8221; .log file(s) from a <em>qmniu </em>or <em>qmnixy </em>calculation in the <em>mesra-tx</em> directory (x is the target transition number). This simply means that prior to a qmnirlx calculation, you should obviously have performed a qmniu or a qmnixy calculation.</p>
+<hr />
+<p style="text-align:justify;"><strong>1. Main tasks &#8211; </strong>Processing files <span style="color:#339966;">in the working directory</span></p>
+<p style="text-align:justify;">Reminder: <span class="s1">Every keyword except file names should be lower cased.</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Optional arguments are indicated below by their default value between square brackets. </span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Post-processing of the Quantum Package is being implemented, and will concern unrelaxed detachment/attachment (dau) construction and population analysis approximation to density-based descriptors, for closed-shell molecules only.</span></p>
+<p style="text-align:justify;"><span style="color:#000000;"><em><strong>prep</strong> &#8211; Preparation for the use of</em> MESRA</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 1: <em>prep</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 2: Software (g03, g09, g16)</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 3: Fchk file name (if applicable &#8211; Gaussian postprocessing)</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 4: Total number of transitions computed (if Software is different from g16)</span></p>
+<p style="text-align:justify;"><strong><span style="color:#000000;"><em>dau* &#8211; </em></span></strong><em><span style="color:#000000;">Detachment/attachment from the <strong>u</strong>nrelaxed difference density matrix.</span></em></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 1: <em>dau</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 2: Number of the transition of interest</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 3: [50] statement about the population analysis : can be &#8220;<em>nopa</em>&#8221; (no population analysis), &#8220;<em>scanpa</em>&#8221; or any integer between 0 and 100 </span></p>
+<p style="text-align:justify;"><span style="color:#000000;"><em><strong>daxy*</strong> &#8211; </em></span><em><span class="s1">Unrelaxed detachment/attachment density matrices for CIS, TDHF, TDA, TDDFT (XY methods) using appropriately the properties of the difference density matrix (no matrix diagonalization is necessary, hence the calculation is faster but does not produce the eigenvalues.</span></em></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 1: <em>daxy</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 2: Number of the transition of interest</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 3: [50] statement about the population analysis : can be &#8220;<em>nopa</em>&#8221; (no population analysis), &#8220;<em>scanpa</em>&#8221; or any integer between 0 and 100</span></p>
+<p style="text-align:justify;"><em><strong><span style="color:#000000;">daz* &#8211; </span></strong><span style="color:#000000;">Detachment/attachment related to the Z-vector transformation (diagonalizes the Z-vector and produces its detachment/attachment)</span></em></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 1: <em>daz</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 2: Number of the transition of interest</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 3: [50] statement about the population analysis : can be &#8220;<em>nopa</em>&#8221; (no population analysis), &#8220;<em>scanpa</em>&#8221; or any integer between 0 and 100 </span></p>
+<p style="text-align:justify;"><strong><span style="color:#000000;"><em>dar* &#8211; </em></span></strong><span style="color:#000000;"><em>Relaxed detachment/attachment, obtained by diagonalizing the relaxed difference density matrix. The use of this keyword is highly discouraged.</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 1: <em>dar</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 2: Number of the transition of interest</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 3: [50] statement about the population analysis : can be &#8220;<em>nopa</em>&#8221; (no population analysis), &#8220;<em>scanpa</em>&#8221; or any integer between 0 and 100</span></p>
+<p style="text-align:justify;"><strong><span style="color:#000000;"><em>rlxypa** &#8211; </em></span></strong><em><span style="color:#000000;">Relaxed density-based descriptors are produced using population analysis</span></em></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 1: <em>rlxypa</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 2: Number of the transition of interest</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 3: [50] statement about the population analysis : can be &#8220;<em>scanpa</em>&#8220;, or any integer between 0 and 100</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">! <em>nopa</em> not authorized</span></p>
+<p style="text-align:justify;"><strong><span style="color:#000000;"><em>alphaddagger** &#8211; </em></span></strong><span style="color:#000000;"><em>Approximates the alpha^ddagger integrals using population analysis</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 1: <em>alphaddagger</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 2: Number of the transition of interest</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 3: [50] statement about the population analysis : can be &#8220;<em>scanpa</em>&#8220;, or any integer between 0 and 100</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">! <em>nopa</em> not authorized</span></p>
+<p style="text-align:justify;"><span style="color:#000000;"><em><strong>adiabz*** &#8211;</strong> </em></span><em><span class="s1">Adiabatic connection of the Z-vector</span></em></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 1: <em>adiabz</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 2: Number of the transition of interest</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 3: [50] statement about the population analysis : can be any integer between 0 and 100 </span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">! <em>scanpa</em> not authorized</span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">!<em> nopa</em> not authorized</span></p>
+<p style="text-align:justify;"><strong><span style="color:#000000;"><em>orbsxy &#8211; </em></span></strong><em><span class="s1">Transition orbitals for CIS, TDHF, TDA, TDDFT (XY methods). p</span></em><span class="s1">NTOs, <em>a</em>NTOs, <em>and </em>CTOs<em> are computed.</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 1:<em> orbsxy</em></span></p>
+<p class="p1" style="text-align:justify;"><span class="s1">Argument 2: Number of the transition of interest</span></p>
+<p style="text-align:justify;">! For the <strong><em>orbsxy</em></strong><em>, <strong>pntos</strong>, <strong>antos</strong>,</em> and <em><strong>ctos </strong></em>keywords, in the MESRA output when &#8220;<em>x&#8221; </em>and &#8220;<em>y&#8221; </em>are employed (for instance, in the (<em>x^dagger</em>)<em>x </em>expression), it is the <em>x </em>and <em>y </em>TDDFT vectors that are pointed.</p>
+<p style="text-align:justify;"><strong><em>pntos &#8211; </em></strong><em>Projected Natural Transition Orbitals</em></p>
+<p style="text-align:justify;">Argument 1: <em>pntos</em></p>
+<p style="text-align:justify;">Argument 2: Number of the transition of interest</p>
+<p style="text-align:justify;"><strong><em>antos &#8211; </em></strong><em>Natural Transition Orbitals corresponding to a TDDFT auxiliary wave function</em></p>
+<p style="text-align:justify;">Argument 1: <em>a</em><em>ntos</em></p>
+<p style="text-align:justify;">Argument 2: Number of the transition of interest</p>
+<p style="text-align:justify;"><strong><em>ctos &#8211; </em></strong><em>Canonical Transition Orbitals</em></p>
+<p style="text-align:justify;">Argument 1: <em>c</em><em>tos</em></p>
+<p style="text-align:justify;">Argument 2: Number of the transition of interest</p>
+<p style="text-align:justify;"><strong><em>qmniu° &#8211; </em></strong><em><span class="s1">Computes density-based descriptors from the unrelaxed detachment/attachment cubes constructed using the outcome of a </span></em><span class="s1">MESRA</span><em><span class="s1"> dau calculation.</span></em></p>
+<p style="text-align:justify;">Argument 1: <em>qmniu</em></p>
+<p style="text-align:justify;">Argument 2: Number of the transition of interest</p>
+<p class="p1" style="text-align:justify;"><span class="s1">! <em>d</em><em>etachmentU.cube</em> and <em>attachmentU.cube</em> files should be in the <em>mesra-tx</em> directory, <em>where </em></span><em><span class="s1">x is number of the transition of interest</span></em></p>
+<p style="text-align:justify;"><em><strong>qmnixy° </strong><strong>&#8211; </strong><span class="s1">Computes density-based descriptors from the unrelaxed detachment/attachment cubes constructed using the outcome of a </span></em><span class="s1">MESRA</span><em><span class="s1"> daxy calculation.</span></em></p>
+<p style="text-align:justify;">Argument 1: <em>qmnixy</em></p>
+<p style="text-align:justify;">Argument 2: Number of the transition of interest</p>
+<p style="text-align:justify;"><span class="s1">! <em>detachment_XY.cube</em> and <em>attachment_XY.cube</em> files should be in the <em>mesra-tx</em> directory, <em>where </em></span><em><span class="s1">x is number of the transition of interest</span></em></p>
+<p style="text-align:justify;"><strong><em>qmniz° &#8211; </em></strong><em><span class="s1">Computes density-based descriptors from the unrelaxed detachment/attachment cubes constructed using the outcome of a </span></em><span class="s1">MESRA</span><em><span class="s1"> daz calculation.</span></em></p>
+<p style="text-align:justify;">Argument 1: <em>qmniz</em></p>
+<p style="text-align:justify;">Argument 2: Number of the transition of interest</p>
+<p style="text-align:justify;"><span class="s1">! <em>detachmentZ.cube</em> and <em>attachmentZ.cube</em> files should be in the <em>mesra-tx</em> directory, <em>where x is number of the transition of interest</em></span></p>
+<p style="text-align:justify;"><em><strong>qmnir° &#8211; </strong><span class="s1">Computes density-based descriptors from the unrelaxed detachment/attachment cubes constructed using the outcome of a</span></em><span class="s1"> MESRA</span><em><span class="s1"> dar calculation.</span></em></p>
+<p style="text-align:justify;">Argument 1: <em>qmnir</em></p>
+<p style="text-align:justify;">Argument 2: Number of the transition of interest</p>
+<p style="text-align:justify;"><span class="s1">! <em>detachmentR.cube</em> and <em>attachmentR.cube</em> files should be in the <em>mesra-tx</em> directory, <em>where x is number of the transition of interest</em></span></p>
+<p style="text-align:justify;"><em><strong>qmnirlx°° &#8211; </strong><span class="s1">Computes relaxed density-based descriptors from the</span></em><span class="s1"> MESRA</span><em><span class="s1"> .log file from a qmniu or a qmnixy calculation. </span></em></p>
+<p>Argument 1: <em>qmnirlx</em></p>
+<p>Argument 2: Number of the transition of interest</p>
+<p style="text-align:justify;"><span class="s1">! <em>qmNIU.log</em> or <em>qmNI_XY</em>.log <em>file should be in the mesra-tx directory,</em></span><em><span class="s1"> where x is the number of the transition of interest</span></em></p>
+<hr />
+<p style="text-align:justify;"><strong>2. Utilities &#8211; </strong>Processing cube files directly in any directory</p>
+<p style="text-align:justify;"><em><strong>qmni &#8211;</strong> Computes density overlap, normalized charge displacement, and centroids from two cube files</em></p>
+<p class="p1"><span class="s1">Argument1: <em>qmni</em></span></p>
+<p class="p1"><span class="s1">Argument2: cube1 file name</span></p>
+<p class="p1"><span class="s1">Argument3: cube2 file name</span></p>
+<p style="text-align:justify;"><em><strong>split</strong> &#8211; <span class="s1">Splits the entries of a cube file according to their sign, and integrates</span></em></p>
+<p class="p1"><span class="s1">Argument 1: <em>split</em></span></p>
+<p class="p1"><span class="s1">Argument 2: cube file name</span></p>
+<p style="text-align:justify;"><em><strong>cubeop</strong> &#8211; <span class="s1">Operations on cubes : op1*cube1 + op2*cube2 = cube3</span></em></p>
+<p class="p1"><span class="s1">Argument 1: <em>cubeop</em></span></p>
+<p class="p1"><span class="s1">Argument 2: cube1 file name</span></p>
+<p class="p1"><span class="s1">Argument 3: cube2 file name</span></p>
+<p class="p1"><span class="s1">Argument 4: cube3 file name</span></p>
+<p class="p1"><span class="s1">Argument 5: op1 (<em>p</em> or <em>m</em>, standing for plus or minus)</span></p>
+<p class="p1"><span class="s1">Argument 6: op2 (<em>p</em> or <em>m</em>, standing for plus or minus)</span></p>
+<p style="text-align:justify;"><strong><em>incrcube &#8211; </em></strong><em>Increase of a cube size</em></p>
+<p class="p1"><span class="s1">Argument 1: <em>incrcube</em></span></p>
+<p class="p1"><span class="s1">Argument 2: cube file name</span></p>
+<p class="p1"><span class="s1">Argument 3: percentage of size increase (each dimension will be increased with the same percentage)</span></p>
+<hr />
+<p style="text-align:justify;"><em>Comments</em></p>
+<p style="text-align:justify;"><em>dau </em>outputs the 1-DDM eigenvalues, while <em>daxy </em>does not: it simply produces the detachment/attachment density matrices.</p>
+<p style="text-align:justify;">When performing a detachment/attachment analysis on the Z-vector, one notices that the equivalent of chi and phi for the unrelaxed detachment/attachment analysis in this case are the zeta^Z and phi^Z quantities. However, these are still labelled chi and phi when performing the Z-vector detachment/attachment calculation and population analysis (<em>daz</em> keyword) or numerical integration (<em>qmniz</em> keyword). One can also obtain zeta^Z by constructing the cube with the z-vector density (stored in a DeltaZ file with .fchk extension) and using MESRA with the <em>split </em>keyword. This is also true for finding the (unrelaxed) <em>chi </em>by building a cube from the Delta (U or _XY) file with .fchk extension and using MESRA with the <em>split </em>keyword.</p>
+<p style="text-align:justify;"><strong>vii.</strong> <em>Advices</em></p>
+<p style="text-align:justify;">When performing detachment/attachment population analysis, <em>x = 1/2</em> is the recommended scheme (which explains why &#8220;50&#8221; is usually the default value), as the Löwdin-like detachment/attachment population analysis is the only one that ensures populations higher than zero and lower than one.</p>
+<p style="text-align:justify;">For the numerical integration, we recommend the use of the &#8220;-3&#8221; key when constructing the cube using Gaussian utility.</p>
+<p style="text-align:justify;"><strong>viii.</strong> <em>The </em>.log <em>files</em></p>
+<p style="text-align:justify;">The most useful information is printed on screen, and in a .log file. The .log file also contains information helpful to developers for bug tracking or for detecting when the excited-state calculation itself is problematic, or when MESRA software has been misused.</p>
+<p style="text-align:justify;">Here are few keys for reading the .log files:</p>
+<ul style="text-align:justify;">
+<li>&#8220;p&#8221; is used for canonical space ground-state density matrix</li>
+<li>&#8220;pK&#8221; is for atomic space ground-state density matrix</li>
+<li>&#8220;px&#8221; and &#8220;pxK&#8221; are standing for excited-state density matrices</li>
+<li>Lower &#8220;t&#8221; is used for canonical space transition density matrix</li>
+<li>Upper &#8220;T&#8221; is for atomic space transition density matrix</li>
+<li>S is the atomic basis overlap matrix (equation 5 in Ref. <span style="color:#0000ff;"><span style="color:#000000;"><a style="color:#0000ff;" href="https://arxiv.org/pdf/1902.05840.pdf" target="_blank" rel="noopener">[15]</a></span></span>)</li>
+<li>During population analysis, <em>y = 1-x</em></li>
+</ul>
+<p style="text-align:justify;"><strong>ix.</strong> <em>Quantities, with their original reference</em></p>
+<p style="text-align:justify;">The quantities that are computable using MESRA are listed below, with their original reference, i.e. the one in which it has first been published, and the name they get in the code output.</p>
+<p style="text-align:justify;"><strong>ix.A</strong> <em>From Ref.</em> <span style="color:#0000ff;"><span style="color:#000000;"><a style="color:#0000ff;" href="https://arxiv.org/pdf/1902.05840.pdf" target="_blank" rel="noopener">[15]</a></span></span></p>
+<p style="text-align:justify;">The following quantities are reported using in Ref. <span style="color:#0000ff;"><span style="color:#000000;"><a style="color:#0000ff;" href="https://arxiv.org/pdf/1902.05840.pdf" target="_blank" rel="noopener">[15]</a></span></span> and will be referred as follows:</p>
+<p style="text-align:justify;"><span style="color:#993366;">[Original Ref.] Description of the quantity (name in the code output, equation in <span style="color:#0000ff;"><span style="color:#000000;"><a style="color:#0000ff;" href="https://arxiv.org/pdf/1902.05840.pdf" target="_blank" rel="noopener">[15]</a></span></span>)</span></p>
+<p style="text-align:justify;">[6] The integral of detachment/attachment density (theta, eq. 22)</p>
+<p style="text-align:justify;">[6] The hole/particle spatial overlap (phiS, eq. 25)</p>
+<p style="text-align:justify;">[7] The amount of transferred charge (chi, eq. 26)</p>
+<p style="text-align:justify;">[8] The fraction of D/A contributing to the net charge displacement (phi, eq. 26)</p>
+<p style="text-align:justify;">[8] The joint measure of locality and normalized charge displacement (psi, eq. 27)</p>
+<p style="text-align:justify;">[12] The relaxed-unrelaxed detachment/attachment integral difference (lambda^dagger, eq. 34)</p>
+<p style="text-align:justify;">[12] Integral of the relaxation-induced detachment/attachment alteration (alpha^ddager, eq. 35)</p>
+<p style="text-align:justify;">[12] The amount of transferred charge during the relaxation (chi, eq. 36)</p>
+<p style="text-align:justify;"><strong>ix.B</strong> <em>From presentation </em><a href="https://www.dropbox.com/s/wh6pebkvr1tflzm/TE_molecular_electronic_structure_reorganization_analysis.pdf?dl=0" target="_blank" rel="noopener"><span style="color:#0000ff;">[P]</span></a></p>
+<p style="text-align:justify;">The following quantities are reported using in <a href="https://www.dropbox.com/s/wh6pebkvr1tflzm/TE_molecular_electronic_structure_reorganization_analysis.pdf?dl=0" target="_blank" rel="noopener"><span style="color:#0000ff;">[P]</span></a> and will be referred as follows:</p>
+<p style="text-align:justify;"><span style="color:#993366;">[Original Ref.] Description of the quantity (name in the code output, section in <a href="https://www.dropbox.com/s/wh6pebkvr1tflzm/TE_molecular_electronic_structure_reorganization_analysis.pdf?dl=0" target="_blank" rel="noopener"><span style="color:#0000ff;">[P]</span></a>)</span></p>
+<p style="text-align:justify;">[7] The D/A and n+/n- inter-centroid distances (zeta, II.1.C)</p>
+<p style="text-align:justify;">[Unpublished] Normalized relaxation-induced charge displacement (phi, II.1.D)</p>
+<p style="text-align:justify;">[Unpublished] Relaxed phiS, phi, and psi descriptors (explicit, II.1.E)</p>
+<p style="text-align:justify;"><em><strong>+</strong> Two quantities related to wave function-based analysis (XY methods)</em></p>
+<p style="text-align:justify;">[9] Amplitude of the particle-hole correlation (III.3.A)</p>
+<p style="text-align:justify;">[9] CTOs residue: sum of the absolute value of the negative theta_eta entries (item 3 of section III.3.C, sum of Psi_ia &#8211; theta_ia in eq. 73 of Ref. [9])</p>
+<hr />
+<p style="text-align:justify;"><em>References &#8211; <span style="color:#339966;">Any green color text below is a direct link to the document web page.</span></em></p>
+<p style="text-align:justify;"><a href="http://arxiv.org/abs/1902.05840" target="_blank" rel="noopener"><span style="color:#339966;">[15]</span></a> G. Breuil, K. Shehu, E. Lognon, S. Pitié, B. Lasorne, T. Etienne, <em>Diagnosis of two evaluation paths to density-based descriptors of molecular electronic transitions</em>, 2019, arxiv.org/abs/1902.05840</p>
+<p style="text-align:justify;"><a href="https://pubs.acs.org/doi/10.1021/acs.chemrev.7b00577" target="_blank" rel="noopener"><span style="color:#339966;">[14]</span></a> R. Crespo-Otero, M. Barbatti, Recent Advances and Perspectives on Nonadiabatic Mixed Quantum–Classical Dynamics, 2018, Chem. Rev., 118 (15), 7026-7068</p>
+<p style="text-align:justify;"><a href="http://arxiv.org/abs/1811.08849" target="_blank" rel="noopener"><span style="color:#339966;">[13]</span></a> T. Etienne, <em>A comprehensive, self-contained derivation of the one-body density matrices from single-reference excited states calculation methods using the equation-of-motion formalism</em>, 2018, arxiv.org/abs/1811.08849</p>
+<p style="text-align:justify;"><a href="http://arxiv.org/abs/1811.10526" target="_blank" rel="noopener"><span style="color:#339966;">[12]</span></a> T. Etienne, M. Pastore, <em>Charge separation: From the topology of molecular  </em><em>electronic transitions to the dye/semiconductor interfacial energetics and kinetics, 2018, </em>arxiv.org/abs/1811.10526</p>
+<p style="text-align:justify;"><span style="color:#339966;"><a style="color:#339966;" href="https://arxiv.org/abs/1811.10536" target="_blank" rel="noopener">[11]</a></span> T. Etienne, <em>Theoretical Insights into the Topology of Molecular Excitons from Single-Reference Excited States Calculation Methods, in </em>Excitons, Sergei Pyshkin Ed., InTech,  2017, doi: 10.5772/intechopen.70688</p>
+<p style="text-align:justify;"><a href="https://aip.scitation.org/doi/abs/10.1063/1.4991561" target="_blank" rel="noopener"><span style="color:#339966;">[10]</span></a> M. Pastore, X. Assfeld, E. Mosconi, X. Assfeld, T. Etienne, <em>Unveiling the nature of post-linear response Z-vector method for time-dependent density functional theory, </em>2017<em>, </em>J. Chem. Phys. 2017, 147, 024108</p>
+<p style="text-align:justify;"><a href="https://aip.scitation.org/doi/full/10.1063/1.4922780" target="_blank" rel="noopener"><span style="color:#339966;">[9]</span></a> T. Etienne, <em>Transition Matrices and Orbitals from Reduced Density Matrix Theory</em>, 2015, J. Chem. Phys., 142, 244103</p>
+<p style="text-align:justify;"><a href="https://pubs.acs.org/doi/abs/10.1021/ct501163b" target="_blank" rel="noopener"><span style="color:#339966;">[8]</span></a> T. Etienne, <em>Probing the Locality of Excited States with Linear Algebra</em>, 2015, J. Chem. Theory Comput., 11, 1692-1699</p>
+<p style="text-align:justify;"><a href="https://pubs.acs.org/doi/abs/10.1021/ct500400s" target="_blank" rel="noopener"><span style="color:#339966;">[7]</span></a> T. Etienne, X. Assfeld, A. Monari, <em>New Insight into the Topology of Excited States through Detachment/Attachment Density Matrices-based Centroids of Charge</em>, 2014, J. Chem. Theory Comput. 10, 3906-3914</p>
+<p style="text-align:justify;"><a href="https://pubs.acs.org/doi/abs/10.1021/ct5003994" target="_blank" rel="noopener"><span style="color:#339966;">[6]</span></a> T. Etienne, X. Assfeld, A. Monari, <em>Toward a quantitative assessment of electronic transitions’ charge-transfer character</em>, 2014, <span style="color:#000000;">J. Chem. Theory Comput. 10, 3896-3905</span></p>
+<p style="text-align:justify;"><a href="https://aip.scitation.org/doi/10.1063/1.1558471" target="_blank" rel="noopener"><span style="color:#339966;">[5]</span></a> R.L. Martin, <em>Natural transition orbitals</em>, 2003, J. Chem. Phys. 118, 4775</p>
+<p style="text-align:justify;"><a href="https://www.worldscientific.com/doi/abs/10.1142/9789812830586_0005" target="_blank" rel="noopener"><span style="color:#339966;">[4]</span></a> M.E. Casida, <em>Time-dependent density functional response theory for molecules</em>. In <i>Recent Advances In Density Functional Methods,</i> 1995, Part I, 155-192.</p>
+<p style="text-align:justify;"><a href="https://pubs.acs.org/doi/10.1021/j100039a012" target="_blank" rel="noopener"><span style="color:#339966;">[3]</span></a> M. Head-Gordon, A.M. Grana, D. Maurice, C.A. White, <em><span class=" hlFld-Tiltle ">Analysis of Electronic Transitions as the Difference of Electron Attachment and Detachment Densities</span></em><span class=" hlFld-Tiltle ">, 1995, J. Phys. Chem. 99, 14261-14270 </span></p>
+<p style="text-align:justify;"><a href="https://aip.scitation.org/doi/10.1063/1.447489" target="_blank" rel="noopener"><span style="color:#339966;">[2]</span></a> N.C. Handy, H.F. Schaeffer III, <em>On the evaluation of analytic energy derivatives for correlated wave functions</em>, 1984, J. Chem. Phys. 81, 5031</p>
+<p style="text-align:justify;"><span style="color:var(--color-text);"><a href="https://aip.scitation.org/doi/abs/10.1063/1.1747632" target="_blank" rel="noopener"><span style="color:#339966;">[1]</span></a> P. Löwdin, <em>On the Non-Orthogonality Problem Connected with the Use of Atomic Wave Functions in the Theory of Molecules and Crystals,</em> 1950, J. Chem. Phys., 18, 365–375.</span></p>
+<hr />
+<p style="text-align:justify;"><span style="color:#0000ff;"><a href="https://www.dropbox.com/s/wh6pebkvr1tflzm/TE_molecular_electronic_structure_reorganization_analysis.pdf?dl=0" target="_blank" rel="noopener"><span style="color:#0000ff;">[P]</span></a> <span style="color:#000000;">Molecular electronic-structure reorganization: analysis</span></span></p>
+<hr />
+<p style="text-align:justify;"><img data-attachment-id="97" data-permalink="https://mesrasoftware.wordpress.com/welcome/capture-decran-2019-06-10-a-17-02-01/#main" data-orig-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png" data-orig-size="1330,904" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Capture d’écran 2019-06-10 à 17.02.01" data-image-description="" data-medium-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300" data-large-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" class="alignnone size-full wp-image-97" src="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" alt="Capture d’écran 2019-06-10 à 17.02.01" srcset="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700 700w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=150 150w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300 300w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=768 768w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=1024 1024w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png 1330w" sizes="(max-width: 700px) 100vw, 700px"   /></p>
+<p style="text-align:justify;"><img data-attachment-id="97" data-permalink="https://mesrasoftware.wordpress.com/welcome/capture-decran-2019-06-10-a-17-02-01/#main" data-orig-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png" data-orig-size="1330,904" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Capture d’écran 2019-06-10 à 17.02.01" data-image-description="" data-medium-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300" data-large-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" class="alignnone size-full wp-image-97" src="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" alt="Capture d’écran 2019-06-10 à 17.02.01" srcset="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700 700w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=150 150w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300 300w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=768 768w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=1024 1024w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png 1330w" sizes="(max-width: 700px) 100vw, 700px"   /></p>
+<p style="text-align:justify;"><img data-attachment-id="97" data-permalink="https://mesrasoftware.wordpress.com/welcome/capture-decran-2019-06-10-a-17-02-01/#main" data-orig-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png" data-orig-size="1330,904" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Capture d’écran 2019-06-10 à 17.02.01" data-image-description="" data-medium-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300" data-large-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" class="alignnone size-full wp-image-97" src="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" alt="Capture d’écran 2019-06-10 à 17.02.01" srcset="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700 700w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=150 150w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300 300w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=768 768w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=1024 1024w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png 1330w" sizes="(max-width: 700px) 100vw, 700px"   /></p>
+<p style="text-align:justify;"><img data-attachment-id="97" data-permalink="https://mesrasoftware.wordpress.com/welcome/capture-decran-2019-06-10-a-17-02-01/#main" data-orig-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png" data-orig-size="1330,904" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Capture d’écran 2019-06-10 à 17.02.01" data-image-description="" data-medium-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300" data-large-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" class="alignnone size-full wp-image-97" src="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" alt="Capture d’écran 2019-06-10 à 17.02.01" srcset="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700 700w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=150 150w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300 300w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=768 768w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=1024 1024w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png 1330w" sizes="(max-width: 700px) 100vw, 700px"   /></p>
+<p style="text-align:justify;"><img data-attachment-id="97" data-permalink="https://mesrasoftware.wordpress.com/welcome/capture-decran-2019-06-10-a-17-02-01/#main" data-orig-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png" data-orig-size="1330,904" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Capture d’écran 2019-06-10 à 17.02.01" data-image-description="" data-medium-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300" data-large-file="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" class="alignnone size-full wp-image-97" src="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700" alt="Capture d’écran 2019-06-10 à 17.02.01" srcset="https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=700 700w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=150 150w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=300 300w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=768 768w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png?w=1024 1024w, https://mesrasoftware.files.wordpress.com/2019/06/capture-de28099ecc81cran-2019-06-10-acc80-17.02.01.png 1330w" sizes="(max-width: 700px) 100vw, 700px"   /></p>
+			</div><!-- .entry-content -->
+	<footer class="entry-meta"><span class="edit-link"><a class="post-edit-link" href="https://wordpress.com/page/mesrasoftware.wordpress.com/18">Edit</a></span></footer></article><!-- #post-## -->
+				</div>
+				
+			
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-footer-wrapper">
+			<div class="site-info">
+								<a href="https://wordpress.com/?ref=footer_website">Create a free website or blog at WordPress.com.</a>
+				
+							</div><!-- .site-info -->
+					</div><!-- .site-footer-wrapper -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<!--  -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		jQuery(document).ready( function($) {
+			function doFollowingHover() {
+				$('#wp-admin-bar-follow > a').unbind( '.unfollow' );
+
+				$('#wp-admin-bar-follow > a').bind( 'mouseover.unfollow', function() {
+
+					$(this).html( "Unfollow" ).parent( 'li' ).addClass( 'unfollow' );
+				});
+				$('#wp-admin-bar-follow > a').bind( 'mouseout.unfollow', function() {
+					$(this).html( "Following" ).parent( 'li' ).removeClass( 'unfollow' );
+				});
+			}
+							doFollowingHover();
+			
+			$('#wp-admin-bar-follow > a').click( function( e ) {
+				$('#wp-admin-bar-follow > a').unbind( '.unfollow' );
+
+				e.preventDefault();
+
+				var link = $( this ), li = $( '#wp-admin-bar-follow' ), timeout = 0;
+
+				if ( li.hasClass( 'subscribed' ) ) {
+					li.removeClass( 'subscribed' ).removeClass( 'unfollow' );
+					link.html( "Follow" );
+
+					$('body').append( $( 'div.wpcom-bubble' ).removeClass( 'fadein' ) ).off( 'click.bubble' );
+
+					var action = 'ab_unsubscribe_from_blog';
+				} else {
+					li.addClass( 'subscribed' ).removeClass( 'unfollow' );
+					link.html( "Following" );
+
+						var left = 131 - link.width();
+						li.append( $( 'div.wpcom-bubble' ).css( { left: '-' + left + 'px' } ) );
+						$( 'div.bubble-txt', 'div.wpcom-bubble' ).html( "New posts from this blog will now appear in <a target=\"_blank\" href=\"http:\/\/fr.wordpress.com\/\">your reader<\/a>. You can manage email alerts from your <a target=\"_blank\" href=\"http:\/\/fr.wordpress.com\/following\/edit\/\">subscriptions page<\/a>." );
+
+						$( 'div.wpcom-bubble.action-bubble' ).addClass( 'fadein' );
+
+						setTimeout( function() {
+							$('body').on( 'click.bubble touchstart.bubble', function(e) {
+								if ( !$(e.target).hasClass('wpcom-bubble') && !$(e.target).parents( 'div.wpcom-bubble' ).length )
+									hideBubble();
+							});
+							setTimeout( hideBubble, 15000 );
+						}, 500 );
+
+					var action = 'ab_subscribe_to_blog';
+					$('#wp-admin-bar-follow > a').bind( 'mouseout.shift', function() {
+						doFollowingHover();
+						$(this).unbind( '.shift' );
+					});
+				}
+
+				var nonce = link.attr( 'href' ).split( '_wpnonce=' );
+				nonce = nonce[1];
+
+				$.post( "https:\/\/mesrasoftware.wordpress.com\/wp-admin\/admin-ajax.php", {
+					'action': action,
+					'_wpnonce': nonce,
+					'source': 'admin_bar',
+					'blog_id': 103632488				});
+			});
+		});
+	/* ]]> */
+	</script>
+<script type='text/javascript' src='//0.gravatar.com/js/gprofiles.js?ver=201925y'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":"d8f91304c368c4941f658037976976e3"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	</div>
+<div id="report-form-window" style="display:none;"></div>
+	<div id="carousel-reblog-box">
+		<form action="#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+							<option value="95313984">Thibaud Etienne</option>
+							<option value="103632488">MESRA</option>
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post" />
+				<input type="hidden" id="carousel-reblog-blog-id" value="103632488" />
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://mesrasoftware.wordpress.com" />
+				<input type="hidden" id="carousel-reblog-blog-title" value="MESRA" />
+				<input type="hidden" id="carousel-reblog-post-url" value="" />
+				<input type="hidden" id="carousel-reblog-post-title" value="" />
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="d45d602b7c" /><input type="hidden" name="_wp_http_referer" value="/users-manual/" />		</form>
+
+		<div class="arrow"></div>
+	</div>
+<div class="widget widget_eu_cookie_law_widget"><div
+	class="hide-on-button ads-active"
+	data-hide-timeout="30"
+	data-consent-expiration="180"
+	id="eu-cookie-law"
+>
+	<form method="post">
+		<input type="submit" value="Close and accept" class="accept" />
+
+		Privacy &amp; Cookies: This site uses cookies. By continuing to use this website, you agree to their use. <br />
+To find out more, including how to control cookies, see here:
+		<a href="https://automattic.com/cookies" >
+			Cookie Policy		</a>
+ </form>
+</div>
+</div><link rel='stylesheet' id='all-css-0-2' href='https://s0.wp.com/wp-content/mu-plugins/carousel/jetpack-carousel.css?m=1524699534h&cssminify=yes' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"https:\/\/s2.wp.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpNotesArgs = {"cacheBuster":"@automattic\/jetpack-blocks@13.1.0-1381-gbdb1572270","iframeUrl":"https:\/\/widgets.wp.com\/notifications\/","iframeAppend":"2","iframeScroll":"no","wide":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcom_tos_report_form = {"ajaxurl":"\/wp-admin\/admin-ajax.php","isLoggedoutUser":"","post_ID":"18","current_url":"https:\/\/mesrasoftware.wordpress.com\/users-manual","report_this_content":"Report this content"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var actionbardata = {"siteID":"103632488","siteName":"MESRA","siteURL":"http:\/\/mesrasoftware.wordpress.com","icon":"<img alt='' src='https:\/\/s2.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"1","canCustomizeSite":"1","isFollowing":"1","themeSlug":"pub\/big-brother","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fmesrasoftware.wordpress.com%2Fusers-manual%2F&signup_flow=account","themeURL":"","xhrURL":"https:\/\/mesrasoftware.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"f6db81a0ac","isSingular":"1","isFolded":"","isLoggedIn":"1","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"3b05a61ac9\" \/>","referer":"https:\/\/mesrasoftware.wordpress.com\/users-manual\/","canFollow":"1","feedID":"96746146","statusMessage":"","customizeLink":"https:\/\/mesrasoftware.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fmesrasoftware.wordpress.com%2Fusers-manual%2F","postID":"18","shortlink":"https:\/\/wp.me\/P70PxK-i","canEditPost":"1","editLink":"https:\/\/wordpress.com\/page\/mesrasoftware.wordpress.com\/18","statsLink":"https:\/\/wordpress.com\/stats\/post\/18\/mesrasoftware.wordpress.com","i18n":{"view":"Afficher le site","follow":"Suivre","following":"Abonn\u00e9","edit":"Modifier","login":"Connexion","signup":"S'inscrire","customize":"Personnaliser","report":"Signaler ce contenu","themeInfo":"Obtenez de l'aide pour configurer votre th\u00e8me","shortlink":"Copier shortlink","copied":"Copi\u00e9","followedText":"Les nouveaux articles de ce site appara\u00eetront d\u00e9sormais dans votre <a href=\"https:\/\/wordpress.com\/\">Lecteur<\/a>","foldBar":"R\u00e9duire cette barre","unfoldBar":"\u00c9tendre cette barre","editSubs":"G\u00e9rer les abonnements","viewReader":"Voir le site dans le Lecteur","viewReadPost":"Voir l'article dans le Lecteur","subscribe":"M\u2019inscrire","enterEmail":"Entrez votre adresse e-mail","followers":"","alreadyUser":"Vous disposez d\u00e9j\u00e0 d\u02bcun compte WordPress ? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fmesrasoftware.wordpress.com%2Fusers-manual%2F&signup_flow=account\">Connectez-vous maintenant.<\/a>","stats":"Statistiques"}};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"1","lang":"en","ajaxurl":"https:\/\/mesrasoftware.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"a73b896206","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/mesrasoftware.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fmesrasoftware.wordpress.com%2Fusers-manual%2F","blog_id":"103632488","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<p id=\"jp-carousel-commenting-as\">Commenting as thibaudetienne<\/p>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=103632488&v=wpcom&tz=1&user=1&user_id=90557619&subd=mesrasoftware","is_public":"1","reblog_enabled":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://s2.wp.com/_static/??-eJyVUttSwyAQ/SEpU7XmyfFbCNkmmwCLy5L08wVnGjs1Rn3hsueycEAvUVkKAkH0mHQHM1qIl8OYHnSBMFiXO0gVkwHt1NJlXVxJV73PKrrcY0ja4VRE7xkyDCZ0DnjL0XQeg2oNH8q847byCm7Jqy/dnUYG8MU65la32KuWqVS4tgpmxt4I0rc+P2vShFE5DJM6k81JnXHvygt2PUjSkAtKE4JyZtECPjojcFffSiOHDjhZYriN45bRmpp7gK24CuxzEmMH2DlkoHqUz7HA3lNQ8+Ov/DXvfbJQUgyRWEpg7O/3f3pgb5IA11Y0AzPWm6+1fzoIl7zSnsjWD1FF62qHbQ1TTuD0CBKLs7oWiubNvx5Pp6Z5ej42L+MHKqQ+XQ=='></script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="//stats.wp.com/w.js?60" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['identifyUser', 90557619, 'thibaudetienne']);
+_tkq.push(['storeContext', {'blog_id':'103632488','blog_tz':'1','user_lang':'fr','blog_lang':'en'}]);
+_stq.push(['view', {'blog':'103632488','v':'wpcom','tz':'1','user':'1','user_id':'90557619','post':'18','subd':'mesrasoftware'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1zNDZ8S252Wis9XUQyb3YrcUVIU2R0VH5TdX49dE9rUmJFaktdU3N+RjUuOSxHS3E0LHZER01xVVdGaFJbP0s3XS9CZzdMMzRCW3d+UFdkUWl8T3FoZT9SQ1U0YStjUXJUMHpYfFs0fnh+NkRsVD02V3QvZ19LS05iOFU3aEQ3djkuSEtkRm12eFglUzYmJnl5Q1c0aGpjc0F3XV8xU2V6Mm4vSl1mJi02djV6aG4vZWpYYmlVfFp5dFBxVHNDV2JVQ0JhMjN5YjV5ZG89algrdU9lUC1UczJMTDNNeUZjb212OVU/dW44R2g4V3YlRVVxUmd1SllBNCtjSFBYL1tuZmxyLn5lbTVSS2xnMEluW3Q='}]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+		<div id="wpadminbar" class="nojq nojs ltr">
+							<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">Aller à la barre d&rsquo;outils</a>
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Barre d&rsquo;outils" tabindex="0">
+						<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+			
+		<li id="wp-admin-bar-blog" class="my-sites mb-trackable"><a class="ab-item"  href="https://wordpress.com/stats/mesrasoftware.wordpress.com">Mes sites</a>		</li>
+		<li id="wp-admin-bar-jumptotop-button-menu"><a class="ab-item"  href="#"><div id="jumptotop"><span class="noticon noticon-top"></span></div></a>		</li>
+		<li id="wp-admin-bar-newdash" class="mb-trackable"><a class="ab-item"  href="https://wordpress.com/">Lecteur</a>		</li>		</ul>
+			<ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+			
+		<li id="wp-admin-bar-notes" class="menupop">		<div class="ab-item ab-empty-item" ><span id="wpnt-notes-unread-count" class="wpnt-loading wpn-read"></span><span class="noticon noticon-bell"></span><span class="ab-text">Notifications</span></div><div id="wpnt-notes-panel2" style="display:none" lang="fr" dir="ltr"><div class="wpnt-notes-panel-header"><span class="wpnt-notes-header"></span><span class="wpnt-notes-panel-link"></span></div></div>		</li>
+		<li id="wp-admin-bar-my-account" class="with-avatar mb-trackable"><a class="ab-item"  href="https://wordpress.com/me/"><img alt='' src='https://1.gravatar.com/avatar/d8f91304c368c4941f658037976976e3?s=32&#038;d=mm&#038;r=G' class='avatar avatar-32' height='32' width='32' /><span class="ab-text">Moi</span></a>		</li>
+		<li id="wp-admin-bar-ab-new-post" class="mb-trackable"><a class="ab-item"  href="https://wordpress.com/post/mesrasoftware.wordpress.com"><span>Écrire</span></a>		</li>		</ul>
+				</div>
+							<a class="screen-reader-shortcut" href="https://mesrasoftware.wordpress.com/wp-login.php?action=logout&#038;_wpnonce=69d747224a">Se déconnecter</a>
+					</div>
+
+	
+<script type="text/javascript">
+/* <![CDATA[ */
+var clickDebugLink;
+
+jQuery(document).ready( function($) {
+	var single = false, w = 1000,
+		supe = false;
+
+	$(document.body).load(function(){ $('#wpadminbar img.grav-hashed').removeClass('grav-hashed'); }); // hack to hide the gravatar hovercard
+
+	if ( single && supe )
+		w = 1385;
+	else if ( supe )
+		w = 1200;
+
+	// debug bar extra
+	clickDebugLink = function( parent_id, obj ) {
+
+		$('#'+parent_id).children('div').hide();
+
+		document.getElementById( obj.href.substr( obj.href.indexOf( '#' ) + 1 ) ).style.display = 'block';
+		$( obj.href.substr( obj.href.indexOf( '#' ) ) ).show()
+
+		$(obj).parent().addClass('current').siblings('li').removeClass('current');
+
+		return false;
+	};
+
+	$( '#wpadminbar #wp-admin-bar-shortlink' ).click( function() {
+		$( '#adminbar-shortlink-input' ).select();
+	});
+
+	// skip tap-to-hover on site switcher for mobile
+	if ( 'ontouchstart' in window ) {
+		$('#wp-admin-bar-switch-site').on( 'touchstart', function( event ) {
+			if ( $( window ).width() > 782 ) {
+				return;
+			}
+			event.stopPropagation();
+			$( event.target ).first( 'a' ).click();
+		});
+	}
+
+});
+/* ]]> */
+</script>
+	<div class="wpcom-bubble action-bubble">
+		<div class="bubble-txt"></div>
+	</div>
+	<script type="text/javascript">function hideBubble() { jQuery('body').append( jQuery( 'div.wpcom-bubble' ).removeClass( 'fadein' ) ).off( 'click.bubble touchstart.bubble' ); jQuery(document).off( 'scroll.bubble' ); };</script>
+		<script type="text/javascript">
+	jQuery( '#wp-admin-bar-jumptotop-button-menu a' ).click( function( e ) {
+		e.preventDefault();
+		jQuery( 'html, body' ).animate( { scrollTop: 0 }, 'fast' );
+	} );
+	function hideShowTbJumpToTop() {
+		var total_width = 0;
+		// Calculate total width taken by items minus our button to see if it'll
+		// overlap with other toolbar menus.
+		jQuery( '#wp-admin-bar-root-default > li' ).each( function() {
+			var self = jQuery( this );
+			if ( 'wp-admin-bar-jumptotop-button-menu' != self.attr( 'id' ) )
+				total_width += self.width();
+		});
+		if ( jQuery( '#wp-admin-bar-jumptotop-button-menu' ).position()['left'] - total_width < 10 ) {
+			jQuery( '#jumptotop' ).animate( { 'top': '-50px' }, 'fast' );
+		} else if (  jQuery( window ).scrollTop() >= 350 && parseInt( jQuery( '#jumptotop' ).css( 'top' ) ) < 0 ) {
+			if ( jQuery( '#wp-admin-bar-jumptotop-button-menu' ).position()['left'] - total_width < 10 )
+			   return;
+			jQuery( '#jumptotop' ).animate( { 'top': 0 }, 'fast' );
+		} else if (  jQuery( window ).scrollTop() < 1 && parseInt( jQuery( '#jumptotop' ).css( 'top' ) ) >= 0 ) {
+			jQuery( '#jumptotop' ).animate( { 'top': '-50px' }, 'fast' );
+		}
+	}
+	// handle on page load if auto scrolling to a position
+	hideShowTbJumpToTop();
+	// bind to scrolll event
+	var jumpToTopTimer = null;
+	jQuery( window ).scroll( function() {
+		clearTimeout( jumpToTopTimer );
+		jumpToTopTimer = setTimeout( jumpToTopRefresh, 150 );
+	} );
+	var jumpToTopRefresh = function() {
+		hideShowTbJumpToTop();
+	};
+	</script>
+	<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+</body>
+</html>
