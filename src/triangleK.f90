@@ -25,7 +25,7 @@ subroutine triangleK(matrix,matriangle,dtmp)
 use declare
 
 integer :: dtmp
-real*8 :: matrix(dtmp,dtmp),matriangle(dtmp)
+real*8 :: matrix(dtmp,dtmp),matriangle(dtmp*(dtmp+1)/2)
 
 ! Initializes the counter for the components of the vector.
 
@@ -33,7 +33,7 @@ k = 0
 
 ! Transforms the square matrix elements into vector components.
 
-do i=1,nbs
+do i=1,dtmp
  do j=1,i
   k = k + 1
   matriangle(k) = matrix(i,j)

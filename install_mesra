@@ -26,6 +26,38 @@
 # correct options are selected in the src/makefile file for 
 # FC, FFLAGS, and LFLAGS.
 
+echo " "
+echo "MESRA needs to put a path to its executable files in your \$HOME/.bashrc file" 
+echo " "
+
+read -p "Allow MESRA to complete and source your \$HOME/.bashrc file? (y/n) " status_bash
+
+if [[ -z $status_bash  ]] ; then
+echo " "
+echo "Compiling"
+else
+case $status_bash in
+y) echo " "
+   echo "Compiling" ;;
+Y) echo " "
+   echo "Compiling" ;;
+n) echo " "
+   echo "Mesra needs $HOME/.bashrc file to be modified and sourced." 
+   echo "Contact your administrator for requesting the appropriate permissions."
+   echo "Exit"
+   exit ;;
+N) echo " "
+   echo "Mesra needs $HOME/.bashrc to be modified and sourced." 
+   echo "Contact your administrator for requesting the appropriate permissions."
+   echo "Exit"
+   exit ;;
+*) echo " "
+   echo "y and n are the only two accepted answers. Relaunch install_mesra."
+   echo "Exit"
+   exit ;;
+esac
+fi
+
 # Creates a bin directory.
 
 here=`pwd`
@@ -70,19 +102,18 @@ cd ../src/
 
 cp ./executables/* $mesra_home
 
-make
+make > ../installation.log
 
 if [ $? -eq 0 ] ; then
-clear
-echo
+echo " "
 echo The MESRA software was correctly installed.
-echo
+echo " "
 make clean &> /dev/null
 else
-echo
+echo " "
 echo The software did not compile correctly. Modify the makefile in the 
 echo src directory with more appropriate compiling options.
-echo
+echo " " 
 make clean &> /dev/null
 exit
 fi
@@ -106,13 +137,14 @@ fi
 . ~/.profile &> /dev/null
 . ~/.bash_profile &> /dev/null
 
-cd $here
+source $HOME/.bashrc
 
-cd ../
+cd $here
 
 # Tests the installation
 
 echo MESRA test
 echo
 
-test_mesra
+$mesra_home/test_mesra >> installation.log
+

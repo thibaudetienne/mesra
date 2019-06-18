@@ -78,6 +78,9 @@ if (countunr .eq. 1) pxalpharelaxed = pxalpha + zvecxi
 if (countunr .eq. 2) pxbetarelaxed = pxbeta + zvecxi
 if (countunr .eq. 3) pxrelaxed = px + zvecxi
 
+if (allocated(zzd_zdz)) deallocate(zzd_zdz)
+allocate(zzd_zdz(norb,norb))
+
 zzd_zdz = matmul(zvecxi,zvecxi)
 
 eta = 0.0d0
@@ -157,8 +160,8 @@ psi_relaxedPA=2.0d0*datan(phiS_relaxedPA/phi_relaxedPA)/(pi)
 !write(6,*) 'alter_phiSdagger', phiSPA0 + (1-phiSPA0)*((eta/(theta0+eta))**(1+eta))
 !phiSdagger =  phiSPA0 + (1-phiSPA0)*((eta/(theta0+eta))**(1+eta))
 !write(6,*) 'alter_phiSdagger', phiSPA0 + (1-phiSPA0)*eta/thetaZ
-write(10,'(f10.2,5f10.4)') xi, eta, (eta/(theta0+eta)),phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
-write(6,'(a4,f4.2,5f8.4)') 'xi ',xi, eta, (eta/(theta0+eta)),phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
+write(10,'(f8.2,5f8.4)') xi, eta, (eta/(theta0+eta)),phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
+write(6,'(f8.2,5f8.4)') xi, eta, (eta/(theta0+eta)),phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
 ! End of GB implementation
 enddo
 

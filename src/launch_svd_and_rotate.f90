@@ -46,6 +46,8 @@ else
  call weigen(eigname,lambda,nel)
 endif
 
+lambda_lambdadagger_trace = 0.0d0
+
 do i=1,nel
 lambda_lambdadagger_trace = lambda_lambdadagger_trace + (lambda(i))**2.0d0
 enddo

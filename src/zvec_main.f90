@@ -70,6 +70,7 @@ write(50,*) 'Trace of alpha ZZ^dagger (eta)'
 write(50,'(f12.5)') zcoefalpha
 
 if (jobtype == 'daz') write(6,*)
+if (jobtype == 'dar') write(6,*)
 
 deallocate(zzd_zdz)
 
@@ -112,6 +113,7 @@ write(50,*) 'Trace of beta ZZ^dagger (eta)'
 write(50,'(f13.5)') zcoefbeta
 
 if (jobtype == 'daz') write(6,*)
+if (jobtype == 'dar') write(6,*)
 
 deallocate(zzd_zdz)
 
@@ -144,6 +146,7 @@ write(50,*) 'Trace of ZZ^dagger (eta)'
 write(50,'(f13.5)') zcoef
 
 if (jobtype == 'daz') write(6,*)
+if (jobtype == 'dar') write(6,*)
 
 deallocate(zzd_zdz)
 

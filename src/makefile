@@ -10,17 +10,22 @@ FC=gfortran
 
 # Chooses the compilation parameters.
 
+# Used when testing gfortran
 FFLAGS=-g -I. -O0 -c 
 
-#FC = ifort
-#FFLAGS = -O2 -C -g -c
+# Used when testing ifort
+#FFLAGS = -O0 -C -g -c
+
 # Sets the libraries and their path.
 
+# intel libraries
 #LFLAGS= -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lguide -lpthread 
+#LFLAGS = -mkl=parallel
+
+# blas and lapack libraries
 #LFLAGS= -llapack -lblas
-LFLAGS=-L/usr/lib -llapack -lblas
-#LFLAGS = -mkl
 #LFLAGS=-L/opt/lapack/gnu -llapack -lblas
+LFLAGS=-L/usr/lib -llapack -lblas
 
 # Defines a .o for any file entering the compilation.
 
