@@ -22,7 +22,7 @@
 
 # Checks that the required files are present. If a daz calculation has not been performed prior to the qmnirlx one, a daz calculation is done.
 
-ls mesra-t$2/daz.log &> /dev/null
+ls mesra-t$2/daZ.log &> /dev/null
 
 if [ $? -eq 0 ] ; then
  :
@@ -49,7 +49,7 @@ else
 
  rm header_fchk &> /dev/null
  mv daZ*.eig mesra-t$2 &> /dev/null
- mv mesra-Job*.log mesra-t$2/daz.log &> /dev/null
+ mv mesra-Job*.log mesra-t$2/daZ.log &> /dev/null
  mv *.orth mesra-t$2 &> /dev/null
  rm temp_daz &> /dev/null
 fi
@@ -57,8 +57,8 @@ fi
 # Checks whether the number of alpha and beta electrons is equal, and extracts information
 # in the appropriate files accordingly, before launching mesra.
 
-numalpha=`grep -A1 'Number of alpha and beta' mesra-t$2/daz.log | tail -1 | awk '{print $1}'`
-numbeta=`grep -A1 'Number of alpha and beta' mesra-t$2/daz.log | tail -1 | awk '{print $2}'`
+numalpha=`grep -A1 'Number of alpha and beta' mesra-t$2/daZ.log | tail -1 | awk '{print $1}'`
+numbeta=`grep -A1 'Number of alpha and beta' mesra-t$2/daZ.log | tail -1 | awk '{print $2}'`
 diffnumalphabeta=`echo $numalpha - $numbeta | bc -l`
 
 if [ $diffnumalphabeta -eq 0 ] ; then
@@ -68,7 +68,7 @@ if [ $diffnumalphabeta -eq 0 ] ; then
  grep -A1 'Integral' mesra-t$2/qmNI$3.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phiS integral value' mesra-t$2/qmNI$3.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phi ' mesra-t$2/qmNI$3.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
- grep -A1 '(eta)' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 '(eta)' mesra-t$2/daZ.log | tail -1 >> inp_mesra-$1-t$2
 
  main_mesra inp_mesra-$1-t$2 
  mv mesra-Job-qmnirlx.log mesra-t$2 &> /dev/null
@@ -93,7 +93,7 @@ else
  grep -A1 'Integral' mesra-t$2/qmNI$3-alpha.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phiS integral value' mesra-t$2/qmNI$3-alpha.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phi ' mesra-t$2/qmNI$3-alpha.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
- grep -A1 '(eta)' mesra-t$2/daz.log | head -2 | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 '(eta)' mesra-t$2/daZ.log | head -2 | tail -1 >> inp_mesra-$1-t$2
 
  main_mesra inp_mesra-$1-t$2 | head -8
 
@@ -120,7 +120,7 @@ else
  grep -A1 'Integral' mesra-t$2/qmNI$3-beta.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phiS integral value' mesra-t$2/qmNI$3-beta.log | tail -1 >> inp_mesra-$1-t$2
  grep -A1 'phi ' mesra-t$2/qmNI$3-beta.log | tail -1 | awk '{print $2}' >> inp_mesra-$1-t$2
- grep -A1 '(eta)' mesra-t$2/daz.log | tail -1 >> inp_mesra-$1-t$2
+ grep -A1 '(eta)' mesra-t$2/daZ.log | tail -1 >> inp_mesra-$1-t$2
 
  main_mesra inp_mesra-$1-t$2 | tail -10
  mv mesra-Job-qmnirlx.log mesra-t$2/mesra-Job-qmnirlx-beta.log &> /dev/null

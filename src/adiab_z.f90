@@ -24,10 +24,10 @@ use declare
 
 if (countunr .eq. 1) then
 open(10,file='adiabZalpha.ac',form='formatted')
-write(10,*) '# xi, Trace of ZZ^dagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
+write(10,*) '# xi, Trace of ZZ^dagger, R, Relaxed phiS (Lowdin)'
 write(10,*)
 write(6,*)
-write(6,*) '# xi, Trace of ZZ^dagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
+write(6,*) '# xi, Trace of ZZ^dagger, R, Relaxed phiS (Lowdin)'
 open(11,file='acVec_Zalpha.ac',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
 write(11,*)
@@ -35,9 +35,9 @@ endif
 
 if (countunr .eq. 2) then
 write(6,*)
-write(6,*) '# xi, Trace of ZZ^dagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
+write(6,*) '# xi, Trace of ZZ^dagger, R, Relaxed phiS (Lowdin)'
 open(10,file='adiabZbeta.ac',form='formatted')
-write(10,*) '# xi, Trace of ZZdagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
+write(10,*) '# xi, Trace of ZZ^dagger, R, Relaxed phiS (Lowdin)'
 write(10,*)
 open(11,file='acVec_Zbeta.ac',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
@@ -46,10 +46,10 @@ endif
 
 if (countunr .eq. 3) then
 open(10,file='adiabZ.ac',form='formatted')
-write(10,*) '# xi, Trace of ZZdagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
+write(10,*) '# xi, Trace of ZZ^dagger, R, Relaxed phiS (Lowdin)'
 write(10,*)
 write(6,*)
-write(6,*) '# xi, Trace of ZZ^dagger, R, phiS_relaxedPA (Lowdin), phi_relaxedPA (Lowdin), psi_relaxedPA (Lowdin)'
+write(6,*) '# xi, Trace of ZZ^dagger, R, Relaxed phiS (Lowdin)'
 open(11,file='acVec_Z.ac',form='formatted')
 write(11,*) '# xi, i, Auto-correlation vector'
 write(11,*)
@@ -110,7 +110,7 @@ if (iteration .eq. 0) U0 = Uvec
 ! Implemented by GB
 if (iteration .eq. 0) then
 phiS_relaxedPA0=phiSPA0+(1-phiSPA0)*((eta/(theta0+eta)))
-phi_relaxedPA0=phiPA0+(1-phiPA0)*((eta/(theta0+eta)))
+!phi_relaxedPA0=phiPA0+(1-phiPA0)*((eta/(theta0+eta)))
 endif
 ! End GB
 
@@ -154,14 +154,14 @@ pi = dacos(-1.0d0)
 
 ! Implemented by GB
 phiS_relaxedPA=phiS_relaxedPA0+(1-phiS_relaxedPA0)*((eta/(theta0+eta)))
-phi_relaxedPA=phi_relaxedPA0+(1-phi_relaxedPA0)*((eta/(theta0+eta)))
-psi_relaxedPA=2.0d0*datan(phiS_relaxedPA/phi_relaxedPA)/(pi)
+!phi_relaxedPA=phi_relaxedPA0+(1-phi_relaxedPA0)*((eta/(theta0+eta)))
+!psi_relaxedPA=2.0d0*datan(phiS_relaxedPA/phi_relaxedPA)/(pi)
 
 !write(6,*) 'alter_phiSdagger', phiSPA0 + (1-phiSPA0)*((eta/(theta0+eta))**(1+eta))
 !phiSdagger =  phiSPA0 + (1-phiSPA0)*((eta/(theta0+eta))**(1+eta))
 !write(6,*) 'alter_phiSdagger', phiSPA0 + (1-phiSPA0)*eta/thetaZ
-write(10,'(f8.2,5f8.4)') xi, eta, (eta/(theta0+eta)),phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
-write(6,'(f8.2,5f8.4)') xi, eta, (eta/(theta0+eta)),phiS_relaxedPA,phi_relaxedPA,psi_relaxedPA
+write(10,'(f8.2,3f8.4)') xi, eta, (eta/(theta0+eta)),phiS_relaxedPA
+write(6,'(f8.2,3f8.4)') xi, eta, (eta/(theta0+eta)),phiS_relaxedPA
 ! End of GB implementation
 enddo
 

@@ -109,19 +109,19 @@ else
 
 write(6,*) 'Integral of detachment/attachment density'
 write(6,'(f11.4)') theta
-write(6,*) 'Hole/particle overlap (phiS, from population analysis)'
+write(6,*) 'Hole/particle overlap (phiS, from PA)'
 write(6,'(f11.4)') phiSPA
-write(6,*) 'Fraction of D/A contributing to the net displaced charge (phi, from population analysis)'
+write(6,*) 'Fraction of D/A contributing to the net displaced charge (phi, from PA)'
 write(6,'(f11.4)') phiPA
-write(6,*) 'psi (from population analysis)'
+write(6,*) 'psi (from PA)'
 write(6,'(f11.4)') psiPA
 write(50,*) 'Integral of detachment/attachment density'
 write(50,'(f11.4)') theta
-write(50,*) 'Hole/particle overlap (phiS, from population analysis)'
+write(50,*) 'Hole/particle overlap (phiS, from PA)'
 write(50,'(f11.4)') phiSPA
-write(50,*) 'Fraction of D/A contributing to the net displaced charge (phi, from population analysis)'
+write(50,*) 'Fraction of D/A contributing to the net displaced charge (phi, from PA)'
 write(50,'(f11.4)') phiPA
-write(50,*) 'psi (from population analysis)'
+write(50,*) 'psi (from PA)'
 write(50,'(f11.4)') psiPA
 write(6,*)
 write(50,*)

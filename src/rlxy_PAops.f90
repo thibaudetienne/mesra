@@ -57,90 +57,90 @@ write(50,*)
 if (unr) then
 
 write(6,*)
-write(6,*) '3) Alpha relaxed descriptors'
+write(6,*) '3) Alpha relaxed hole/particle overlap integral'
 write(6,*)
 write(50,*)
-write(50,*) '3) Alpha relaxed descriptors'
+write(50,*) '3) Alpha relaxed hole/particle overlap integral'
 write(50,*)
 
  phiSPArlxalpha =  phiSPAUalpha + (1.0d0-phiSPAUalpha)*(zcoefalpha/(thetaUalpha+zcoefalpha))
- phiPArlxalpha = phiPAUalpha - phiPAUalpha*(zcoefalpha/(thetaUalpha+zcoefalpha))
- psiPArlxalpha = 2.0d0*(datan(phiSPArlxalpha/phiPArlxalpha))/(pi)
+! phiPArlxalpha = phiPAUalpha - phiPAUalpha*(zcoefalpha/(thetaUalpha+zcoefalpha))
+! psiPArlxalpha = 2.0d0*(datan(phiSPArlxalpha/phiPArlxalpha))/(pi)
  
  write(6,*) 'Relative amplitude of the relaxation',thetaUalpha
  write(6,'(f13.4)') (zcoefalpha/(thetaUalpha+zcoefalpha))
- write(6,*) 'Relaxed/particle overlap (phiS, from population analysis)'
+ write(6,*) 'Relaxed/particle overlap (phiS, from PA)'
  write(6,'(f13.4)') phiSPArlxalpha
- write(6,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from population analysis)'
- write(6,'(f13.4)') phiPArlxalpha
- write(6,*) 'Generalized psi (from population analysis)'
- write(6,'(f13.4)') psiPArlxalpha
+! write(6,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from PA)'
+! write(6,'(f13.4)') phiPArlxalpha
+! write(6,*) 'Generalized psi (from PA)'
+! write(6,'(f13.4)') psiPArlxalpha
  write(50,*) 'Relative amplitude of the relaxation'
  write(50,'(f13.4)') (zcoefalpha/(thetaUalpha+zcoefalpha))
- write(50,*) 'Relaxed/particle overlap (phiS, from population analysis)'
+ write(50,*) 'Relaxed/particle overlap (phiS, from PA)'
  write(50,'(f13.4)') phiSPArlxalpha
- write(50,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from population analysis)'
- write(50,'(f13.4)') phiPArlxalpha
- write(50,*) 'Generalized psi (from population analysis)'
- write(50,'(f13.4)') psiPArlxalpha
+! write(50,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from PA)'
+! write(50,'(f13.4)') phiPArlxalpha
+! write(50,*) 'Generalized psi (from PA)'
+! write(50,'(f13.4)') psiPArlxalpha
 
 write(6,*)
-write(6,*) '4) Beta relaxed descriptors'
+write(6,*) '4) Beta relaxed hole/particle overlap integral'
 write(6,*)
 write(50,*)
-write(50,*) '4) Beta relaxed descriptors'
+write(50,*) '4) Beta relaxed hole/particle overlap integral'
 write(50,*)
 
  phiSPArlxbeta =  phiSPAUbeta + (1.0d0-phiSPAUbeta)*((zcoefbeta/(thetaUbeta+zcoefbeta)))
- phiPArlxbeta = phiPAUbeta - phiPAUbeta*((zcoefbeta/(thetaUbeta+zcoefbeta)))
- psiPArlxbeta = 2.0d0*(datan(phiSPArlxbeta/phiPArlxbeta))/(pi)
+! phiPArlxbeta = phiPAUbeta - phiPAUbeta*((zcoefbeta/(thetaUbeta+zcoefbeta)))
+! psiPArlxbeta = 2.0d0*(datan(phiSPArlxbeta/phiPArlxbeta))/(pi)
  
  write(6,*) 'Relative amplitude of the relaxation'
  write(6,'(f13.4)') (zcoefbeta/(thetaUbeta+zcoefbeta))
- write(6,*) 'Relaxed/particle overlap (phiS, from population analysis)'
+ write(6,*) 'Relaxed/particle overlap (phiS, from PA)'
  write(6,'(f13.4)') phiSPArlxbeta
- write(6,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from population analysis)'
- write(6,'(f13.4)') phiPArlxbeta
- write(6,*) 'Relaxed psi descriptor (from population analysis)'
- write(6,'(f13.4)') psiPArlxbeta
+! write(6,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from PA)'
+! write(6,'(f13.4)') phiPArlxbeta
+! write(6,*) 'Relaxed psi descriptor (from PA)'
+! write(6,'(f13.4)') psiPArlxbeta
  write(50,*) 'Relative amplitude of the relaxation'
  write(50,'(f13.4)') (zcoefbeta/(thetaUbeta+zcoefbeta))
- write(50,*) 'Relaxed/particle overlap (phiS, from population analysis)'
+ write(50,*) 'Relaxed/particle overlap (phiS, from PA)'
  write(50,'(f13.4)') phiSPArlxbeta
- write(50,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from population analysis)'
- write(50,'(f13.4)') phiPArlxbeta
- write(50,*) 'Relaxed psi descriptor (from population analysis)'
- write(50,'(f13.4)') psiPArlxbeta
+! write(50,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from PA)'
+! write(50,'(f13.4)') phiPArlxbeta
+! write(50,*) 'Relaxed psi descriptor (from PA)'
+! write(50,'(f13.4)') psiPArlxbeta
 
 else
 
 write(6,*)
-write(6,*) '3) Relaxed descriptors'
+write(6,*) '3) Relaxed hole/particle overlap integral'
 write(6,*)
 write(50,*)
-write(50,*) '3) Relaxed descriptors'
+write(50,*) '3) Relaxed hole/particle overlap integral'
 write(50,*)
 
  phiSPArlx =  phiSPAU + (1.0d0-phiSPAU)*(zcoef/(thetaU+zcoef))
- phiPArlx = phiPAU - phiPAU*(zcoef/(thetaU+zcoef))
- psiPArlx = 2.0d0*(datan(phiSPArlx/phiPArlx))/(pi)
+! phiPArlx = phiPAU - phiPAU*(zcoef/(thetaU+zcoef))
+! psiPArlx = 2.0d0*(datan(phiSPArlx/phiPArlx))/(pi)
  
  write(6,*) 'Relative amplitude of the relaxation'
  write(6,'(f13.4)') (zcoef/(thetaU+zcoef))
- write(6,*) 'Relaxed hole/particle overlap (phiS, from population analysis)'
+ write(6,*) 'Relaxed hole/particle overlap (phiS, from PA)'
  write(6,'(f13.4)') phiSPArlx
- write(6,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from population analysis)'
- write(6,'(f13.4)') phiPArlx
- write(6,*) 'Relaxed psi descriptor (from population analysis)'
- write(6,'(f13.4)') psiPArlx
+! write(6,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from PA)'
+! write(6,'(f13.4)') phiPArlx
+! write(6,*) 'Relaxed psi descriptor (from PA)'
+! write(6,'(f13.4)') psiPArlx
  write(50,*) 'Relative amplitude of the relaxation'
  write(50,'(f13.4)') (zcoef/(thetaU+zcoef))
- write(50,*) 'Relaxed/particle overlap (phiS, from population analysis)'
+ write(50,*) 'Relaxed/particle overlap (phiS, from PA)'
  write(50,'(f13.4)') phiSPArlx
- write(50,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from population analysis)'
- write(50,'(f13.4)') phiPArlx
- write(50,*) 'Relaxed psi descriptor (from population analysis)'
- write(50,'(f13.4)') psiPArlx
+! write(50,*) 'Z-vector-adapted D/A contribution to the net charge displacement (phi, from PA)'
+! write(50,'(f13.4)') phiPArlx
+! write(50,*) 'Relaxed psi descriptor (from PA)'
+! write(50,'(f13.4)') psiPArlx
 
 
 !!!!Gabriel Breuil 11-04-2019
@@ -159,19 +159,19 @@ write(50,*)
 ! 
 ! write(6,*) 'Relative amplitude of the relaxation'
 ! write(6,'(f13.4)') (zcoef/(thetaU+zcoef))**(1.0d0+zcoef)
-! write(6,*) 'Relaxed hole/particle overlap (relaxed phiS, from population analysis)'
+! write(6,*) 'Relaxed hole/particle overlap (relaxed phiS, from PA)'
 ! write(6,'(f13.4)') phiSPAnewdagger
-! write(6,*) 'Relaxed charge displacement within D/A (relaxed phi, from population analysis)'
+! write(6,*) 'Relaxed charge displacement within D/A (relaxed phi, from PA)'
 ! write(6,'(f13.4)') phiPAnewdagger
-! write(6,*) 'Relaxed psi (relaxed psi, from population analysis)'
+! write(6,*) 'Relaxed psi (relaxed psi, from PA)'
 ! write(6,'(f13.4)') psiPAnewdagger
 ! write(50,*) 'Relative amplitude of the relaxation'
 ! write(50,'(f13.4)') (zcoef/(thetaU+zcoef))**(1.0d0+zcoef)
-! write(50,*) 'Relaxed hole/particle overlap (relaxed phiS, from population analysis)'
+! write(50,*) 'Relaxed hole/particle overlap (relaxed phiS, from PA)'
 ! write(50,'(f13.4)') phiSPAnewdagger
-! write(50,*) 'Relaxed D/A contribution to the net displaced charge (relaxed phi, from population analysis)'
+! write(50,*) 'Relaxed D/A contribution to the net displaced charge (relaxed phi, from PA)'
 ! write(50,'(f13.4)') phiPAnewdagger
-! write(50,*) 'Relaxed psi (from population analysis)'
+! write(50,*) 'Relaxed psi (from PA)'
 ! write(50,'(f13.4)') psiPAnewdagger
 !
 !!!!END Gabriel Breuil 04-11-2019

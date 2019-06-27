@@ -10,11 +10,21 @@ FC=gfortran
 
 # Chooses the compilation parameters.
 
+### For development and bug tracking
+
 # Used when testing gfortran
-FFLAGS=-g -I. -O0 -c 
+#FFLAGS=-g -I. -O0 -c 
 
 # Used when testing ifort
 #FFLAGS = -O0 -C -g -c
+
+### For execution
+
+# With gfortran
+FFLAGS=-g -I. -O2 -c 
+
+# With ifort
+#FFLAGS = -O2 -g -c
 
 # Sets the libraries and their path.
 
