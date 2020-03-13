@@ -22,7 +22,7 @@ subroutine wfchk_orbsAlpha(singular_values,lcao_Omatrix,lcao_Vmatrix,nfchk)
 
 use declare
 
-real*8 :: singular_values(norb),lcao_Omatrix(nbs,norb),lcao_Vmatrix(nbs,norb)
+real*8 :: singular_values(nea),lcao_Omatrix(nbs,nea),lcao_Vmatrix(nbs,norb-nea)
 real*8,allocatable :: temporary(:)
 character*(*) :: nfchk
 
@@ -33,7 +33,6 @@ do
  read(72,'(A100)',iostat=error) line
   if (error .ne. 0) exit
   if (line(1:22) .eq. 'Alpha Orbital Energies' ) exit
-! write(73,'(A100)') line
 enddo
 
 if (norb .lt. 2*nea) then
@@ -67,7 +66,7 @@ enddo
 temporary = 0.0d0
 k = 0
 
-do i = 1,norb
+do i = 1,nea
  do j = 1, nbs 
   k = k + 1
   temporary(k) = lcao_Omatrix(j,i)
@@ -80,7 +79,6 @@ enddo
 
 write(73,'(a80)') line
 write(73,'(5e16.8)') (temporary(i), i = 1,norb*nbs)
-
 read(72,'(5e16.8)') (temporary(i), i = 1,norb*nbs)
 
 deallocate(temporary)

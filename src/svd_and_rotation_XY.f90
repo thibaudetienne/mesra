@@ -94,7 +94,9 @@ if (jobtype .eq. 'pNTOs' .or. jobtype .eq. 'orbsXY') then
   call wfchk_orbsAlpha(lambda,rotated_O_lcao,rotated_V_lcao,'pNTOs.fchk')
  endif
 
- deallocate(lambda,rotated_O_lcao,rotated_V_lcao)
+if (allocated(lambda)) deallocate(lambda)
+if (allocated(rotated_O_lcao)) deallocate(rotated_O_lcao)
+if (allocated(rotated_V_lcao)) deallocate(rotated_V_lcao)
 endif
 
 ! The procedure is similar for CTOs.
@@ -123,8 +125,10 @@ if (jobtype .eq. 'CTOs' .or. jobtype .eq. 'orbsXY') then
  else
   call wfchk_orbsAlpha(lambda,rotated_O_lcao,rotated_V_lcao,'CTOs.fchk')
  endif
- 
- deallocate(lambda,rotated_O_lcao,rotated_V_lcao)
+
+if (allocated(lambda)) deallocate(lambda)
+if (allocated(rotated_O_lcao)) deallocate(rotated_O_lcao)
+if (allocated(rotated_V_lcao)) deallocate(rotated_V_lcao)
 endif
 
 ! The procedure is similar for aNTOs.
@@ -140,6 +144,7 @@ if (jobtype .eq. 'aNTOs' .or. jobtype .eq. 'orbsXY') then
  mat_to_svd = t_3
  orbs_filename = 'aNTOs'
 
+
  call launch_svd_and_rotate
 ! call orth(rotated_O_lcao,'aNTOsO',nbs,nel)
 ! call orth(rotated_V_lcao,'aNTOsV',nbs,norb-nel)
@@ -154,10 +159,15 @@ if (jobtype .eq. 'aNTOs' .or. jobtype .eq. 'orbsXY') then
   call wfchk_orbsAlpha(lambda,rotated_O_lcao,rotated_V_lcao,'aNTOs.fchk')
  endif
 
- deallocate(lambda,rotated_O_lcao,rotated_V_lcao)
+if (allocated(lambda)) deallocate(lambda)
+if (allocated(rotated_O_lcao)) deallocate(rotated_O_lcao)
+if (allocated(rotated_V_lcao)) deallocate(rotated_V_lcao)
+
 endif
 
-deallocate(mat_to_svd,O_lcao,V_lcao)
+if (allocated(mat_to_svd)) deallocate(mat_to_svd)
+if (allocated(O_lcao)) deallocate(O_lcao)
+if (allocated(V_lcao)) deallocate(V_lcao)
 
 ! Manages the outputs.
 

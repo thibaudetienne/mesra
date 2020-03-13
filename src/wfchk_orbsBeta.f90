@@ -22,7 +22,7 @@ subroutine wfchk_orbsBeta(singular_values,lcao_Omatrix,lcao_Vmatrix,nfchk)
 
 use declare
 
-real*8 :: singular_values(norb),lcao_Omatrix(nbs,norb),lcao_Vmatrix(nbs,norb)
+real*8 :: singular_values(neb),lcao_Omatrix(nbs,neb),lcao_Vmatrix(nbs,norb-neb)
 real*8,allocatable :: temporary(:)
 character*(*) :: nfchk
 
@@ -66,7 +66,7 @@ enddo
 temporary = 0.0d0
 k = 0
 
-do i = 1,norb
+do i = 1,neb
  do j = 1, nbs 
   k = k + 1
   temporary(k) = lcao_Omatrix(j,i)
@@ -79,7 +79,6 @@ enddo
 
 write(73,'(a80)') line
 write(73,'(5e16.8)') (temporary(i), i = 1,norb*nbs)
-
 read(72,'(5e16.8)') (temporary(i), i = 1,norb*nbs)
 
 deallocate(temporary)

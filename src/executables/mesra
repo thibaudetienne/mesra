@@ -280,7 +280,7 @@ else
  rm header_fchk_pNTOs &> /dev/null
 fi
 
-mv *pNTOs*.eig &> /dev/null
+mv *pNTOs*.eig mesra-t$2 &> /dev/null
 
 elif [ $1 = 'ctos' ] ; then
 
@@ -302,11 +302,12 @@ ls CTOs*.fchk &> /dev/null
 if [ $? -eq 0 ] ; then
  cat CTOs*.fchk >> header_fchk
  mv header_fchk mesra-t$2/CTOs.fchk &> /dev/null
+ rm CTOs*.fchk &> /dev/null
 else
  rm header_fchk_CTOs &> /dev/null
 fi
 
-mv *CTOs*.eig &> /dev/null
+mv *CTOs*.eig mesra-t$2 &> /dev/null
 
 elif [ $1 = 'antos' ] ; then
 
@@ -328,11 +329,12 @@ ls aNTOs*.fchk &> /dev/null
 if [ $? -eq 0 ] ; then
  cat aNTOs*.fchk >> header_fchk
  mv header_fchk mesra-t$2/aNTOs.fchk &> /dev/null
+ rm aNTOs*.fchk &> /dev/null
 else
  rm header_fchk_aNTOs &> /dev/null
 fi
 
-mv *aNTOs*.eig &> /dev/null
+mv *aNTOs*.eig mesra-t$2 &> /dev/null
 
 elif [ $1 = 'daxy' ] ; then
 
