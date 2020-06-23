@@ -65,7 +65,7 @@ do
 
 ! First, we count the number of lines in which there are NaN appearing.
 
-  k = nint((nt+1)/5.0d0)
+  k = nint((nt+1)/5.0d0)+1
 
 ! We then allocate a dummy array to read them...
 
