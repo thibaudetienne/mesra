@@ -33,17 +33,28 @@ for f in $(cat ns_letter_by_letter)
 do
  if [[ $f == "," ]];then
   rm ns_letter_by_letter &> /dev/null
-  exit
+ break 
  elif [[ $f == " " ]];then
   rm ns_letter_by_letter &> /dev/null
-  exit
+  break
  elif [[ $f == ")" ]];then
   rm ns_letter_by_letter &> /dev/null
-  exit
+  break
  else 
-  echo $f
+  echo $f >> number_of_transitions
   rm ns_letter_by_letter &> /dev/null
  fi
 done
 
+noftr=`cat number_of_transitions | wc -l`
 
+for (( i=1 ; i<$noftr+1 ; i++ )) ; do
+ head -$i number_of_transitions | tail -1 > transtore-$i
+done 
+
+paste transtore-* > temp-transtore
+cat temp-transtore | tr -d "[:space]" | tr -d "[:space:]"
+ 
+
+rm number_of_transitions
+rm *transtore*
