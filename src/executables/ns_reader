@@ -20,10 +20,16 @@
 # Free Software Foundation, Inc. 
 # 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-nstates=`grep -i 'nstates' $1`
+nstates=`grep -i 'nstate' $1`
 nstates_nws="$(echo -e "${nstates}" | tr -d '[:space:]')"
+echo -e $nstates_nws | grep 'nstates' &> /dev/null
 
+if [[ $? -eq 0 ]] ; then
 nsvar=`echo -e $nstates_nws | tr [:upper:] [:lower:] | awk '{split($0,a,"nstates=") ; print a[2]}'`
+else
+nsvar=`echo -e $nstates_nws | tr [:upper:] [:lower:] | awk '{split($0,a,"nstate=") ; print a[2]}'`
+fi
+
 
 for (( i=0; i<${#nsvar}; i++ )); do
   echo "${nsvar:$i:1}" >> ns_letter_by_letter
