@@ -32,6 +32,7 @@ character*128 :: PA_status,eigname
 
 character*128 :: jobname,jobtype,qmPA_obj,subjobtype
 character*128 :: soft,fchk,fov,fdens,input,fdensx
+character*128 :: fchk2 !! AM 2020-12-31 
 integer :: nt,ns
 logical :: relax,adiab,PA,PAr,xy,scanPA,qmPA,t_PA,t_scanPA
 character*128,allocatable :: dummy_array(:)
