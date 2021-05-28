@@ -38,7 +38,7 @@ write(50,*) 'Relaxed descriptors, from numerical integration'
 write(6,*)
 write(50,*)
 
-write(6,*) 'eta and R'
+write(6,*) 'eta and r'
 write(6,'(2f10.4)') eta,Rcoef
 
 write(6,*) 'Relaxed phiS'
@@ -50,7 +50,7 @@ write(6,'(f10.4)') phiS_relaxed
 !write(6,*) 'psi_relaxed'
 !write(6,'(f10.4)') psi_relaxed
 
-write(50,*) 'eta and R'
+write(50,*) 'eta and r'
 write(50,'(2f10.4)') eta, Rcoef
 write(50,*) 'Relaxed phiS'
 write(50,'(f10.4)') phiS_relaxed
