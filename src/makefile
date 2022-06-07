@@ -6,7 +6,7 @@
 # Selects the compiler.
 
 #FC=ifort  
-FC=gfortran-5
+FC=gfortran
 
 # Chooses the compilation parameters.
 

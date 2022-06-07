@@ -32,3 +32,25 @@ read(10,*) nt		! total number of transitions computed
 read(10,*) ns		! the number of the transition of interest
 
 end
+
+!! Antoine Marion: 2020-12-31
+!! Add a specific subroutine for input of two separated densities
+
+subroutine rgen_info_2
+
+! Reads the general information.
+
+use declare
+
+read(10,*) soft 	! Software
+read(10,*) fchk		! .fchk filename      for initial state
+read(10,*) fov		! overlap matrix file for initial state
+read(10,*) fchk2	! .fchk filename      for final   state
+
+end
+
+
+
+
+
+

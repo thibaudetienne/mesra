@@ -69,7 +69,13 @@ else if (soft .eq. 'g03' .or. soft .eq. 'g09' .or. soft .eq. 'g16') then
 ! Reads the density matrices and transforms them into the AO space.
 
 call rP_g
+!! AM: 2021-01-01
+!! Handle density comming froma second checkpoint file
+if ( jobtype .eq. 'dau2' ) then
+call rP_g_2
+else
 call rPx_g
+endif
 
 ! If the computations involve the Z-vector, reads the appropriate matrices.
 
@@ -113,6 +119,7 @@ if (relax) then
 ! Using countrlx allows to read the alpha and beta density matrices
 ! in the same subroutine as the density matrix of a restricted calculation.
 
+!! AM FIXME need to take that into accoutn for dau2
 countrlx = 2
  call rPxspin_g
 pxKspinRelaxed = pxKspin
@@ -136,6 +143,7 @@ else
 ! the alpha and beta density matrices from it and the total excited-state
 ! density matrix.
 
+!! AM FIXME need to take that into accoutn for dau2
 call rPxspin_g 
 
  pxKalpha = (pxK + pxKspin)/2.0d0

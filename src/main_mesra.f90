@@ -104,6 +104,9 @@ if (jobtype .eq. 'aNTOs') call orbs_XY
 
 if (jobtype .eq. 'daXY') call daXY
 
+!! AM: 2021-01-01
+if (jobtype .eq. 'dau2') call dau_main
+
 if (jobtype .eq. 'rlxy_PA') call rlxy_PA
 
 if (jobtype .eq. 'qm_NI') call qm_NI

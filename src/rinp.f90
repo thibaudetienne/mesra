@@ -38,8 +38,18 @@ read(10,*) jobtype
 ! "da" = detachment/attachment
 
 if (jobtype(1:2) .eq. 'da') then
+
+!! Antoine Marion: 2020-12-31
+!!  - add option to perform DA with two densities comming from two different calculations
+if (jobtype .eq. 'dau2') then
+call rgen_info_2
+call rPA_status
+
+else ! regular
 call rgen_info
 call rPA_status
+
+endif
 
 ! "adiabz" = adiabatic connection of the Z-vector to the difference density matrix.
 
@@ -130,5 +140,4 @@ endif
 ! Closes the input file.
 
 close(10)
-
 end
